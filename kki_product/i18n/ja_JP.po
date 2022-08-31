@@ -1,0 +1,58 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* kki_product
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-08-31 06:57+0000\n"
+"PO-Revision-Date: 2022-08-31 06:57+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: kki_product
+#: model:ir.model.fields,field_description:kki_product.field_product_template__display_name
+msgid "Display Name"
+msgstr "表示名"
+
+#. module: kki_product
+#: model:ir.model.fields,field_description:kki_product.field_product_template__id
+msgid "ID"
+msgstr ""
+
+#. module: kki_product
+#: model:ir.model.fields,field_description:kki_product.field_product_template____last_update
+msgid "Last Modified on"
+msgstr "最終更新日"
+
+#. module: kki_product
+#: model:ir.model.fields,field_description:kki_product.field_product_product__marge_name
+#: model:ir.model.fields,field_description:kki_product.field_product_template__marge_name
+msgid "Marge Name"
+msgstr "名称"
+
+#. module: kki_product
+#: model:ir.model.fields,field_description:kki_product.field_product_product__name2
+#: model:ir.model.fields,field_description:kki_product.field_product_template__name2
+msgid "Name2"
+msgstr "名称2"
+
+#. module: kki_product
+#: model_terms:ir.ui.view,arch_db:kki_product.form
+msgid "Product Name 2"
+msgstr "名称2"
+
+#. module: kki_product
+#: model:ir.model,name:kki_product.model_product_template
+msgid "Product Template"
+msgstr "プロダクトテンプレート"
+
+#. module: kki_product
+#: model_terms:ir.ui.view,arch_db:kki_product.search_view_kki_stock
+msgid "在庫可能品"
+msgstr ""
