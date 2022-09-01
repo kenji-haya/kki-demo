@@ -18,3 +18,4 @@ class kki_product(models.Model):
                 record.marge_name = record.name + " " + record.name2
             else:
                 record.marge_name = record.name
+

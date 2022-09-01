@@ -18,3 +18,4 @@ class kki_forklift(models.Model):
         inverse_name="lift_id",
         string="check history")
     price = fields.Integer("price")
+
