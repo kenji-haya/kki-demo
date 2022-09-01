@@ -54,5 +54,23 @@
                 </xpath>
             </field>
         </record>
+        <record model="ir.ui.view" id="kki_product_additional_item_form">
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group[@name='sale']" position="after">
+                    <group>
+                        <group>
+<!--                            <label for="stock_number"/>-->
+                            <field name="stock_number"/>
+                        </group>
+                        <group>
+<!--                            <label for="customer_code"/>-->
+                            <field name="customer_code"/>
+                        </group>
+                    </group>
+                </xpath>
+            </field>
+        </record>
     </data>
 </odoo>
