@@ -16,10 +16,10 @@ class kki_product_additional_item(models.Model):
         ('5', '半製品'),
     ], default='',
         string="商品区分", )
-    # メニュー1
-    menu_1 = fields.Text("工場名")
-    # メニュー2
-    menu_2 = fields.Text("カテゴリ")
+    # メニュー1※本当はMany2one
+    menu_1 = fields.Char("工場名")
+    # メニュー2※本当はMany2one
+    menu_2 = fields.Char("カテゴリ")
 
     """ 仕様タブに入れる項目（仕様タブは一般情報タブの右隣に新規で作成する） """
     # 材料コード※本当はMany2one
