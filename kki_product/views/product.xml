@@ -1,0 +1,59 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="kki_product.form">
+            <field name="name">kki_product form</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="after">
+                    <label class="oe_edit_only" for="name" string="Product Name 2"/>
+                    <field name="name2"/>
+                    <field name="marge_name" invisible="1"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="kki_product.list">
+            <field name="name">kki_product list</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_tree_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='name']" position="after">
+                    <field name="marge_name"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="kki_product.kanban">
+            <field name="name">kki_product kanban</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_kanban_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='name']" position="after">
+                    <field name="marge_name"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="search_view_kki_stock" model="ir.ui.view">
+            <field name="name">kki_product filter</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_search_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//filter[@name='filter_to_sell']" position="before">
+                    <filter string="在庫可能品" name="product_type"
+                            domain="[('type','=', 'product')]"/>
+                    <separator/>
+
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>
