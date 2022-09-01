@@ -1,0 +1,12 @@
+<odoo>
+    <data>
+        <record model="ir.actions.act_window" id="size_action_window">
+            <field name="name">kki_forklift_size window</field>
+            <field name="res_model">kki_forklift.size</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem name="size" id="kki_forklift.size_list" parent="kki_forklift.lift"
+                  action="size_action_window"/>
+    </data>
+</odoo>

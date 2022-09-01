@@ -1,0 +1,14 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="kki_forklift_form_exp">
+            <field name="name">kki_forklift_form_exp form</field>
+            <field name="model">kki_forklift.lift</field>
+            <field name="inherit_id" ref="kki_forklift.form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='size']" position="after">
+                    <field name="text"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

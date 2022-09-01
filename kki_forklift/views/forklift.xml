@@ -1,0 +1,125 @@
+<odoo>
+    <data>
+        <!-- explicit list view definition -->
+
+        <record model="ir.ui.view" id="kki_forklift.list">
+            <field name="name">kki_forklift list</field>
+            <field name="model">kki_forklift.lift</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <!--                    <field name="image" widget="image" class="oe_avatar"/>-->
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_lift_kanban">
+            <field name="name">lift.kanban</field>
+            <field name="model">kki_forklift.lift</field>
+            <field name="arch" type="xml">
+                <kanban class="o_kanban_mobile">
+                    <field name="name"/>
+                    <field name="image"/>
+                    <field name="size"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="oe_kanban_global_click">
+                                <div class="oe_kanban_global_image">
+                                    <field name="image" widget="image" class="oe_avatar"/>
+                                </div>
+                                <div class="oe_kanban_details">
+                                    <ul>
+                                        <li>
+                                            <field name="name"/>
+                                            <field name="size"/>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="kki_forklift.form">
+            <field name="name">kki_forklift form</field>
+            <field name="model">kki_forklift.lift</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="vendor"/>
+                                <field name="launch_day"/>
+                                <field name="note"/>
+                                <field name="size"/>
+                                <field name="price"/>
+                            </group>
+                            <group>
+                                <field name="image" widget="image"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="check history">
+                                <field name="check_history_ids">
+                                    <tree>
+                                        <field name="name"/>
+                                        <field name="check_date"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <!-- actions opening views on models -->
+
+        <record model="ir.actions.act_window" id="kki_forklift.action_window">
+            <field name="name">kki_forklift window</field>
+            <field name="res_model">kki_forklift.lift</field>
+            <field name="view_mode">kanban,tree,form</field>
+        </record>
+
+
+        <!-- server action to the one above -->
+        <!--
+            <record model="ir.actions.server" id="kki_forklift.action_server">
+              <field name="name">kki_forklift server</field>
+              <field name="model_id" ref="model_kki_forklift_kki_forklift"/>
+              <field name="state">code</field>
+              <field name="code">
+                action = {
+                  "type": "ir.actions.act_window",
+                  "view_mode": "tree,form",
+                  "res_model": model._name,
+                }
+              </field>
+            </record>
+        -->
+
+        <!-- Top menu item -->
+
+        <menuitem name="kki_forklift" id="kki_forklift.menu_root"
+                  web_icon="kki_forklift,static/description/forklift.png"/>
+
+        <!-- menu categories -->
+
+        <menuitem name="lift" id="kki_forklift.lift" parent="kki_forklift.menu_root"/>
+        <!--
+            <menuitem name="Menu 2" id="kki_forklift.menu_2" parent="kki_forklift.menu_root"/>
+        -->
+        <!-- actions -->
+
+        <menuitem name="lift" id="kki_forklift.lift_list" parent="kki_forklift.lift"
+                  action="kki_forklift.action_window"/>
+        <!--
+            <menuitem name="Server to list" id="kki_forklift" parent="kki_forklift.menu_2"
+                      action="kki_forklift.action_server"/>
+        -->
+    </data>
+</odoo>
