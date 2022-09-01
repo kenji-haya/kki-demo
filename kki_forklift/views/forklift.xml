@@ -56,6 +56,7 @@
                                 <field name="note"/>
                                 <field name="size"/>
                                 <field name="price"/>
+                                <field name="history_count"/>
                             </group>
                             <group>
                                 <field name="image" widget="image"/>

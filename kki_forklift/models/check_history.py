@@ -9,6 +9,7 @@ class kki_forklift_check_history(models.Model):
     _description = 'kki_forklift.history'
 
     name = fields.Char("name")
+    owner_id = fields.Many2one('res.users', 'owner_id', default=lambda self: self.env.user)
     check_date = fields.Date("check date", required="True", default=datetime.today())
     lift_id = fields.Many2one("kki_forklift.lift", "Forklift")
     image = fields.Binary("image")
