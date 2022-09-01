@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_kki_forklift_lift,kki_forklift.lift,model_kki_forklift_lift,base.group_user,1,1,1,1
+access_kki_forklift_size,kki_forklift.size,model_kki_forklift_size,base.group_user,1,1,1,1
+access_kki_forklift_history,kki_forklift.history,model_kki_forklift_history,base.group_user,1,1,1,1
