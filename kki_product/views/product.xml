@@ -47,10 +47,15 @@
             <field name="inherit_id" ref="product.product_template_search_view"/>
             <field name="arch" type="xml">
                 <xpath expr="//filter[@name='filter_to_sell']" position="before">
-                    <filter string="在庫可能品" name="product_type"
-                            domain="[('type','=', 'product')]"/>
+                    <filter string="加工依頼" name="product_type"
+                            domain="[['commodity_classification','=','1']]"/>
+                    <filter string="丸投げ" name="product_type"
+                            domain="[['commodity_classification','=','2']]"/>
+                    <filter string="材料" name="product_type"
+                            domain="[['commodity_classification','=','3']]"/>
                     <separator/>
-
+                        <filter string="工場名" name="menu_1" domain="[]" context="{'group_by': 'menu_1'}" />
+                        <filter string="メニュー_2" name="menu_2" domain="[]" context="{'group_by': 'menu_2'}" />
                 </xpath>
             </field>
         </record>
