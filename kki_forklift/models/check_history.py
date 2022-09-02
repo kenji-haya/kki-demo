@@ -23,5 +23,4 @@ class kki_forklift_check_history(models.Model):
     horn_1= fields.Boolean("【ホーン・バックブザー】正常に鳴るか")
     volt_1= fields.Boolean("【ボルトメーター】規定量か")
     oil_1= fields.Boolean("【冷却水・オイル・バッテリー液】規定量か。油や水が落ちていないか")
-
     users_1= fields.Many2one('res.users', 'OwnerId', default=lambda self: self.env.user)
