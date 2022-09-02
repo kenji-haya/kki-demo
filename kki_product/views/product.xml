@@ -54,19 +54,34 @@
                 </xpath>
             </field>
         </record>
-        <record model="ir.ui.view" id="kki_product_additional_item_form">
+        <record model="ir.ui.view" id="kki_product_additional_item_sale_form">
             <field name="model">product.template</field>
             <field name="inherit_id" ref="product.product_template_form_view"/>
             <field name="arch" type="xml">
                 <xpath expr="//group[@name='sale']" position="after">
                     <group>
                         <group>
-<!--                            <label for="customer_code"/>-->
                             <field name="customer_code"/>
                         </group>
                         <group>
-<!--                            <label for="stock_number"/>-->
                             <field name="stock_number"/>
+                        </group>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="kki_product_additional_item_div_form">
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[@name='options']" position="after">
+                    <group>
+                        <group>
+                            <field name="commodity_classification"/>
+                        </group>
+                        <group>
+                            <field name="menu_1"/>
+                            <field name="menu_2"/>
                         </group>
                     </group>
                 </xpath>
