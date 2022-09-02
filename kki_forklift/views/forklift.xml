@@ -47,7 +47,19 @@
             <field name="model">kki_forklift.lift</field>
             <field name="arch" type="xml">
                 <form>
+                    <header>
+                        <button name="create_check" string="Create Check" type="object" class="btn-primary"/>
+                    </header>
                     <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button name="action_view_check" type="object" class="oe_stat_button"
+                                    icon="fa-pencil-square-o">
+                                <div class="o_stat_info">
+                                    <div class="o_stat_text">Check history</div>
+                                    <field name="history_count" widget="statinfo" string="Check history"/>
+                                </div>
+                            </button>
+                        </div>
                         <group>
                             <group>
                                 <field name="name"/>
