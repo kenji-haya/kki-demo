@@ -1,0 +1,39 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="kki_product.form">
+            <field name="name">kki_product form</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@name='general_information']" position="after">
+                    <page name="specification" string="仕様">
+                        <group>
+                            <group>
+<!--                                <label for="material_code"/>-->
+                                <field name="material_code"/>
+<!--                                <label for="content_by_volume"/>-->
+                                <field name="content_by_volume"/>
+<!--                                <label for="brand"/>-->
+                                <field name="brand"/>
+                            </group>
+                            <group>
+<!--                                <label for="pagination"/>-->
+                                <field name="pagination"/>
+<!--                                <label for="way_of_paying"/>-->
+                                <field name="way_of_paying"/>
+<!--                                <label for="thickness"/>-->
+                                <field name="thickness"/>
+<!--                                <label for="width_A"/>-->
+                                <field name="width_A"/>
+<!--                                <label for="pitch"/>-->
+                                <field name="pitch"/>
+<!--                                <label for="number_of_colors"/>-->
+                                <field name="number_of_colors"/>
+                            </group>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

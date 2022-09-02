@@ -61,12 +61,12 @@
                 <xpath expr="//group[@name='sale']" position="after">
                     <group>
                         <group>
-<!--                            <label for="stock_number"/>-->
-                            <field name="stock_number"/>
-                        </group>
-                        <group>
 <!--                            <label for="customer_code"/>-->
                             <field name="customer_code"/>
+                        </group>
+                        <group>
+<!--                            <label for="stock_number"/>-->
+                            <field name="stock_number"/>
                         </group>
                     </group>
                 </xpath>
