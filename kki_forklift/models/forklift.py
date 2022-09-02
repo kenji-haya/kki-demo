@@ -6,6 +6,7 @@ from odoo import models, fields, api
 class kki_forklift(models.Model):
     _name = 'kki_forklift.lift'
     _description = 'kki_forklift.lift'
+    _inherit = ['mail.thread', 'mail.activity.mixin']
 
     name = fields.Char("name")
     image = fields.Binary("image")

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from odoo import models, fields, api
+from odoo import models,fields,api
 from datetime import datetime
 
 
@@ -9,9 +9,9 @@ class kki_forklift_check_history(models.Model):
     _description = 'kki_forklift.history'
 
     name = fields.Char("name")
-    owner_id = fields.Many2one('res.users', 'owner_id', default=lambda self: self.env.user)
-    check_date = fields.Date("check date", required="True", default=datetime.today())
-    lift_id = fields.Many2one("kki_forklift.lift", "Forklift")
+    owner_id = fields.Many2one('res.users','owner_id',default=lambda self:self.env.user)
+    check_date = fields.Date("check date",required="True",default=datetime.today())
+    lift_id = fields.Many2one("kki_forklift.lift","Forklift")
     image = fields.Binary("image")
     fork_1= fields.Boolean("【フォーク】亀裂や曲がりはないか")
     back_1= fields.Boolean("【バックレスト】亀裂・変形・取付部に緩みがないか")
@@ -23,5 +23,4 @@ class kki_forklift_check_history(models.Model):
     horn_1= fields.Boolean("【ホーン・バックブザー】正常に鳴るか")
     volt_1= fields.Boolean("【ボルトメーター】規定量か")
     oil_1= fields.Boolean("【冷却水・オイル・バッテリー液】規定量か。油や水が落ちていないか")
-
-    users_1= fields.Many2one('res.users', 'OwnerId', default=lambda self: self.env.user)
+    remarks_1= fields.Char("remarks")
