@@ -135,6 +135,7 @@
 
         <menuitem name="lift" id="kki_forklift.lift_list" parent="kki_forklift.lift"
                   action="kki_forklift.action_window"/>
+
         <!--
             <menuitem name="Server to list" id="kki_forklift" parent="kki_forklift.menu_2"
                       action="kki_forklift.action_server"/>
