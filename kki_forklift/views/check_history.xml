@@ -34,7 +34,14 @@
             </field>
          </record>
 
-<!--        <menuitem name="check_history" id="kki_forklift.check_history_list" parent="kki_forklift.lift"-->
-<!--                  action="check_history_action_window"/>-->
+        <record model="ir.actions.act_window" id="kki_check_history_window">
+            <field name="name">kki_check_history window</field>
+            <field name="res_model">kki_forklift.history</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem name="check_history" id="kki_check_history_list" parent="kki_forklift.lift"
+                  action="kki_check_history_window"/>
+
     </data>
 </odoo>
