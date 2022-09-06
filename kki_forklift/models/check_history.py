@@ -25,4 +25,4 @@ class kki_forklift_check_history(models.Model):
     oil_1= fields.Boolean("【冷却水・オイル・バッテリー液】規定量か。油や水が落ちていないか")
     remarks_1= fields.Char("remarks")
 
-    
+    fork_2= fields.Selection([('one','One'),('two','Two')],'Syllabus')

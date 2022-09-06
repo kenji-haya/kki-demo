@@ -27,6 +27,7 @@
                                 <field name="chain_1"/>
                                 <field name="mast_1"/>
                                 <field name="tire_1"/>
+                                <field name="fork_2" widget="radio" options="{'horizontal': true}"/>
                             </group>
                             <group>
                                 <field name="handle_1"/>
