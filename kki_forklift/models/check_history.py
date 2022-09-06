@@ -28,12 +28,26 @@ class kki_forklift_check_history(models.Model):
     # tire_1= fields.Boolean("【タイヤ】損傷や異常摩耗がないか／ハブナットの緩み、脱落がないか")
     tire_1= fields.Selection(
         [('one','未実施'),('two','点検済'),('three','不具合有')],"【タイヤ】損傷や異常摩耗がないか／ハブナットの緩み、脱落がないか",default='one')
-    # handle_1= fields.Boolean("【ハンドル】著しい遊び又はガタツキがないか")
-
-    break_1= fields.Boolean("【ブレーキペダル】ブレーキの効きが充分か")
-    horn_1= fields.Boolean("【ホーン・バックブザー】正常に鳴るか")
-    volt_1= fields.Boolean("【ボルトメーター】規定量か")
-    oil_1= fields.Boolean("【冷却水・オイル・バッテリー液】規定量か。油や水が落ちていないか")
+    handle_1= fields.Selection(
+        [('one', '未実施'), ('two', '点検済'), ('three', '不具合有')],
+        '【ハンドル】著しい遊び又はガタツキがないか',
+        default="one")
+    break_1= fields.Selection(
+        [('one', '未実施'), ('two', '点検済'), ('three', '不具合有')],
+        '【ブレーキペダル】ブレーキの効きが充分か',
+        default="one")
+    horn_1= fields.Selection(
+        [('one', '未実施'), ('two', '点検済'), ('three', '不具合有')],
+        '【ホーン・バックブザー】正常に鳴るか',
+        default="one")
+    volt_1= fields.Selection(
+        [('one', '未実施'), ('two', '点検済'), ('three', '不具合有')],
+        '【ボルトメーター】規定量か',
+        default="one")
+    oil_1= fields.Selection(
+        [('one', '未実施'), ('two', '点検済'), ('three', '不具合有')],
+        '【冷却水・オイル・バッテリー液】規定量か。油や水が落ちていないか',
+        default="one")
     remarks_1= fields.Char("remarks")
 
-    # fork_2= fields.Selection([('未実施','One'),('two','Two')], default='two')
+    fork_2= fields.Selection([('one','One'),('two','Two')],'Syllabus')
