@@ -27,14 +27,13 @@
                                 <field name="chain_1"/>
                                 <field name="mast_1"/>
                                 <field name="tire_1"/>
-                                <field name="fork_2" widget="radio" options="{'horizontal': true}"/>
                             </group>
                             <group>
-                                <field name="handle_1"/>
-                                <field name="break_1"/>
-                                <field name="horn_1"/>
-                                <field name="volt_1"/>
-                                <field name="oil_1"/>
+                                <field name="handle_1" widget="radio" options="{'horizontal': true}"/>
+                                <field name="break_1" widget="radio" options="{'horizontal': true}"/>
+                                <field name="horn_1" widget="radio" options="{'horizontal': true}"/>
+                                <field name="volt_1" widget="radio" options="{'horizontal': true}"/>
+                                <field name="oil_1" widget="radio" options="{'horizontal': true}"/>
                                 <field name="remarks_1"/>
                             </group>
                             <group>
