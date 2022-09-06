@@ -1,6 +1,17 @@
 <odoo>
     <data>
-         <record model="ir.ui.view" id="kki_forklift_history_form">
+        <record model="ir.ui.view" id="kki_forklift_history_list">
+            <field name="name">kki_forklift_history_list</field>
+            <field name="model">kki_forklift.history</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="owner_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="kki_forklift_history_form">
             <field name="name">kki_forklift_history form</field>
             <field name="model">kki_forklift.history</field>
             <field name="arch" type="xml">
@@ -32,7 +43,7 @@
                     </sheet>
                 </form>
             </field>
-         </record>
+        </record>
 
         <record model="ir.actions.act_window" id="kki_check_history_window">
             <field name="name">kki_check_history window</field>
