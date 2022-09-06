@@ -2,3 +2,5 @@
 web_responsive/models/__pycache__/
 
 web_responsive/__pycache__/
+
+kki_forklift/views/check_history.xml
