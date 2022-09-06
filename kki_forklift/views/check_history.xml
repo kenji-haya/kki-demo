@@ -22,15 +22,16 @@
                                 <field name="owner_id"/>
                                 <field name="name"/>
                                 <field name="check_date"/>
-                                <field name="fork_1"/>
-                                <field name="back_1"/>
-                                <field name="chain_1"/>
-                                <field name="mast_1"/>
-                                <field name="tire_1"/>
-                                <field name="fork_2" widget="radio" options="{'horizontal': true}"/>
+                                <field name="fork_1" widget="radio" options="{'horizontal': true}"/>
+                                <field name="back_1" widget="radio" options="{'horizontal': true}"/>
+                                <field name="chain_1" widget="radio" options="{'horizontal': true}"/>
+                                <field name="mast_1" widget="radio" options="{'horizontal': true}"/>
+                                <field name="tire_1" widget="radio" options="{'horizontal': true}"/>
+<!--                                <field name="fork_2"/>-->
+<!--                                <field name="fork_2" widget="radio" options="{'horizontal': true}"/>-->
                             </group>
                             <group>
-                                <field name="handle_1"/>
+<!--                                <field name="handle_1" widget="radio" options="{'horizontal': true}"/>-->
                                 <field name="break_1"/>
                                 <field name="horn_1"/>
                                 <field name="volt_1"/>
