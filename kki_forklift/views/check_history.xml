@@ -1,6 +1,17 @@
 <odoo>
     <data>
-         <record model="ir.ui.view" id="kki_forklift_history_form">
+        <record model="ir.ui.view" id="kki_forklift_history_list">
+            <field name="name">kki_forklift_history_list</field>
+            <field name="model">kki_forklift.history</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="owner_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="kki_forklift_history_form">
             <field name="name">kki_forklift_history form</field>
             <field name="model">kki_forklift.history</field>
             <field name="arch" type="xml">
@@ -8,6 +19,7 @@
                     <sheet>
                         <group>
                             <group>
+                                <field name="owner_id"/>
                                 <field name="name"/>
                                 <field name="check_date"/>
                                 <field name="fork_1"/>
@@ -15,7 +27,14 @@
                                 <field name="chain_1"/>
                                 <field name="mast_1"/>
                                 <field name="tire_1"/>
-                                <field name="handle_1"/>
+                            </group>
+                            <group>
+                                <field name="handle_1" widget="radio" options="{'horizontal': true}"/>
+                                <field name="break_1" widget="radio" options="{'horizontal': true}"/>
+                                <field name="horn_1" widget="radio" options="{'horizontal': true}"/>
+                                <field name="volt_1" widget="radio" options="{'horizontal': true}"/>
+                                <field name="oil_1" widget="radio" options="{'horizontal': true}"/>
+                                <field name="remarks_1"/>
                             </group>
                             <group>
                                 <field name="image" widget="image"/>
@@ -24,6 +43,16 @@
                     </sheet>
                 </form>
             </field>
-         </record>
+        </record>
+
+        <record model="ir.actions.act_window" id="kki_check_history_window">
+            <field name="name">kki_check_history window</field>
+            <field name="res_model">kki_forklift.history</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem name="check_history" id="kki_check_history_list" parent="kki_forklift.lift"
+                  action="kki_check_history_window"/>
+
     </data>
 </odoo>

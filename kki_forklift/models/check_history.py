@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from odoo import models, fields, api
+from odoo import models,fields,api
 from datetime import datetime
 
 
@@ -9,14 +9,33 @@ class kki_forklift_check_history(models.Model):
     _description = 'kki_forklift.history'
 
     name = fields.Char("name")
-    owner_id = fields.Many2one('res.users', 'owner_id', default=lambda self: self.env.user)
-    check_date = fields.Date("check date", required="True", default=datetime.today())
-    lift_id = fields.Many2one("kki_forklift.lift", "Forklift")
+    owner_id = fields.Many2one('res.users','owner_id',default=lambda self:self.env.user)
+    check_date = fields.Date("check date",required="True",default=datetime.today())
+    lift_id = fields.Many2one("kki_forklift.lift","Forklift")
     image = fields.Binary("image")
-    fork_1 = fields.Boolean("【フォーク】亀裂や曲がりはないか")
-    back_1 = fields.Boolean("【バックレスト】亀裂・変形・取付部に緩みはないか")
-    chain_1 = fields.Boolean("【チェーン】傷・ねじれがなく、張りが均等か")
-    mast_1 = fields.Boolean("【マスト】上昇・下降・前後斜が円滑か")
-    tire_1 = fields.Boolean("【タイヤ】損傷や異常摩耗がないか／ハブナットの緩み、脱落がないか")
-    handle_1 = fields.Boolean("【ハンドル】著しい遊びまたはガタツキがないか")
-
+    fork_1= fields.Boolean("【フォーク】亀裂や曲がりはないか")
+    back_1= fields.Boolean("【バックレスト】亀裂・変形・取付部に緩みがないか")
+    chain_1= fields.Boolean("【チェーン】傷・ねじれがなく、張りが均等か")
+    mast_1= fields.Boolean("【マスト】上昇・下降・前後傾が円滑か")
+    tire_1= fields.Boolean("【タイヤ】損傷や異常摩耗がないか／ハブナットの緩み、脱落がないか")
+    handle_1= fields.Selection(
+        [('one', '未実施'), ('two', '点検済'), ('three', '不具合有')],
+        '【ハンドル】著しい遊び又はガタツキがないか',
+        default="one")
+    break_1= fields.Selection(
+        [('one', '未実施'), ('two', '点検済'), ('three', '不具合有')],
+        '【ブレーキペダル】ブレーキの効きが充分か',
+        default="one")
+    horn_1= fields.Selection(
+        [('one', '未実施'), ('two', '点検済'), ('three', '不具合有')],
+        '【ホーン・バックブザー】正常に鳴るか',
+        default="one")
+    volt_1= fields.Selection(
+        [('one', '未実施'), ('two', '点検済'), ('three', '不具合有')],
+        '【ボルトメーター】規定量か',
+        default="one")
+    oil_1= fields.Selection(
+        [('one', '未実施'), ('two', '点検済'), ('three', '不具合有')],
+        '【冷却水・オイル・バッテリー液】規定量か。油や水が落ちていないか',
+        default="one")
+    remarks_1= fields.Char("remarks")
