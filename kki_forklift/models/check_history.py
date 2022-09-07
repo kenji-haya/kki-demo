@@ -50,20 +50,9 @@ class kki_forklift_check_history(models.Model):
         '【冷却水・オイル・バッテリー液】規定量か。油や水が落ちていないか',
         default="one")
     remarks_1= fields.Char("remarks")
-    alert_mes = fields.Boolean(string="Warning!!", compute='create')
+    alert_mes = fields.Boolean(string="Warning!!")
 
-    break_1= fields.Boolean("【ブレーキペダル】ブレーキの効きが充分か")
-    horn_1= fields.Boolean("【ホーン・バックブザー】正常に鳴るか")
-    volt_1= fields.Boolean("【ボルトメーター】規定量か")
-    oil_1= fields.Boolean("【冷却水・オイル・バッテリー液】規定量か。油や水が落ちていないか")
-    remarks_1= fields.Char("remarks")
 
-    # @api.model
-    # def create(self, values):
-    #     res = super(kki_forklift_check_history, self).create(values)
-    #     print(self.fork_1)
-    #     print(res)
-    #     return res
 
     @api.model
     def create(self, values):
@@ -79,17 +68,15 @@ class kki_forklift_check_history(models.Model):
                 print(i)
         else:
             print(type(values))
-
             return res
 
 
-        # res.update(
-        #     crm_alias_prefix=alias.alias_name if alias else False,
-        # )
-        # return res
-
+    # 江口さんが追加したコード
     # @api.model
-    # def write(self, values):
-    #     res = super(kki_forklift_check_history, self).write(values)
-    #     print(self.lift_id)
+    # def create(self, values):
+    #     res = super(kki_forklift_check_history, self).create(values)
+    #     if values['fork_1']  == 'one':
+    #         print(dict(self._fields['fork_1'].selection).get(self.fork_1))
+    #         print(values['fork_1'])
+    #         print(values['back_1'])
     #     return res
