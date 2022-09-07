@@ -39,3 +39,22 @@ class kki_forklift_check_history(models.Model):
         '【冷却水・オイル・バッテリー液】規定量か。油や水が落ちていないか',
         default="one")
     remarks_1= fields.Char("remarks")
+
+    @api.model
+    def create(self, values):
+        res = super(kki_forklift_check_history, self).create(values)
+        print(self.lift_id)
+        return res
+
+    @api.onchange("check_date")
+    def _get_last_date(self):
+        if self.lift_id.last_check_date > self.check_date:
+            print(self.lift_id.last_check_date)
+        else:
+            print(self.lift_id._origin.id)
+            self.env['kki_forklift.lift'].search([('id', '=', self.lift_id._origin.id), ]).write({
+                'last_check_date': self.check_date
+            })
+
+
+        # self.lift_id.last_check_date = self.check_date

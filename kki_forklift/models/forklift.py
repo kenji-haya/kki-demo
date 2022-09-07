@@ -22,6 +22,7 @@ class kki_forklift(models.Model):
     price = fields.Integer("price")
     history_count_2 = fields.Integer("test")
     history_count = fields.Integer(compute="_compute_check_history_count")
+    last_check_date = fields.Date("last check date")
 
     def _compute_check_history_count(self):
         for rec in self:
