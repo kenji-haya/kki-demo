@@ -15,19 +15,20 @@ class kki_forklift_check_history(models.Model):
     image = fields.Binary("image")
     # fork_1= fields.Boolean("【フォーク】亀裂や曲がりはないか")
     fork_1= fields.Selection(
-        [('one','未実施'),('two','点検済'),('three','不具合有')],"【フォーク】亀裂や曲がりはないか",default='one')
-    # back_1= fields.Boolean("【バックレスト】亀裂・変形・取付部に緩みがないか")
+        [('one', '未実施'), ('two', '点検済'), ('three', '不具合有')],
+        "【フォーク】亀裂や曲がりはないか", default='one')
     back_1= fields.Selection(
-        [('one','未実施'),('two','点検済'),('three','不具合有')],"【バックレスト】亀裂・変形・取付部に緩みがないか",default='one')
-    # chain_1= fields.Boolean("【チェーン】傷・ねじれがなく、張りが均等か")
+        [('one', '未実施'), ('two', '点検済'), ('three', '不具合有')],
+        "【バックレスト】亀裂・変形・取付部に緩みがないか", default='one')
     chain_1= fields.Selection(
-        [('one','未実施'),('two','点検済'),('three','不具合有')],"【チェーン】傷・ねじれがなく、張りが均等か",default='one')
-    # mast_1= fields.Boolean("【マスト】上昇・下降・前後傾が円滑か")
+        [('one', '未実施'), ('two', '点検済'), ('three', '不具合有')],
+        "【チェーン】傷・ねじれがなく、張りが均等か", default='one')
     mast_1= fields.Selection(
-        [('one','未実施'),('two','点検済'),('three','不具合有')],"【マスト】上昇・下降・前後傾が円滑か",default='one')
-    # tire_1= fields.Boolean("【タイヤ】損傷や異常摩耗がないか／ハブナットの緩み、脱落がないか")
+        [('one', '未実施'), ('two', '点検済'), ('three', '不具合有')],
+        "【マスト】上昇・下降・前後傾が円滑か", default='one')
     tire_1= fields.Selection(
-        [('one','未実施'),('two','点検済'),('three','不具合有')],"【タイヤ】損傷や異常摩耗がないか／ハブナットの緩み、脱落がないか",default='one')
+        [('one', '未実施'), ('two', '点検済'), ('three', '不具合有')],
+        "【タイヤ】損傷や異常摩耗がないか／ハブナットの緩み、脱落がないか", default='one')
     handle_1= fields.Selection(
         [('one', '未実施'), ('two', '点検済'), ('three', '不具合有')],
         '【ハンドル】著しい遊び又はガタツキがないか',
@@ -49,5 +50,41 @@ class kki_forklift_check_history(models.Model):
         '【冷却水・オイル・バッテリー液】規定量か。油や水が落ちていないか',
         default="one")
     remarks_1= fields.Char("remarks")
+    alert_mes = fields.Boolean(string="Warning!!", compute='create')
 
-    fork_2= fields.Selection([('one','One'),('two','Two')],'Syllabus')
+
+    # @api.model
+    # def create(self, values):
+    #     res = super(kki_forklift_check_history, self).create(values)
+    #     print(self.fork_1)
+    #     print(res)
+    #     return res
+
+    @api.model
+    def create(self, values):
+        res = super(kki_forklift_check_history, self).create(values)
+        alert_mes = False
+        print(values)
+        for i in values.values():
+            if i == 'one':
+                # alert_mes = True
+                # self.alert_mes = alert_mes
+                # print(self.alert_mes)
+                # print(alert_mes)
+                print(i)
+        else:
+            print(type(values))
+
+            return res
+
+
+        # res.update(
+        #     crm_alias_prefix=alias.alias_name if alias else False,
+        # )
+        # return res
+
+    # @api.model
+    # def write(self, values):
+    #     res = super(kki_forklift_check_history, self).write(values)
+    #     print(self.lift_id)
+    #     return res
