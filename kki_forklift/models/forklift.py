@@ -21,6 +21,8 @@ class kki_forklift(models.Model):
         string="check history")
     price = fields.Integer("price")
     history_count = fields.Integer(compute="_compute_check_history_count")
+    owner_id = fields.Many2one("kki_forklift.history", string="owner_id")
+
 
     def _compute_check_history_count(self):
         for rec in self:
