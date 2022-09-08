@@ -12,7 +12,7 @@ class kki_forklift_check_history(models.Model):
     owner_id = fields.Many2one('res.users','owner_id',default=lambda self:self.env.user)
     check_date = fields.Date("check date",required="True",default=datetime.today())
     lift_id = fields.Many2one("kki_forklift.lift","Forklift")
-    image = fields.Binary("image")
+    defective_parts_im = fields.Binary("不良個所の画像")
     # fork_1= fields.Boolean("【フォーク】亀裂や曲がりはないか")
     fork_1= fields.Selection(
         [('one', '未実施'), ('two', '点検済'), ('three', '不具合有')],
@@ -53,7 +53,6 @@ class kki_forklift_check_history(models.Model):
     alert_mes = fields.Boolean(string="Warning!!", compute='create', store=True, Tracking=True)
 
 
-
     @api.model
     def create(self, values):
         alert = False
@@ -72,10 +71,17 @@ class kki_forklift_check_history(models.Model):
         res = super(kki_forklift_check_history, self).create(values)
         return res
 
-        # res.update(
-        #     crm_alias_prefix=alias.alias_name if alias else False,
-        # )
-        # return res
+    @api.onchange("check_date")
+    def _get_last_date(self):
+        if self.lift_id.last_check_date > self.check_date:
+            print(self.lift_id.last_check_date)
+        else:
+            print(self.lift_id._origin.id)
+            self.env['kki_forklift.lift'].search([('id', '=', self.lift_id._origin.id), ]).write({
+                'last_check_date': self.check_date
+            })
+        self._origin.lift_id.last_check_date = self.check_date
+
 
     # @api.model
     # def create(self, values):

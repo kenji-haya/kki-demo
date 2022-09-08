@@ -58,10 +58,9 @@
                                 <field name="volt_1" widget="radio" options="{'horizontal': true}"/>
                                 <field name="oil_1" widget="radio" options="{'horizontal': true}"/>
                                 <field name="alert_mes" invisible="1"/>
+<!--                                <field name="remarks_1"/>-->
+                                <field name="defective_parts_im" widget="image"/>
                                 <field name="remarks_1"/>
-                            </group>
-                            <group>
-                                <field name="image" widget="image"/>
                             </group>
                         </group>
                     </sheet>
