@@ -10,10 +10,10 @@ class kki_forklift_check_history(models.Model):
     _description = 'kki_forklift.history'
 
     name = fields.Char("name")
-    owner_id = fields.Many2one('res.users', 'owner_id', default=lambda self: self.env.user)
-    check_date = fields.Date("check date", required="True", default=datetime.today())
-    lift_id = fields.Many2one("kki_forklift.lift", "Forklift")
-    image = fields.Binary("image")
+    owner_id = fields.Many2one('res.users','owner_id',default=lambda self:self.env.user)
+    check_date = fields.Date("check date",required="True",default=datetime.today())
+    lift_id = fields.Many2one("kki_forklift.lift","Forklift")
+    defective_parts_im = fields.Binary("不良個所の画像")
     # fork_1= fields.Boolean("【フォーク】亀裂や曲がりはないか")
     fork_1= fields.Selection(
         [('one', '未実施'), ('two', '点検済'), ('three', '不具合有')],
@@ -52,6 +52,7 @@ class kki_forklift_check_history(models.Model):
         default="one")
     remarks_1= fields.Char("remarks")
     alert_mes = fields.Boolean(string="Warning!!", compute='create', store=True, Tracking=True)
+
 
     # @api.model
     # def create(self, values):
@@ -93,39 +94,10 @@ class kki_forklift_check_history(models.Model):
         })
 
     # @api.model
-    # def save(self, values):
-    #     alert = False
-    #     print(values)
-    #     for i in self._values.values():
-    #         print(i)
-    #         if i == 'one':
-    #             # values['alert_mes'] = 1
-    #             alert = True
-    #     else:
-    #         self.alert_mes = True
-    #
-    #     if alert:
-    #         values['alert_mes'] = True
-    #         print("check")
-    #         return
-    #     else:
-    #         values['alert_mes'] = False
-    #         return super(kki_forklift_check_history, self).save(values)
-
-
-
-
-    # @api.depend()
-    # def _create(self, alert):
-    #     self.alert_mes = alert
-
-        # res.update(
-        #     crm_alias_prefix=alias.alias_name if alias else False,
-        # )
-        # return res
-
-    # @api.model
-    # def write(self, values):
-    #     res = super(kki_forklift_check_history, self).write(values)
-    #     print(self.lift_id)
+    # def create(self, values):
+    #     res = super(kki_forklift_check_history, self).create(values)
+    #     if values['fork_1']  == 'one':
+    #         print(dict(self._fields['fork_1'].selection).get(self.fork_1))
+    #         print(values['fork_1'])
+    #         print(values['back_1'])
     #     return res
