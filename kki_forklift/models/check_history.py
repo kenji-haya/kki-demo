@@ -50,7 +50,7 @@ class kki_forklift_check_history(models.Model):
         '【冷却水・オイル・バッテリー液】規定量か。油や水が落ちていないか',
         default="one")
     remarks_1= fields.Char("remarks")
-    alert_mes = fields.Boolean(string="Warning!!", compute='create')
+    alert_mes = fields.Boolean(string="Warning!!", compute='create', store=True, Tracking=True)
 
 
     # @api.model
@@ -62,21 +62,48 @@ class kki_forklift_check_history(models.Model):
 
     @api.model
     def create(self, values):
-        res = super(kki_forklift_check_history, self).create(values)
-        alert_mes = False
-        print(values)
+        alert = False
         for i in values.values():
             if i == 'one':
-                # alert_mes = True
-                # self.alert_mes = alert_mes
-                # print(self.alert_mes)
-                # print(alert_mes)
-                print(i)
+                # values['alert_mes'] = 1
+                alert = True
         else:
-            print(type(values))
+            self.alert_mes = True
 
-            return res
+        if alert:
+            values['alert_mes'] = True
+        else:
+            values['alert_mes'] = False
 
+        res = super(kki_forklift_check_history, self).create(values)
+        return res
+
+    # @api.model
+    # def save(self, values):
+    #     alert = False
+    #     print(values)
+    #     for i in self._values.values():
+    #         print(i)
+    #         if i == 'one':
+    #             # values['alert_mes'] = 1
+    #             alert = True
+    #     else:
+    #         self.alert_mes = True
+    #
+    #     if alert:
+    #         values['alert_mes'] = True
+    #         print("check")
+    #         return
+    #     else:
+    #         values['alert_mes'] = False
+    #         return super(kki_forklift_check_history, self).save(values)
+
+
+
+
+    # @api.depend()
+    # def _create(self, alert):
+    #     self.alert_mes = alert
 
         # res.update(
         #     crm_alias_prefix=alias.alias_name if alias else False,
