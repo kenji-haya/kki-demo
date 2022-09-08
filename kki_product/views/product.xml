@@ -22,6 +22,10 @@
                     <attribute name="invisible">1</attribute>
                 </xpath>
                 <xpath expr="//field[@name='name']" position="after">
+                    <field name="menu_1"  optional="show"/>
+                    <field name="menu_2"  optional="show"/>
+                    <field name="stock_number"  optional="hide"/>
+                    <field name="brand"  optional="hide"/>
                     <field name="marge_name"/>
                 </xpath>
             </field>
