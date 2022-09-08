@@ -85,15 +85,13 @@ class kki_forklift_check_history(models.Model):
             if self.lift_id.last_check_date > self.check_date:
                 print(self.lift_id.last_check_date)
             else:
-                self.env['kki_forklift.lift'].search([('id', '=', self.lift_id._origin.id), ]).write({
                 print(self.lift_id._origin.id)
-                })
+                self.env['kki_forklift.lift'].search([('id', '=', self.lift_id._origin.id), ]).write({
                     'last_check_date': self.check_date
+                })
         self.env['kki_forklift.lift'].search([('id', '=', self.lift_id._origin.id), ]).write({
             'last_check_date': self.check_date
-
         })
-
 
     # @api.model
     # def create(self, values):
