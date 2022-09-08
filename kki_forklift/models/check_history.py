@@ -2,6 +2,7 @@
 
 from odoo import models,fields,api
 from datetime import datetime
+from datetime import timedelta
 
 
 class kki_forklift_check_history(models.Model):
@@ -53,6 +54,13 @@ class kki_forklift_check_history(models.Model):
     alert_mes = fields.Boolean(string="Warning!!", compute='create', store=True, Tracking=True)
 
 
+    # @api.model
+    # def create(self, values):
+    #     res = super(kki_forklift_check_history, self).create(values)
+    #     print(self.fork_1)
+    #     print(res)
+    #     return res
+
     @api.model
     def create(self, values):
         alert = False
@@ -73,14 +81,18 @@ class kki_forklift_check_history(models.Model):
 
     @api.onchange("check_date")
     def _get_last_date(self):
-        if self.lift_id.last_check_date > self.check_date:
-            print(self.lift_id.last_check_date)
-        else:
-            print(self.lift_id._origin.id)
-            self.env['kki_forklift.lift'].search([('id', '=', self.lift_id._origin.id), ]).write({
-                'last_check_date': self.check_date
-            })
-        self._origin.lift_id.last_check_date = self.check_date
+        if self.lift_id.last_check_date:
+            if self.lift_id.last_check_date > self.check_date:
+                print(self.lift_id.last_check_date)
+            else:
+                self.env['kki_forklift.lift'].search([('id', '=', self.lift_id._origin.id), ]).write({
+                print(self.lift_id._origin.id)
+                })
+                    'last_check_date': self.check_date
+        self.env['kki_forklift.lift'].search([('id', '=', self.lift_id._origin.id), ]).write({
+            'last_check_date': self.check_date
+
+        })
 
 
     # @api.model

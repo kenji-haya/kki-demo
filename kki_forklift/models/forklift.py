@@ -22,7 +22,8 @@ class kki_forklift(models.Model):
     price = fields.Integer("price")
     history_count = fields.Integer(compute="_compute_check_history_count")
     owner_id = fields.Many2one("kki_forklift.history", string="owner_id")
-
+    last_check_date = fields.Date('last_check_date')
+    next_date = fields.Date('next_date')
 
     def _compute_check_history_count(self):
         for rec in self:
@@ -57,3 +58,4 @@ class kki_forklift(models.Model):
                 'default_owner_id': self.env.user.id,
             }
         }
+

@@ -69,6 +69,8 @@
                                 <field name="size"/>
                                 <field name="price"/>
                                 <field name="history_count"/>
+                                <field name="last_check_date"/>
+                                <field name="next_date"/>
                             </group>
                             <group>
                                 <field name="image" widget="image"/>
