@@ -69,6 +69,7 @@ class kki_forklift_check_history(models.Model):
             res = super(kki_forklift_check_history, self).create(values)
             return res
 
+        # 最新のチェック日付を表示
         @api.onchange("check_date")
         def _get_last_date(self):
             if self.lift_id.last_check_date:
@@ -83,6 +84,7 @@ class kki_forklift_check_history(models.Model):
                 'last_check_date': self.check_date
             })
 
+        #　未実施項目があればアラートを出す
         @api.constrains('alert_mes')
         def onchange_partner_id_warning(self):
             print("1")
