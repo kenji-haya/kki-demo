@@ -23,7 +23,6 @@
                 </xpath>
                 <xpath expr="//field[@name='name']" position="after">
                     <field name="stock_number"  optional="hide"/>
-<!--                    <field name="brand"  optional="hide"/>-->
                     <field name="marge_name"/>
                 </xpath>
             </field>
@@ -56,9 +55,6 @@
                     <filter string="材料" name="product_type"
                             domain="[['commodity_classification','=','3']]"/>
                     <separator/>
-<!--                        <filter string="工場名" name="menu_1" domain="[]" context="{'group_by': 'menu_1'}" />-->
-<!--                        <filter string="メニュー_2" name="menu_2" domain="[]" context="{'group_by': 'menu_2'}" />-->
-
                 </xpath>
             </field>
         </record>
