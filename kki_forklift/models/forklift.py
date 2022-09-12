@@ -25,7 +25,6 @@ class kki_forklift(models.Model):
     last_check_date = fields.Date('last_check_date')
     next_date = fields.Date('next_date', compute="_next_date")
 
-
     def _compute_check_history_count(self):
         for rec in self:
             history_count = self.env['kki_forklift.history'].search_count([('lift_id', '=', rec.id)])
@@ -64,35 +63,3 @@ class kki_forklift(models.Model):
     def _next_date(self):
         self.next_date = self.last_check_date + timedelta(days=30)
 
-    @api.onchange('alert_mes')
-    def onchange_partner_id_warning(self):
-        if self.alert_mes:
-            print(self.alert_mes)
-            return
-
-        warning = {}
-        title = False
-        message = False
-        partner = self.alert_mes
-
-        # If partner has no warning, check its company
-        if partner.sale_warn == 'no-message' and partner.alert_mes:
-            partner = partner.alert_mes
-
-        if partner.sale_warn and partner.sale_warn != 'no-message':
-            # Block if partner only has warning but parent company is blocked
-            if partner.sale_warn != 'block' and partner.alert_mes and partner.alert_mes.sale_warn == 'block':
-                partner = partner.alert_mes
-            title = "Warning for %s" % partner
-            message = partner.sale_warn_msg
-            warning = {
-                'title': title,
-                'message': message,
-            }
-            if partner.sale_warn == 'block':
-                self.update({'partner_id': False, 'partner_invoice_id': False, 'partner_shipping_id': False,
-                             'pricelist_id': False})
-                return {'warning': warning}
-
-        if warning:
-            return {'warning': warning}
