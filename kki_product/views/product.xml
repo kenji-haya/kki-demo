@@ -22,10 +22,10 @@
                     <attribute name="invisible">1</attribute>
                 </xpath>
                 <xpath expr="//field[@name='name']" position="after">
-                    <field name="menu_1"  optional="show"/>
-                    <field name="menu_2"  optional="show"/>
+<!--                    <field name="menu_1"  optional="show"/>-->
+<!--                    <field name="menu_2"  optional="show"/>-->
                     <field name="stock_number"  optional="hide"/>
-                    <field name="brand"  optional="hide"/>
+<!--                    <field name="brand"  optional="hide"/>-->
                     <field name="marge_name"/>
                 </xpath>
             </field>
@@ -57,15 +57,10 @@
                             domain="[['commodity_classification','=','2']]"/>
                     <filter string="材料" name="product_type"
                             domain="[['commodity_classification','=','3']]"/>
-<<<<<<< HEAD
                     <separator/>
-                        <filter string="工場名" name="menu_1" domain="[]" context="{'group_by': 'menu_1'}" />
-                        <filter string="メニュー_2" name="menu_2" domain="[]" context="{'group_by': 'menu_2'}" />
-=======
-<!--                    <separator/>-->
 <!--                        <filter string="工場名" name="menu_1" domain="[]" context="{'group_by': 'menu_1'}" />-->
 <!--                        <filter string="メニュー_2" name="menu_2" domain="[]" context="{'group_by': 'menu_2'}" />-->
->>>>>>> main
+
                 </xpath>
             </field>
         </record>
@@ -90,14 +85,13 @@
             <field name="inherit_id" ref="product.product_template_form_view"/>
             <field name="arch" type="xml">
                 <xpath expr="//div[@name='options']" position="after">
-<<<<<<< HEAD
                     <group>
                         <group>
                             <field name="commodity_classification"/>
                         </group>
                         <group>
-                            <field name="menu_1"/>
-                            <field name="menu_2"/>
+<!--                            <field name="menu_1"/>-->
+<!--                            <field name="menu_2"/>-->
                         </group>
                     </group>
 =======

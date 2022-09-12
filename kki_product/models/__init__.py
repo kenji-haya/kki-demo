@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
 from . import product
-<<<<<<< HEAD
+# <<<<<<< HEAD
 
-=======
->>>>>>> main
+# =======
+# >>>>>>> main
 from . import additional_item
