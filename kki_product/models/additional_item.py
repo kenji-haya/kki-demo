@@ -23,11 +23,11 @@ class kki_product_additional_item(models.Model):
 
     """ 仕様タブに入れる項目（仕様タブは一般情報タブの右隣に新規で作成する） """
     # 材料コード
-    # material_code = fields.Char("材料コード")
+    material_code = fields.Char()
     # 内容量
-    content_by_volume = fields.Integer("内容量")
+    content_by_volume = fields.Integer()
     # 銘柄※本当はMany2one
-    brand = fields.Char("銘柄")
+    # brand = fields.Char("銘柄")
     # 面付
     pagination = fields.Integer("面付")
     # 出し方向
