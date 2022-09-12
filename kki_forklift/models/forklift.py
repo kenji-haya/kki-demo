@@ -24,6 +24,7 @@ class kki_forklift(models.Model):
     owner_id = fields.Many2one("kki_forklift.history", string="owner_id")
     last_check_date = fields.Date('last_check_date')
     next_date = fields.Date('next_date', compute="_next_date")
+    annual_inspection = fields.Date('annual_inspection', conpute="_next_inspection")
 
     def _compute_check_history_count(self):
         for rec in self:
@@ -63,14 +64,28 @@ class kki_forklift(models.Model):
     @api.depends('last_check_date')
     def _next_date(self):
         # 日程がない場合の処理をここで判定させる
-        # next_date = float(self.last_check_date)
         for rec in self:
-            # rec.next_date=[]
             if rec.last_check_date:
                 print("次回チェック日あり")
                 print(rec.last_check_date)
-                # self.next_date = self.last_check_date + timedelta(days=30)
                 rec.next_date = rec.last_check_date + timedelta(days=30)
             else:
                 print("日付なし")
                 rec.next_date =""
+
+    @api.depends('launch_day')
+    def _next_inspection(self):
+        # 日程がない場合の処理をここで判定させる
+        for rec in self:
+            print("ins1")
+            if rec.launch_day:
+                print("ins2")
+                print("次回チェック日あり")
+                print(rec.launch_day)
+                rec.annual_inspection = rec.launch_day + timedelta(days=30)
+            else:
+                print("日付なし")
+                rec.annual_inspection =""
+
+
+
