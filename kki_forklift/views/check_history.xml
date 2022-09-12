@@ -8,7 +8,6 @@
                     <field name="name"/>
                     <field name="owner_id"/>
                     <field name="next_date"/>
-                    <!--                    <field name="image" widget="image" class="oe_avatar"/>-->
                 </tree>
             </field>
         </record>

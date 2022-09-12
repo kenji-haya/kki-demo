@@ -6,10 +6,9 @@
             <field name="model">kki_forklift.lift</field>
             <field name="arch" type="xml">
                 <tree>
-<!--                    <field name="next_date"/>-->
                     <field name="name"/>
                     <field name="owner_id"/>
-                    <field name="next_date"/>
+<!--                    <field name="next_date"/>-->
                 </tree>
             </field>
         </record>

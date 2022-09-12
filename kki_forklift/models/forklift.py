@@ -2,6 +2,7 @@
 
 from odoo import models, fields, api
 from datetime import datetime, timedelta
+from odoo.exceptions import UserError
 
 
 class kki_forklift(models.Model):
@@ -24,7 +25,7 @@ class kki_forklift(models.Model):
     owner_id = fields.Many2one("kki_forklift.history", string="owner_id")
     last_check_date = fields.Date('last_check_date')
     next_date = fields.Date('next_date', compute="_next_date")
-    annual_inspection = fields.Date('annual_inspection', conpute="_next_inspection")
+    annual_inspection= fields.Date('annual_inspection', compute="_next_inspection")
 
     def _compute_check_history_count(self):
         for rec in self:
@@ -45,6 +46,7 @@ class kki_forklift(models.Model):
                 'default_owner_id': self.env.user.id,
             }
         }
+
 
     def action_view_check(self):
         return {
@@ -81,10 +83,10 @@ class kki_forklift(models.Model):
                 print("ins2")
                 print("次回チェック日あり")
                 print(rec.launch_day)
-                rec.annual_inspection = rec.launch_day + timedelta(days=30)
+                rec.annual_inspection = rec.launch_day + timedelta(days=365)
             else:
                 print("日付なし")
                 rec.annual_inspection =""
 
-
-
+    # def unlink(self):
+    #     raise UserError("消して大丈夫ですか？")
