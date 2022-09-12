@@ -61,5 +61,17 @@ class kki_forklift(models.Model):
 
     @api.depends('last_check_date')
     def _next_date(self):
-        self.next_date = self.last_check_date + timedelta(days=30)
+        # 日程がない場合の処理をここで判定させる
+        # next_date = float(self.last_check_date)
+        self.next_date=[]
+        if self.last_check_date:
+            print("次回チェック日あり")
+            print(self.last_check_date)
+            # self.next_date = self.last_check_date + timedelta(days=30)
+            self.next_date = self.last_check_date + timedelta(days=30)
+        else:
+            print("日付なし")
+            self.next_date =""
+
+
 

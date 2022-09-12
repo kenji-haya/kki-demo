@@ -6,6 +6,7 @@
             <field name="model">kki_forklift.lift</field>
             <field name="arch" type="xml">
                 <tree>
+<!--                    <field name="next_date"/>-->
                     <field name="name"/>
                     <field name="owner_id"/>
                     <field name="next_date"/>
@@ -21,6 +22,7 @@
                     <field name="name"/>
                     <field name="image"/>
                     <field name="size"/>
+<!--                    <field name="next_date"/>-->
                     <templates>
                         <t t-name="kanban-box">
                             <div t-attf-class="oe_kanban_global_click">
@@ -32,6 +34,7 @@
                                         <li>
                                             <field name="name"/>
                                             <field name="size"/>
+<!--                                            <field name="next_date"/>-->
                                         </li>
                                     </ul>
                                 </div>

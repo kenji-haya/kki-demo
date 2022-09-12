@@ -7,7 +7,7 @@
                 <tree>
                     <field name="name"/>
                     <field name="owner_id"/>
-
+<!--                    <field name="next_date"/>-->
                     <!--                    <field name="image" widget="image" class="oe_avatar"/>-->
                 </tree>
             </field>
@@ -45,6 +45,7 @@
                                 <field name="owner_id"/>
                                 <field name="name"/>
                                 <field name="check_date"/>
+<!--                                <field name="authorized_transaction_ids"/>-->
                                 <field name="fork_1" widget="radio" options="{'horizontal': true}"/>
                                 <field name="back_1" widget="radio" options="{'horizontal': true}"/>
                                 <field name="chain_1" widget="radio" options="{'horizontal': true}"/>
