@@ -50,7 +50,7 @@ class kki_forklift_check_history(models.Model):
             '【冷却水・オイル・バッテリー液】規定量か。油や水が落ちていないか',
             default="one")
         remarks_1= fields.Char("remarks")
-        alert_mes = fields.Boolean(string="Warning!!", compute='create', store=True, Tracking=True)
+        alert_mes = fields.Boolean(string="Warning!!", store=True, Tracking=True)
 
         # @api.model
         # def create(self, values):
@@ -59,6 +59,7 @@ class kki_forklift_check_history(models.Model):
         #     print(res)
         #     return res
 
+        # 未実施項目があればalert_mesをTrueにする
         @api.model
         def create(self, values):
             for i in values.values():
@@ -86,7 +87,7 @@ class kki_forklift_check_history(models.Model):
 
         #　未実施項目があればアラートを出す
         @api.constrains('alert_mes')
-        def onchange_partner_id_warning(self):
+        def constrains_no_check_warning(self):
             print("1")
             if self.alert_mes:
                 print("2")

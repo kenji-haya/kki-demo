@@ -76,6 +76,7 @@
                                 <field name="history_count"/>
                                 <field name="last_check_date"/>
                                 <field name="next_date"/>
+                                <field name="annual_inspection"/>
                             </group>
                             <group>
                                 <field name="image" widget="image"/>
