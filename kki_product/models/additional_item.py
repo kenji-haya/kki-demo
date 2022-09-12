@@ -17,9 +17,10 @@ class kki_product_additional_item(models.Model):
     ], default='',
         string="商品区分", )
     # メニュー1※本当はMany2one
-    menu_1 = fields.Char("工場名")
+# <<<<<<< HEAD
+#     menu_1 = fields.Char("工場名")
     # メニュー2※本当はMany2one
-    menu_2 = fields.Char("カテゴリ")
+    # menu_2 = fields.Char("カテゴリ")
 
     """ 仕様タブに入れる項目（仕様タブは一般情報タブの右隣に新規で作成する） """
     # 材料コード※本当はMany2one
@@ -27,7 +28,20 @@ class kki_product_additional_item(models.Model):
     # 内容量
     content_by_volume = fields.Integer("内容量")
     # 銘柄※本当はMany2one
-    brand = fields.Char("銘柄")
+    # brand = fields.Char("銘柄")
+# =======
+    # menu1 = fields.Many2one("kki_product_menu1.menu1", "工場名")
+    # メニュー2※本当はMany2one
+    # menu2 = fields.Many2one("kki_product_menu2.menu2", "カテゴリ")
+
+    """ 仕様タブに入れる項目（仕様タブは一般情報タブの右隣に新規で作成する） """
+    # 材料コード
+    # material_code = fields.Char()
+    # 内容量
+    # content_by_volume = fields.Integer()
+    # 銘柄※本当はMany2one
+    # brand = fields.Char("銘柄")
+# >>>>>>> main
     # 面付
     pagination = fields.Integer("面付")
     # 出し方向
@@ -48,6 +62,12 @@ class kki_product_additional_item(models.Model):
 
     """ 販売タブに入れる項目 """
     # 得意先※本当はMany2one
-    customer_code = fields.Many2one("res.partner", string="customer_code")
+# <<<<<<< HEAD
+#     customer_code = fields.Many2one("res.partner", string="customer_code")
     # 品番
-    stock_number = fields.Text("stock_number")
+    # stock_number = fields.Text("stock_number")
+# =======
+    customer_code = fields.Many2one("res.partner", string="得意先")
+    # 品番
+    stock_number = fields.Text("品番")
+# >>>>>>> main
