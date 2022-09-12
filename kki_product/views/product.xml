@@ -94,17 +94,17 @@
 <!--                            <field name="menu_2"/>-->
                         </group>
                     </group>
-=======
+
 <!--                    <group>-->
-                    <group>
-                        <field name="commodity_classification"/>
-                    </group>
+<!--                    <group>-->
+<!--                        <field name="commodity_classification"/>-->
+<!--                    </group>-->
 <!--                        <group>-->
 <!--&lt;!&ndash;                            <field name="menu_1"/>&ndash;&gt;-->
 <!--&lt;!&ndash;                            <field name="menu_2"/>&ndash;&gt;-->
 <!--                        </group>-->
 <!--                    </group>-->
->>>>>>> main
+
                 </xpath>
             </field>
         </record>
