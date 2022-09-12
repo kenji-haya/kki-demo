@@ -73,6 +73,3 @@ class kki_forklift(models.Model):
             else:
                 print("日付なし")
                 rec.next_date =""
-
-
-
