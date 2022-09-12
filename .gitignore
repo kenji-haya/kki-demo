@@ -42,3 +42,9 @@ web_responsive/models/__pycache__/
 kki_product/__pycache__/
 
 kki_product_menu2/__pycache__/
+
+kki_product_brand/__pycache__/
+
+kki_product_brand/controllers/__pycache__/
+
+*.pyc

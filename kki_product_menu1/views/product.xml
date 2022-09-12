@@ -7,8 +7,8 @@
             <field name="arch" type="xml">
                 <xpath expr="//div[@name='options']" position="after">
                     <group>
-                        <filter string="工場名" name="menu_1" domain="[]" context="{'group_by': 'menu_1'}" />
-<!--                        <field name="menu_1"/>-->
+<!--                        <filter string="工場名" name="menu_1" domain="[]" context="{'group_by': 'menu_1'}" />-->
+                        <field name="menu_1"/>
                     </group>
                 </xpath>
             </field>
