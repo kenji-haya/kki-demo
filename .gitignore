@@ -1,6 +1,7 @@
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 web_responsive/__pycache__/
 
 web_responsive/models/__pycache__/
@@ -15,3 +16,6 @@ web_responsive/__pycache__/
 web_responsive/models/__pycache__/
 >>>>>>> karasawa
 >>>>>>> kuwahara
+=======
+web_responsive/models/__pycache__/
+>>>>>>> main
