@@ -17,13 +17,13 @@ class kki_product_additional_item(models.Model):
     ], default='',
         string="商品区分", )
     # メニュー1※本当はMany2one
-    menu_1 = fields.Many2one("kki_product_menu1.menu1", "工場名")
+    # menu1 = fields.Many2one("kki_product_menu1.menu1", "工場名")
     # メニュー2※本当はMany2one
-    menu_2 = fields.Char("カテゴリ")
+    # menu2 = fields.Many2one("kki_product_menu2.menu2", "カテゴリ")
 
     """ 仕様タブに入れる項目（仕様タブは一般情報タブの右隣に新規で作成する） """
     # 材料コード
-    material_code = fields.Char("材料コード")
+    # material_code = fields.Char("材料コード")
     # 内容量
     content_by_volume = fields.Integer("内容量")
     # 銘柄※本当はMany2one

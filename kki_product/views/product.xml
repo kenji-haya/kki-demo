@@ -53,9 +53,9 @@
                             domain="[['commodity_classification','=','2']]"/>
                     <filter string="材料" name="product_type"
                             domain="[['commodity_classification','=','3']]"/>
-                    <separator/>
-                        <filter string="工場名" name="menu_1" domain="[]" context="{'group_by': 'menu_1'}" />
-                        <filter string="メニュー_2" name="menu_2" domain="[]" context="{'group_by': 'menu_2'}" />
+<!--                    <separator/>-->
+<!--                        <filter string="工場名" name="menu_1" domain="[]" context="{'group_by': 'menu_1'}" />-->
+<!--                        <filter string="メニュー_2" name="menu_2" domain="[]" context="{'group_by': 'menu_2'}" />-->
                 </xpath>
             </field>
         </record>
@@ -80,15 +80,15 @@
             <field name="inherit_id" ref="product.product_template_form_view"/>
             <field name="arch" type="xml">
                 <xpath expr="//div[@name='options']" position="after">
+<!--                    <group>-->
                     <group>
-                        <group>
-                            <field name="commodity_classification"/>
-                        </group>
-                        <group>
-                            <field name="menu_1"/>
-                            <field name="menu_2"/>
-                        </group>
+                        <field name="commodity_classification"/>
                     </group>
+<!--                        <group>-->
+<!--&lt;!&ndash;                            <field name="menu_1"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <field name="menu_2"/>&ndash;&gt;-->
+<!--                        </group>-->
+<!--                    </group>-->
                 </xpath>
             </field>
         </record>

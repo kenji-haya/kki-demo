@@ -10,7 +10,7 @@
                         <group>
                             <group>
 <!--                                <label for="material_code"/>-->
-                                <field name="material_code"/>
+<!--                                <field name="material_code"/>-->
 <!--                                <label for="content_by_volume"/>-->
                                 <field name="content_by_volume"/>
 <!--                                <label for="brand"/>-->
