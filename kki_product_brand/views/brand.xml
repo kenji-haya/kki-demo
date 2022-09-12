@@ -1,0 +1,14 @@
+<odoo>
+    <data>
+        <record model="ir.actions.act_window" id="brand_action_window">
+            <field name="name">kki_product_brand window</field>
+            <field name="res_model">kki_product_brand.brand</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem name="brand" id="kki_product_brand.brand_list" parent="stock.menu_stock_inventory_control"
+                  action="brand_action_window"/>
+    </data>
+</odoo>
+
+
