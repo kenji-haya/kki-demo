@@ -22,9 +22,58 @@ class kki_forklift(models.Model):
     price = fields.Integer("price")
     history_count_2 = fields.Integer("test")
     history_count = fields.Integer(compute="_compute_check_history_count")
-    last_check_date = fields.Date("last check date")
+    owner_id = fields.Many2one("kki_forklift.history", string="owner_id")
+    last_check_date = fields.Date('last_check_date')
+    next_date = fields.Date('next_date', compute="_next_date")
 
     def _compute_check_history_count(self):
         for rec in self:
             history_count = self.env['kki_forklift.history'].search_count([('lift_id', '=', rec.id)])
             rec.history_count = history_count
+
+    def create_check(self):
+        return {
+            'type': 'ir.actions.act_window',
+            'res_model': 'kki_forklift.history',
+            'view_type': 'form',
+            'view_mode': 'form',
+            'target': 'current',
+            'context': {
+                # 'default_id': self.id,
+                # 'default_check_date': datetime.today(),
+                'default_lift_id': self.id,
+                'default_owner_id': self.env.user.id,
+            }
+        }
+
+    def action_view_check(self):
+        return {
+            'type': 'ir.actions.act_window',
+            'name': 'history',
+            'res_model': 'kki_forklift.history',
+            'domain': [('lift_id', '=', self.id)],
+            'view_mode': 'tree,form',
+            'target': 'current',
+            'context': {
+                'default_lift_id': self.id,
+                'default_owner_id': self.env.user.id,
+            }
+        }
+
+    @api.depends('last_check_date')
+    def _next_date(self):
+        # 日程がない場合の処理をここで判定させる
+        # next_date = float(self.last_check_date)
+        for rec in self:
+            # rec.next_date=[]
+            if rec.last_check_date:
+                print("次回チェック日あり")
+                print(rec.last_check_date)
+                # self.next_date = self.last_check_date + timedelta(days=30)
+                rec.next_date = rec.last_check_date + timedelta(days=30)
+            else:
+                print("日付なし")
+                rec.next_date =""
+
+
+

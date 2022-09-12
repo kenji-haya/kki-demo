@@ -1,14 +1,15 @@
 <odoo>
     <data>
         <!-- explicit list view definition -->
-
         <record model="ir.ui.view" id="kki_forklift.list">
             <field name="name">kki_forklift list</field>
             <field name="model">kki_forklift.lift</field>
             <field name="arch" type="xml">
                 <tree>
+<!--                    <field name="next_date"/>-->
                     <field name="name"/>
-                    <!--                    <field name="image" widget="image" class="oe_avatar"/>-->
+                    <field name="owner_id"/>
+                    <field name="next_date"/>
                 </tree>
             </field>
         </record>
@@ -21,6 +22,7 @@
                     <field name="name"/>
                     <field name="image"/>
                     <field name="size"/>
+                    <field name="next_date"/>
                     <templates>
                         <t t-name="kanban-box">
                             <div t-attf-class="oe_kanban_global_click">
@@ -32,6 +34,9 @@
                                         <li>
                                             <field name="name"/>
                                             <field name="size"/>
+                                        </li>
+                                        <li>
+                                            <field name="next_date"/>
                                         </li>
                                     </ul>
                                 </div>
@@ -68,8 +73,9 @@
                                 <field name="note"/>
                                 <field name="size"/>
                                 <field name="price"/>
-                                <field name="price"/>
+                                <field name="history_count"/>
                                 <field name="last_check_date"/>
+                                <field name="next_date"/>
                             </group>
                             <group>
                                 <field name="image" widget="image"/>
