@@ -22,10 +22,7 @@
                     <attribute name="invisible">1</attribute>
                 </xpath>
                 <xpath expr="//field[@name='name']" position="after">
-<!--                    <field name="menu_1"  optional="show"/>-->
-<!--                    <field name="menu_2"  optional="show"/>-->
                     <field name="stock_number"  optional="hide"/>
-<!--                    <field name="brand"  optional="hide"/>-->
                     <field name="marge_name"/>
                 </xpath>
             </field>
@@ -58,9 +55,6 @@
                     <filter string="材料" name="product_type"
                             domain="[['commodity_classification','=','3']]"/>
                     <separator/>
-<!--                        <filter string="工場名" name="menu_1" domain="[]" context="{'group_by': 'menu_1'}" />-->
-<!--                        <filter string="メニュー_2" name="menu_2" domain="[]" context="{'group_by': 'menu_2'}" />-->
-
                 </xpath>
             </field>
         </record>
@@ -89,22 +83,8 @@
                         <group>
                             <field name="commodity_classification"/>
                         </group>
-                        <group>
-<!--                            <field name="menu_1"/>-->
-<!--                            <field name="menu_2"/>-->
-                        </group>
+
                     </group>
-
-<!--                    <group>-->
-<!--                    <group>-->
-<!--                        <field name="commodity_classification"/>-->
-<!--                    </group>-->
-<!--                        <group>-->
-<!--&lt;!&ndash;                            <field name="menu_1"/>&ndash;&gt;-->
-<!--&lt;!&ndash;                            <field name="menu_2"/>&ndash;&gt;-->
-<!--                        </group>-->
-<!--                    </group>-->
-
                 </xpath>
             </field>
         </record>
