@@ -53,6 +53,8 @@ class kki_forklift_check_history(models.Model):
     remarks_1= fields.Char("remarks")
     alert_mes = fields.Boolean(string="Warning!!", compute='create', store=True, Tracking=True)
 
+    # authorized_transaction_ids =fields.Many2many('payment.transaction', compute='_compute_authorized_transaction_ids',
+    #                                               string='Authorized Transactions', copy=False, readonly=True)
 
     # @api.model
     # def create(self, values):
@@ -101,3 +103,7 @@ class kki_forklift_check_history(models.Model):
     #         print(values['fork_1'])
     #         print(values['back_1'])
     #     return res
+    #
+    # @api.depends('transaction_ids')
+    # def _compute_authorized_transaction_ids(self):
+    #     self.authorized_transaction_ids = self.transaction_ids.filtered(lambda t: t.state == 'authorized')
