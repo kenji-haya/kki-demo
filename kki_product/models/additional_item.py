@@ -6,7 +6,7 @@ from odoo import models, fields, api
 class kki_product_additional_item(models.Model):
     _inherit = "product.template"
 
-    """ 販売可購買可の隣に入れる項目 """
+    # """ 販売可購買可の隣に入れる項目 """
     # 商品区分
     commodity_classification = fields.Selection([
         ('1', '加工'),
