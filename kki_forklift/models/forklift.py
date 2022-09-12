@@ -45,6 +45,7 @@ class kki_forklift(models.Model):
             }
         }
 
+
     def action_view_check(self):
         return {
             'type': 'ir.actions.act_window',

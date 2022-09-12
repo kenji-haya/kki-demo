@@ -93,28 +93,6 @@ class kki_forklift_check_history(models.Model):
                 raise ValidationError(message="未実施項目があります。確認してください。")
 
 
-        # @api.model
-        # def save(self, values):
-        #     alert = False
-        #     print(values)
-        #     for i in self._values.values():
-        #         print(i)
-        #         if i == 'one':
-        #             # values['alert_mes'] = 1
-        #             alert = True
-        #     else:
-        #         self.alert_mes = True
-        #
-        #     if alert:
-        #         values['alert_mes'] = True
-        #         print("check")
-        #         return
-        #     else:
-        #         values['alert_mes'] = False
-        #         return super(kki_forklift_check_history, self).save(values)
-
-
-
 
         # @api.depend()
         # def _create(self, alert):
