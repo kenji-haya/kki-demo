@@ -2,108 +2,131 @@
 
 from odoo import models,fields,api
 from datetime import datetime
-from datetime import timedelta
-
+from odoo.exceptions import ValidationError
 
 class kki_forklift_check_history(models.Model):
-    _name = 'kki_forklift.history'
-    _description = 'kki_forklift.history'
+        _name = 'kki_forklift.history'
+        _description = 'kki_forklift.history'
 
-    name = fields.Char("name")
-    owner_id = fields.Many2one('res.users','owner_id',default=lambda self:self.env.user)
-    check_date = fields.Date("check date",required="True",default=datetime.today())
-    lift_id = fields.Many2one("kki_forklift.lift","Forklift")
-    defective_parts_im = fields.Binary("不良個所の画像")
-    # fork_1= fields.Boolean("【フォーク】亀裂や曲がりはないか")
-    fork_1= fields.Selection(
-        [('one', '未実施'), ('two', '点検済'), ('three', '不具合有')],
-        "【フォーク】亀裂や曲がりはないか", default='one')
-    back_1= fields.Selection(
-        [('one', '未実施'), ('two', '点検済'), ('three', '不具合有')],
-        "【バックレスト】亀裂・変形・取付部に緩みがないか", default='one')
-    chain_1= fields.Selection(
-        [('one', '未実施'), ('two', '点検済'), ('three', '不具合有')],
-        "【チェーン】傷・ねじれがなく、張りが均等か", default='one')
-    mast_1= fields.Selection(
-        [('one', '未実施'), ('two', '点検済'), ('three', '不具合有')],
-        "【マスト】上昇・下降・前後傾が円滑か", default='one')
-    tire_1= fields.Selection(
-        [('one', '未実施'), ('two', '点検済'), ('three', '不具合有')],
-        "【タイヤ】損傷や異常摩耗がないか／ハブナットの緩み、脱落がないか", default='one')
-    handle_1= fields.Selection(
-        [('one', '未実施'), ('two', '点検済'), ('three', '不具合有')],
-        '【ハンドル】著しい遊び又はガタツキがないか',
-        default="one")
-    break_1= fields.Selection(
-        [('one', '未実施'), ('two', '点検済'), ('three', '不具合有')],
-        '【ブレーキペダル】ブレーキの効きが充分か',
-        default="one")
-    horn_1= fields.Selection(
-        [('one', '未実施'), ('two', '点検済'), ('three', '不具合有')],
-        '【ホーン・バックブザー】正常に鳴るか',
-        default="one")
-    volt_1= fields.Selection(
-        [('one', '未実施'), ('two', '点検済'), ('three', '不具合有')],
-        '【ボルトメーター】規定量か',
-        default="one")
-    oil_1= fields.Selection(
-        [('one', '未実施'), ('two', '点検済'), ('three', '不具合有')],
-        '【冷却水・オイル・バッテリー液】規定量か。油や水が落ちていないか',
-        default="one")
-    remarks_1= fields.Char("remarks")
-    alert_mes = fields.Boolean(string="Warning!!", compute='create', store=True, Tracking=True)
+        name = fields.Char("name")
+        owner_id = fields.Many2one('res.users', 'owner_id', default=lambda self: self.env.user)
+        check_date = fields.Date("check date", required="True", default=datetime.today())
+        lift_id = fields.Many2one("kki_forklift.lift", "Forklift")
+        defective_parts_im = fields.Binary("image")
+        # fork_1= fields.Boolean("【フォーク】亀裂や曲がりはないか")
+        fork_1= fields.Selection(
+            [('one', '未実施'), ('two', '点検済'), ('three', '不具合有')],
+            "【フォーク】亀裂や曲がりはないか", default='one')
+        back_1= fields.Selection(
+            [('one', '未実施'), ('two', '点検済'), ('three', '不具合有')],
+            "【バックレスト】亀裂・変形・取付部に緩みがないか", default='one')
+        chain_1= fields.Selection(
+            [('one', '未実施'), ('two', '点検済'), ('three', '不具合有')],
+            "【チェーン】傷・ねじれがなく、張りが均等か", default='one')
+        mast_1= fields.Selection(
+            [('one', '未実施'), ('two', '点検済'), ('three', '不具合有')],
+            "【マスト】上昇・下降・前後傾が円滑か", default='one')
+        tire_1= fields.Selection(
+            [('one', '未実施'), ('two', '点検済'), ('three', '不具合有')],
+            "【タイヤ】損傷や異常摩耗がないか／ハブナットの緩み、脱落がないか", default='one')
+        handle_1= fields.Selection(
+            [('one', '未実施'), ('two', '点検済'), ('three', '不具合有')],
+            '【ハンドル】著しい遊び又はガタツキがないか',
+            default="one")
+        break_1= fields.Selection(
+            [('one', '未実施'), ('two', '点検済'), ('three', '不具合有')],
+            '【ブレーキペダル】ブレーキの効きが充分か',
+            default="one")
+        horn_1= fields.Selection(
+            [('one', '未実施'), ('two', '点検済'), ('three', '不具合有')],
+            '【ホーン・バックブザー】正常に鳴るか',
+            default="one")
+        volt_1= fields.Selection(
+            [('one', '未実施'), ('two', '点検済'), ('three', '不具合有')],
+            '【ボルトメーター】規定量か',
+            default="one")
+        oil_1= fields.Selection(
+            [('one', '未実施'), ('two', '点検済'), ('three', '不具合有')],
+            '【冷却水・オイル・バッテリー液】規定量か。油や水が落ちていないか',
+            default="one")
+        remarks_1= fields.Char("remarks")
+        alert_mes = fields.Boolean(string="Warning!!", compute='create', store=True, Tracking=True)
 
-    # authorized_transaction_ids =fields.Many2many('payment.transaction', compute='_compute_authorized_transaction_ids',
-    #                                               string='Authorized Transactions', copy=False, readonly=True)
+        # @api.model
+        # def create(self, values):
+        #     res = super(kki_forklift_check_history, self).create(values)
+        #     print(self.fork_1)
+        #     print(res)
+        #     return res
 
-    # @api.model
-    # def create(self, values):
-    #     res = super(kki_forklift_check_history, self).create(values)
-    #     print(self.fork_1)
-    #     print(res)
-    #     return res
+        @api.model
+        def create(self, values):
+            for i in values.values():
+                if i == 'one':
+                    values['alert_mes'] = True
+                    break
 
-    @api.model
-    def create(self, values):
-        alert = False
-        for i in values.values():
-            if i == 'one':
-                # values['alert_mes'] = 1
-                alert = True
-        else:
-            self.alert_mes = True
+            res = super(kki_forklift_check_history, self).create(values)
+            return res
 
-        if alert:
-            values['alert_mes'] = True
-        else:
-            values['alert_mes'] = False
+        # 最新のチェック日付を表示
+        @api.onchange("check_date")
+        def _get_last_date(self):
+            if self.lift_id.last_check_date:
+                if self.lift_id.last_check_date > self.check_date:
+                    print(self.lift_id.last_check_date)
+                else:
+                    print(self.lift_id._origin.id)
+                    self.env['kki_forklift.lift'].search([('id', '=', self.lift_id._origin.id), ]).write({
+                        'last_check_date': self.check_date
+                    })
+            self.env['kki_forklift.lift'].search([('id', '=', self.lift_id._origin.id), ]).write({
+                'last_check_date': self.check_date
+            })
 
-        res = super(kki_forklift_check_history, self).create(values)
-        return res
+        #　未実施項目があればアラートを出す
+        @api.constrains('alert_mes')
+        def onchange_partner_id_warning(self):
+            print("1")
+            if self.alert_mes:
+                print("2")
+                raise ValidationError(message="未実施項目があります。確認してください。")
 
-    @api.onchange("check_date")
-    def _get_last_date(self):
-        if self.lift_id.last_check_date:
-            if self.lift_id.last_check_date > self.check_date:
-                print(self.lift_id.last_check_date)
-            else:
-                print(self.lift_id._origin.id)
-                self.env['kki_forklift.lift'].search([('id', '=', self.lift_id._origin.id), ]).write({
-                    'last_check_date': self.check_date
-                })
-        self.env['kki_forklift.lift'].search([('id', '=', self.lift_id._origin.id), ]).write({
-            'last_check_date': self.check_date
-        })
 
-    # @api.model
-    # def create(self, values):
-    #     res = super(kki_forklift_check_history, self).create(values)
-    #     if values['fork_1']  == 'one':
-    #         print(dict(self._fields['fork_1'].selection).get(self.fork_1))
-    #         print(values['fork_1'])
-    #         print(values['back_1'])
-    #     return res
-    #
-    # @api.depends('transaction_ids')
-    # def _compute_authorized_transaction_ids(self):
-    #     self.authorized_transaction_ids = self.transaction_ids.filtered(lambda t: t.state == 'authorized')
+        # @api.model
+        # def save(self, values):
+        #     alert = False
+        #     print(values)
+        #     for i in self._values.values():
+        #         print(i)
+        #         if i == 'one':
+        #             # values['alert_mes'] = 1
+        #             alert = True
+        #     else:
+        #         self.alert_mes = True
+        #
+        #     if alert:
+        #         values['alert_mes'] = True
+        #         print("check")
+        #         return
+        #     else:
+        #         values['alert_mes'] = False
+        #         return super(kki_forklift_check_history, self).save(values)
+
+
+
+
+        # @api.depend()
+        # def _create(self, alert):
+        #     self.alert_mes = alert
+
+            # res.update(
+            #     crm_alias_prefix=alias.alias_name if alias else False,
+            # )
+            # return res
+
+        # @api.model
+        # def write(self, values):
+        #     res = super(kki_forklift_check_history, self).write(values)
+        #     print(self.lift_id)
+        #     return res
