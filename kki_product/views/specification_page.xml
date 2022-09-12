@@ -9,8 +9,17 @@
                     <page name="specification" string="仕様">
                         <group>
                             <group>
+<<<<<<< HEAD
+<!--                                <label for="material_code"/>-->
+                                <field name="material_code"/>
+<!--                                <label for="content_by_volume"/>-->
+                                <field name="content_by_volume"/>
+<!--                                <label for="brand"/>-->
+                                <field name="brand"/>
+=======
                                 <field name="material_code" string="材料コード"/>
                                 <field name="content_by_volume" string="内容量"/>
+>>>>>>> main
                             </group>
                             <group>
 <!--                                <label for="pagination"/>-->
