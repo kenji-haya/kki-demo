@@ -32,7 +32,7 @@
                     <sheet>
                         <div class="alert alert-danger text-center o_form_header" role="alert"
                              attrs="{'invisible': [('alert_mes', '=', False)]}">
-                            <a class="close" data-dismiss="alert" href="#">x</a>
+<!--                            <a class="close" data-dismiss="alert" href="#">x</a>-->
                             <div>
                                 <strong>未実施項目があります。確認してください。</strong>
                             </div>
