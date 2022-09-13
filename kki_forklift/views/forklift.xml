@@ -53,7 +53,7 @@
             <field name="arch" type="xml">
                 <form>
                     <header>
-<!--                        <button name="create_check" string="Create Check" type="object" class="btn-primary"/>-->
+                        <button name="create_check" string="Create Check" type="object" class="btn-primary"/>
                     </header>
                     <sheet>
 <!--                        <div class="oe_button_box" name="button_box">-->
