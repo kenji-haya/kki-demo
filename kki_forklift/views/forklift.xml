@@ -54,7 +54,7 @@
                     <field name="active" invisible="1"/>
                     <header>
                         <button name="create_check" string="Create Check" type="object" class="btn-primary"/>
-                        <button id="button_confirm" name="delete_form" string="delete" type="object" class="btn-primary"
+                        <button id="button_confirm" name="archived_button" string="archived" type="object" class="btn-primary"
                                 confirm="削除しますか？"/>
                     </header>
                     <sheet>
@@ -121,10 +121,11 @@
                     <field name="name"/>
                     <separator/>
                     <filter string="Archived" name="inactive" domain="[('active', '=', False)]"/>
+                    <filter string="Archive" name="inactive" domain="[('active', '=', True)]"/>
                 </search>
             </field>
         </record>
-        
+
         <!-- server action to the one above -->
         <!--
             <record model="ir.actions.server" id="kki_forklift.action_server">

@@ -64,8 +64,8 @@ class kki_forklift(models.Model):
     #     }
     #
 
-    def delete_form(self):
-        return super(kki_forklift, self).unlink()
+    def archived_button(self):
+        self.write({'active': False})
 
     def action_view_check(self):
         return {
