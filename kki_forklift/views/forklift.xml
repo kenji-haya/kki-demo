@@ -53,7 +53,7 @@
                 <form>
                     <header>
                         <button name="create_check" string="Create Check" type="object" class="btn-primary"/>
-                        <button name="delete_form" string="Delete Form" type="object" class="btn-primary"/>
+                        <button name="unlink" string="delete" type="object" class="btn-primary"/>
                     </header>
                     <sheet>
                         <div class="oe_button_box" name="button_box">
@@ -70,13 +70,13 @@
                                 <field name="name"/>
                                 <field name="vendor"/>
                                 <field name="launch_day"/>
+                                <field name="annual_inspection"/>
                                 <field name="note"/>
                                 <field name="size"/>
                                 <field name="price"/>
                                 <field name="history_count"/>
                                 <field name="last_check_date"/>
                                 <field name="next_date"/>
-                                <field name="annual_inspection"/>
                             </group>
                             <group>
                                 <field name="image" widget="image"/>
