@@ -1,6 +1,6 @@
 <odoo>
     <data>
-        <record model="ir.ui.view" id="kki_product_additional_item_menu2">
+        <record model="ir.ui.view" id="kki_product_additional_item_menu2_form">
             <field name="name">kki_product_additional_item_menu2 form</field>
             <field name="model">product.template</field>
             <field name="inherit_id" ref="product.product_template_form_view"/>
@@ -8,7 +8,25 @@
                 <xpath expr="//div[@name='options']" position="after">
                     <group>
                         <field name="menu_2"/>
+<!--                        <filter string="メニュー_2" name="menu_2" domain="[]" context="{'group_by': 'menu_2'}" />-->
                     </group>
+                </xpath>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="kki_product_additional_item_menu2">
+            <field name="name">kki_product_additional_item_menu2 list</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_tree_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='name']" position="after">
+<!--                    <field name="menu_1"  optional="show"/>-->
+                    <field name="menu_2"  optional="show"/>
+<!--                    <field name="stock_number"  optional="hide"/>-->
+<!--                    <field name="brand"  optional="hide"/>-->
+<!--                    <field name="marge_name"/>-->
                 </xpath>
             </field>
         </record>
