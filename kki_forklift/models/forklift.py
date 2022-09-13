@@ -21,6 +21,7 @@ class kki_forklift(models.Model):
         inverse_name="lift_id",
         string="check history")
     price = fields.Integer("price")
+    history_count_2 = fields.Integer("test")
     history_count = fields.Integer(compute="_compute_check_history_count")
     owner_id = fields.Many2one("kki_forklift.history", string="owner_id")
     last_check_date = fields.Date('last_check_date')
