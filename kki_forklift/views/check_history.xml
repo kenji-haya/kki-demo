@@ -19,7 +19,8 @@
                 <tree>
                     <field name="name"/>
                     <field name="owner_id"/>
-                    <field name="check_date"/>
+<!--                    <field name="check_date"/>-->
+<!--                    <field name="next_date"/>-->
                 </tree>
             </field>
         </record>

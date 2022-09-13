@@ -65,7 +65,16 @@ class kki_forklift(models.Model):
     #
 
     def delete_form(self):
-        return super(kki_forklift, self).unlink()
+        print(self.mapped('name'))
+        # if self.name in self.mapped('name'):
+        #     raise UserError(("You cannot delete an unbuild order if the state is 'Done'."))
+        super(kki_forklift, self).unlink()
+        print(self.env)
+        action = self.env["kki_forklift.view_lift_kanban"]._for_xml_id("lift.kanban")
+        return action
+
+
+
 
     def action_view_check(self):
         return {
