@@ -58,3 +58,26 @@ class kki_product_additional_item(models.Model):
     customer_code = fields.Many2one("res.partner", string="得意先")
     # 品番
     stock_number = fields.Text("品番")
+
+    warning = fields.Boolean(default=False)
+
+    @api.model
+    def create(self, values):
+        for i in values.values():
+            if i == '0':
+                values['warning'] = True
+                break
+
+        res = super(kki_product_additional_item, self).create(values)
+        return res
+
+    @api.constrains(self)
+    def value_pagination(self):
+        for rec in self:
+            print("あああ")
+            print(rec)
+            if rec.pagination == 0:
+                rec.warning = True
+
+
+
