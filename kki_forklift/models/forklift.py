@@ -26,6 +26,7 @@ class kki_forklift(models.Model):
     last_check_date = fields.Date('last_check_date')
     next_date = fields.Date('next_date', compute="_next_date")
     annual_inspection= fields.Date('annual_inspection', compute="_next_inspection")
+    active = fields.Boolean(string="archive", default=True)
 
     def _compute_check_history_count(self):
         for rec in self:
@@ -64,13 +65,7 @@ class kki_forklift(models.Model):
     #
 
     def delete_form(self):
-        # print(self.mapped('state'))
-        # if 'done' in self.mapped('state'):
-        #     raise UserError(("You cannot delete an unbuild order if the state is 'Done'."))
         return super(kki_forklift, self).unlink()
-
-
-
 
     def action_view_check(self):
         return {
@@ -91,25 +86,17 @@ class kki_forklift(models.Model):
         # 日程がない場合の処理をここで判定させる
         for rec in self:
             if rec.last_check_date:
-                print("次回チェック日あり")
-                print(rec.last_check_date)
                 rec.next_date = rec.last_check_date + timedelta(days=30)
             else:
-                print("日付なし")
                 rec.next_date =""
 
     @api.depends('launch_day')
     def _next_inspection(self):
         # 日程がない場合の処理をここで判定させる
         for rec in self:
-            print("ins1")
             if rec.launch_day:
-                print("ins2")
-                print("次回チェック日あり")
-                print(rec.launch_day)
                 rec.annual_inspection = rec.launch_day + timedelta(days=365)
             else:
-                print("日付なし")
                 rec.annual_inspection =""
 
     # def unlink(self):
