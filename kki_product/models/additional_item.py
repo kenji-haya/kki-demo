@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from odoo import models, fields, api
-
+from odoo.exceptions import ValidationError
 
 class kki_product_additional_item(models.Model):
     _inherit = "product.template"
@@ -59,7 +59,7 @@ class kki_product_additional_item(models.Model):
     # 品番
     stock_number = fields.Text("品番")
 
-    warning = fields.Boolean(default=False)
+    warning = fields.Boolean(default=False, store=True, Tracking=True)
 
     @api.model
     def create(self, values):
@@ -71,13 +71,15 @@ class kki_product_additional_item(models.Model):
         res = super(kki_product_additional_item, self).create(values)
         return res
 
-    @api.constrains(self)
+    @api.constrains('warning')
     def value_pagination(self):
         for rec in self:
             print("あああ")
             print(rec)
-            if rec.pagination == 0:
+            if rec.self == 0:
                 rec.warning = True
+
+                raise ValidationError(message="未実施項目があります。確認してください。")
 
 
 
