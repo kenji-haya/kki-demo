@@ -2,7 +2,7 @@
 
 from odoo import models, fields, api
 from datetime import datetime, timedelta
-from odoo.exceptions import UserError
+from odoo.exceptions import AccessError, UserError
 
 
 class kki_forklift(models.Model):
@@ -46,6 +46,30 @@ class kki_forklift(models.Model):
                 'default_owner_id': self.env.user.id,
             }
         }
+
+    # def delete_form(self):
+    #     return {
+    #         'type': 'ir.actions.act_window',
+    #         'res_model': 'kki_forklift.history',
+    #         'view_type': 'form',
+    #         'view_mode': 'form',
+    #         'target': 'current',
+    #         'context': {
+    #             # 'default_id': self.id,
+    #             # 'default_check_date': datetime.today(),
+    #             'default_lift_id': self.id,
+    #             'default_owner_id': self.env.user.id,
+    #         }
+    #     }
+    #
+
+    def delete_form(self):
+        # print(self.mapped('state'))
+        # if 'done' in self.mapped('state'):
+        #     raise UserError(("You cannot delete an unbuild order if the state is 'Done'."))
+        return super(kki_forklift, self).unlink()
+
+
 
 
     def action_view_check(self):
