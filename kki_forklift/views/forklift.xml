@@ -4,7 +4,6 @@
         <record model="ir.ui.view" id="kki_forklift.list">
             <field name="name">kki_forklift list</field>
             <field name="model">kki_forklift.lift</field>
-            <field name="context">{"default_project_id": active_id, "search_default_project_id": [active_id]}</field>
             <field name="arch" type="xml">
                 <tree>
                     <field name="name"/>
@@ -55,8 +54,8 @@
                     <field name="active" invisible="1"/>
                     <header>
                         <button name="create_check" string="Create Check" type="object" class="btn-primary"/>
-                        <button id="button_confirm" name="delete_form" string="delete" type="object" class="btn-primary"
-                                confirm="削除しますか？"/>
+                        <button id="button_confirm" name="archive_button" string="Archive" type="object" class="btn-primary"
+                                confirm="アーカイブしますか？"/>
                     </header>
                     <sheet>
                         <div class="oe_button_box" name="button_box">
@@ -121,7 +120,8 @@
                 <search string="Plan">
                     <field name="name"/>
                     <separator/>
-                    <filter string="Archived" name="inactive" domain="[('active', '=', False)]"/>
+                    <filter string="Archive" name="inactive" domain="[('active', '=', False)]"/>
+                    <filter string="Active" name="inactive" domain="[('active', '=', True)]"/>
                 </search>
             </field>
         </record>

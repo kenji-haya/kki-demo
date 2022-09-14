@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from odoo import models, fields, api
+from odoo import models, fields, api, _
 from datetime import datetime, timedelta
 from odoo.exceptions import AccessError, UserError
 
@@ -26,7 +26,7 @@ class kki_forklift(models.Model):
     last_check_date = fields.Date('last_check_date')
     next_date = fields.Date('next_date', compute="_next_date")
     annual_inspection= fields.Date('annual_inspection', compute="_next_inspection")
-    active = fields.Boolean(string="archive", default=True)
+    active = fields.Boolean(default=True)
 
     def _compute_check_history_count(self):
         for rec in self:
@@ -73,8 +73,21 @@ class kki_forklift(models.Model):
         action = self.env["kki_forklift.view_lift_kanban"]._for_xml_id("lift.kanban")
         return action
 
+    def archive_button(self):
+        self.write({"active":False})
+        print(self.id)
+        # action = {
+        #     'type': 'ir.actions.act_window',
+        #     'name': "lift.kanban",
+        #     'res_model': 'kki_forklift.lift',
+        #     'view_mode': 'kanban',  # list
+        # }
 
-
+        action = {'type': 'ir.actions.act_url',
+                  'target': 'self',
+                  'url': '/web#model=kki_forklift.lift&view_type=kanban'
+                  }
+        return action
 
     def action_view_check(self):
         return {
