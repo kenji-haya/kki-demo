@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from odoo import models, fields, api
+from odoo.exceptions import ValidationError
 
 
 class kki_product_additional_item(models.Model):
@@ -44,7 +45,7 @@ class kki_product_additional_item(models.Model):
     ], default='',
         string="出し方向", )
     # 厚さ
-    thickness = fields.Integer("厚さ")
+    thickness = fields.Integer("厚さ", default="")
     # 巾A
     width_A = fields.Integer("巾A")
     # 長さ
@@ -63,21 +64,21 @@ class kki_product_additional_item(models.Model):
 
     @api.model
     def create(self, values):
-        for i in values.values():
-            if i == '0':
-                values['warning'] = True
-                break
+        print(values)
+        # for i in values.values():
+        if values['thickness'] == 0:
+            values['warning'] = True
 
         res = super(kki_product_additional_item, self).create(values)
         return res
 
-    @api.constrains(self)
+    @api.constrains("warning")
     def value_pagination(self):
         for rec in self:
             print("あああ")
             print(rec)
-            if rec.pagination == 0:
-                rec.warning = True
+            if rec.warning:
+                raise ValidationError(message="未実施項目があります。確認してください。")
 
 
 
