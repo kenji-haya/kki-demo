@@ -8,7 +8,7 @@
                 <tree>
                     <field name="name"/>
                     <field name="owner_id"/>
-                    <!--                    <field name="next_date"/>-->
+<!--                    <field name="next_date"/>-->
                 </tree>
             </field>
         </record>
@@ -54,8 +54,8 @@
                     <field name="active" invisible="1"/>
                     <header>
                         <button name="create_check" string="Create Check" type="object" class="btn-primary"/>
-                        <button id="button_confirm" name="archived_button" string="archived" type="object" class="btn-primary"
-                                confirm="削除しますか？"/>
+                        <button id="button_confirm" name="archive_button" string="Archive" type="object" class="btn-primary"
+                                confirm="アーカイブしますか？"/>
                     </header>
                     <sheet>
 <!--                        <div class="oe_button_box" name="button_box">-->
@@ -121,7 +121,6 @@
                     <field name="name"/>
                     <separator/>
                     <filter string="Archived" name="inactive" domain="[('active', '=', False)]"/>
-                    <filter string="Archive" name="inactive" domain="[('active', '=', True)]"/>
                 </search>
             </field>
         </record>
