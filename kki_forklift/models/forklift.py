@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from odoo import models, fields, api, _
+from odoo import models, fields, api
 from datetime import datetime, timedelta
 from odoo.exceptions import AccessError, UserError
 
@@ -64,14 +64,14 @@ class kki_forklift(models.Model):
     #     }
     #
 
-    def delete_form(self):
-        print(self.mapped('name'))
-        # if self.name in self.mapped('name'):
-        #     raise UserError(("You cannot delete an unbuild order if the state is 'Done'."))
-        super(kki_forklift, self).unlink()
-        print(self.env)
-        action = self.env["kki_forklift.view_lift_kanban"]._for_xml_id("lift.kanban")
-        return action
+    # def delete_form(self):
+    #     print(self.mapped('name'))
+    #     # if self.name in self.mapped('name'):
+    #     #     raise UserError(("You cannot delete an unbuild order if the state is 'Done'."))
+    #     super(kki_forklift, self).unlink()
+    #     print(self.env)
+    #     action = self.env["kki_forklift.view_lift_kanban"]._for_xml_id("lift.kanban")
+    #     return action
 
     def archive_button(self):
         self.write({"active":False})
