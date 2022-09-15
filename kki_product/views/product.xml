@@ -48,12 +48,14 @@
             <field name="inherit_id" ref="product.product_template_search_view"/>
             <field name="arch" type="xml">
                 <xpath expr="//filter[@name='filter_to_sell']" position="before">
-                    <filter string="加工依頼" name="product_type"
+                    <filter string="zero" name="product_type"
                             domain="[['commodity_classification','=','1']]"/>
-                    <filter string="丸投げ" name="product_type"
+                    <filter string="加工依頼" name="product_type"
                             domain="[['commodity_classification','=','2']]"/>
-                    <filter string="材料" name="product_type"
+                    <filter string="丸投げ" name="product_type"
                             domain="[['commodity_classification','=','3']]"/>
+                    <filter string="材料" name="product_type"
+                            domain="[['commodity_classification','=','4']]"/>
                     <separator/>
                 </xpath>
             </field>
