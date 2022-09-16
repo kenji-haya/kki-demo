@@ -4,6 +4,7 @@ from odoo import _, api, fields, models
 from datetime import datetime
 from odoo.exceptions import ValidationError
 
+
 class kki_forklift_check_history(models.Model):
         _name = 'kki_forklift.history'
         _description = 'kki_forklift.history'
@@ -88,9 +89,7 @@ class kki_forklift_check_history(models.Model):
         #　未実施項目があればアラートを出す
         @api.constrains('alert_mes')
         def constrains_no_check_warning(self):
-            print("1")
             if self.alert_mes:
-                print("2")
                 raise ValidationError(message="未実施項目があります。確認してください。")
 
 

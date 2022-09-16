@@ -3,6 +3,7 @@
 from odoo import models, fields, api, _
 from datetime import datetime, timedelta
 from odoo.exceptions import AccessError, UserError
+from dateutil.relativedelta import relativedelta
 
 
 class kki_forklift(models.Model):
@@ -69,8 +70,7 @@ class kki_forklift(models.Model):
         self.write({'active': False})
 
     def archive_button(self):
-        self.write({"active":False})
-        print(self.id)
+        self.write({"active": False})
         # action = {
         #     'type': 'ir.actions.act_window',
         #     'name': "lift.kanban",
@@ -116,5 +116,3 @@ class kki_forklift(models.Model):
             else:
                 rec.annual_inspection =""
 
-    # def unlink(self):
-    #     raise UserError("消して大丈夫ですか？")

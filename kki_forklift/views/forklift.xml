@@ -8,7 +8,6 @@
                 <tree>
                     <field name="name"/>
                     <field name="owner_id"/>
-<!--                    <field name="next_date"/>-->
                 </tree>
             </field>
         </record>
