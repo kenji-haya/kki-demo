@@ -50,22 +50,6 @@ class kki_forklift(models.Model):
             }
         }
 
-    # def delete_form(self):
-    #     return {
-    #         'type': 'ir.actions.act_window',
-    #         'res_model': 'kki_forklift.history',
-    #         'view_type': 'form',
-    #         'view_mode': 'form',
-    #         'target': 'current',
-    #         'context': {
-    #             # 'default_id': self.id,
-    #             # 'default_check_date': datetime.today(),
-    #             'default_lift_id': self.id,
-    #             'default_owner_id': self.env.user.id,
-    #         }
-    #     }
-    #
-
     def archived_button(self):
         self.write({'active': False})
 

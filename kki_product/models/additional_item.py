@@ -36,14 +36,14 @@ class kki_product_additional_item(models.Model):
     # brand = fields.Char("銘柄")
 
     # 面付
-    pagination = fields.Integer("面付")
+    pagination = fields.Integer("面付",)
     # 出し方向
     way_of_paying = fields.Selection([
         ('1', '尻'),
         ('2', '頭'),
         ('3', 'なし'),
     ], default='',
-        string="出し方向", )
+        string="出し方向", required=True)
     # 厚さ
     thickness = fields.Integer("厚さ", default="")
     # 巾A
@@ -65,20 +65,20 @@ class kki_product_additional_item(models.Model):
     @api.model
     def create(self, values):
         print(values)
-        # for i in values.values():
-        if values['thickness'] == 0:
-            values['warning'] = True
+        for i in values.values():
+            if values['thickness'] == 0:
+                values['warning'] = True
 
         res = super(kki_product_additional_item, self).create(values)
         return res
 
-    @api.constrains("warning")
-    def value_pagination(self):
-        for rec in self:
-            print("あああ")
-            print(rec)
-            if rec.warning:
-                raise ValidationError(message="未実施項目があります。確認してください。")
+    # @api.constrains("warning")
+    # def value_pagination(self):
+    #     for rec in self:
+    #         print("あああ")
+    #         print(rec)
+    #         if rec.warning:
+    #             raise ValidationError(message="未実施項目があります。確認してください。")
 
 
 
