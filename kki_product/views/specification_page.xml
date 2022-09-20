@@ -7,11 +7,11 @@
             <field name="arch" type="xml">
                 <xpath expr="//page[@name='general_information']" position="after">
                     <page name="specification" string="仕様">
-                        <div role="alert" class="alert alert-danger text-center o_form_header"
-                             style="height:40px, width:30px, margin-bottom:1px;"
-                             attrs="{'invisible': [('warning', '=', False)]}">
-                            There are fields that have not been filled in.
-                        </div>
+<!--                        <div role="alert" class="alert alert-danger text-center o_form_header"-->
+<!--                             style="height:40px, width:30px, margin-bottom:1px;"-->
+<!--                             attrs="{'invisible': [('warning', '=', False)]}">-->
+<!--                            There are fields that have not been filled in.-->
+<!--                        </div>-->
                         <group>
                             <group>
                                 <field name="material_code"/>
@@ -24,7 +24,7 @@
                                 <field name="width_A"/>
                                 <field name="pitch"/>
                                 <field name="number_of_colors"/>
-                                <field name="warning" invisible="0"/>
+<!--                                <field name="warning" invisible="0"/>-->
                             </group>
                         </group>
                     </page>
