@@ -4,6 +4,7 @@ from odoo import _, api, fields, models
 from datetime import datetime
 from odoo.exceptions import ValidationError
 
+
 class kki_forklift_check_history(models.Model):
         _name = 'kki_forklift.history'
         _description = 'kki_forklift.history'
@@ -50,7 +51,7 @@ class kki_forklift_check_history(models.Model):
             '【冷却水・オイル・バッテリー液】規定量か。油や水が落ちていないか',
             default="one")
         remarks_1= fields.Char("remarks")
-        alert_mes = fields.Boolean(string="Warning!!", compute='create', store=True, Tracking=True)
+        alert_mes = fields.Boolean(string="Warning!!", store=True, Tracking=True)
 
         # @api.model
         # def create(self, values):
@@ -59,6 +60,7 @@ class kki_forklift_check_history(models.Model):
         #     print(res)
         #     return res
 
+        # 未実施項目があればalert_mesをTrueにする
         @api.model
         def create(self, values):
             for i in values.values():
@@ -86,33 +88,9 @@ class kki_forklift_check_history(models.Model):
 
         #　未実施項目があればアラートを出す
         @api.constrains('alert_mes')
-        def onchange_partner_id_warning(self):
-            print("1")
+        def constrains_no_check_warning(self):
             if self.alert_mes:
-                print("2")
                 raise ValidationError(message="未実施項目があります。確認してください。")
-
-
-        # @api.model
-        # def save(self, values):
-        #     alert = False
-        #     print(values)
-        #     for i in self._values.values():
-        #         print(i)
-        #         if i == 'one':
-        #             # values['alert_mes'] = 1
-        #             alert = True
-        #     else:
-        #         self.alert_mes = True
-        #
-        #     if alert:
-        #         values['alert_mes'] = True
-        #         print("check")
-        #         return
-        #     else:
-        #         values['alert_mes'] = False
-        #         return super(kki_forklift_check_history, self).save(values)
-
 
 
 

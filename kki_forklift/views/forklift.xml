@@ -6,10 +6,8 @@
             <field name="model">kki_forklift.lift</field>
             <field name="arch" type="xml">
                 <tree>
-<!--                    <field name="next_date"/>-->
                     <field name="name"/>
                     <field name="owner_id"/>
-                    <field name="next_date"/>
                 </tree>
             </field>
         </record>
@@ -51,9 +49,12 @@
             <field name="name">kki_forklift form</field>
             <field name="model">kki_forklift.lift</field>
             <field name="arch" type="xml">
-                <form>
+                <form edit="false">
+                    <field name="active" invisible="1"/>
                     <header>
                         <button name="create_check" string="Create Check" type="object" class="btn-primary"/>
+                        <button id="button_confirm" name="archive_button" string="Archive" type="object" class="btn-primary"
+                                confirm="アーカイブしますか？"/>
                     </header>
                     <sheet>
 <!--                        <div class="oe_button_box" name="button_box">-->
@@ -70,6 +71,7 @@
                                 <field name="name"/>
                                 <field name="vendor"/>
                                 <field name="launch_day"/>
+                                <field name="annual_inspection"/>
                                 <field name="note"/>
                                 <field name="size"/>
                                 <field name="price"/>
@@ -110,6 +112,17 @@
             <field name="view_mode">kanban,tree,form</field>
         </record>
 
+        <record id="hr_plan_view_search" model="ir.ui.view">
+            <field name="name">kki_forklift.lift.search</field>
+            <field name="model">kki_forklift.lift</field>
+            <field name="arch" type="xml">
+                <search string="Plan">
+                    <field name="name"/>
+                    <separator/>
+                    <filter string="Archived" name="inactive" domain="[('active', '=', False)]"/>
+                </search>
+            </field>
+        </record>
 
         <!-- server action to the one above -->
         <!--
