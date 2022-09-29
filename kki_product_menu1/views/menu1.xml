@@ -1,0 +1,17 @@
+<odoo>
+    <data>
+        <record model="ir.actions.act_window" id="menu1_action_window">
+            <field name="name">kki_product_menu1 window</field>
+            <field name="res_model">kki_product_menu1.menu1</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem name="menu1" id="kki_product_menu1.menu1_list" parent="stock.menu_stock_inventory_control"
+                  action="menu1_action_window"/>
+    </data>
+</odoo>
+
+
+<!--stock.menu_product_variant_config_stock-->
+<!--stock.product_product_menu-->
+<!--stock.menu_stock_inventory_control-->
