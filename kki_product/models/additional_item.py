@@ -41,9 +41,12 @@ class kki_product_additional_item(models.Model):
         ('2', '頭'),
         ('3', 'なし'),
     ], default='',
-        string="出し方向", )
+        string="出し方向", required=True)
+
     # 厚さ
-    thickness = fields.Integer("厚さ")
+    # thickness = fields.Integer("厚さ", default=666)
+    thickness = fields.Char("厚さ", default='', required=True)
+
     # 巾A
     # width_A = fields.Integer("巾A", default=666)
     width_A = fields.Char("巾A", default='', required=True)
@@ -64,20 +67,7 @@ class kki_product_additional_item(models.Model):
     stock_number = fields.Text("品番", default='', required=True)
 
 
-    @api.model
-    def create(self, values):
-        for i in values.values():
-            if i == '0':
-                values['warning'] = True
-                break
 
 
-    @api.constrains(self)
-    def value_pagination(self):
-        for rec in self:
-            print("あああ")
-            print(rec)
-            if rec.pagination == 0:
-                rec.warning = True
 
 
