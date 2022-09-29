@@ -6,7 +6,6 @@ from odoo.exceptions import ValidationError
 
 
 class kki_product_additional_item(models.Model):
-
     _inherit = "product.template"
 
     # """ 販売可購買可の隣に入れる項目 """
