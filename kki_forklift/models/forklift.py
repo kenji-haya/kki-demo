@@ -2,6 +2,8 @@
 
 from odoo import models, fields, api
 from datetime import datetime, timedelta
+from odoo.exceptions import AccessError, UserError
+from dateutil.relativedelta import relativedelta
 
 
 class kki_forklift(models.Model):
@@ -25,6 +27,8 @@ class kki_forklift(models.Model):
     owner_id = fields.Many2one("kki_forklift.history", string="owner_id")
     last_check_date = fields.Date('last_check_date')
     next_date = fields.Date('next_date', compute="_next_date")
+    annual_inspection= fields.Date('annual_inspection', compute="_next_inspection")
+    active = fields.Boolean(default=True)
 
     def _compute_check_history_count(self):
         for rec in self:
@@ -46,6 +50,24 @@ class kki_forklift(models.Model):
             }
         }
 
+    def archived_button(self):
+        self.write({'active': False})
+
+    def archive_button(self):
+        self.write({"active": False})
+        # action = {
+        #     'type': 'ir.actions.act_window',
+        #     'name': "lift.kanban",
+        #     'res_model': 'kki_forklift.lift',
+        #     'view_mode': 'kanban',  # list
+        # }
+
+        action = {'type': 'ir.actions.act_url',
+                  'target': 'self',
+                  'url': '/web#model=kki_forklift.lift&view_type=kanban'
+                  }
+        return action
+
     def action_view_check(self):
         return {
             'type': 'ir.actions.act_window',
@@ -63,17 +85,18 @@ class kki_forklift(models.Model):
     @api.depends('last_check_date')
     def _next_date(self):
         # 日程がない場合の処理をここで判定させる
-        # next_date = float(self.last_check_date)
         for rec in self:
-            # rec.next_date=[]
             if rec.last_check_date:
-                print("次回チェック日あり")
-                print(rec.last_check_date)
-                # self.next_date = self.last_check_date + timedelta(days=30)
                 rec.next_date = rec.last_check_date + timedelta(days=30)
             else:
-                print("日付なし")
                 rec.next_date =""
 
-
+    @api.depends('launch_day')
+    def _next_inspection(self):
+        # 日程がない場合の処理をここで判定させる
+        for rec in self:
+            if rec.launch_day:
+                rec.annual_inspection = rec.launch_day + timedelta(days=365)
+            else:
+                rec.annual_inspection =""
 
