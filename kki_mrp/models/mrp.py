@@ -7,7 +7,8 @@ class kki_mrp(models.Model):
     _inherit = "mrp.production"
     # _name = 'kki_mrp.kki_mrp'
     # _description = 'kki_mrp.kki_mrp'
-    order_date = fields.Datetime("納品日", required=True)
+    # order_date = fields.Datetime("納品日", required=True)
+    create_date = fields.Datetime("納品日", required=True)
 
 #     name = fields.Char()
 #     value = fields.Integer()
