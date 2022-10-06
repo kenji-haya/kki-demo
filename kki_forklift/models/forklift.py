@@ -3,6 +3,7 @@
 from odoo import models, fields, api
 from datetime import datetime, timedelta
 from odoo.exceptions import AccessError, UserError
+from dateutil.relativedelta import relativedelta
 
 
 class kki_forklift(models.Model):
@@ -49,34 +50,11 @@ class kki_forklift(models.Model):
             }
         }
 
-    # def delete_form(self):
-    #     return {
-    #         'type': 'ir.actions.act_window',
-    #         'res_model': 'kki_forklift.history',
-    #         'view_type': 'form',
-    #         'view_mode': 'form',
-    #         'target': 'current',
-    #         'context': {
-    #             # 'default_id': self.id,
-    #             # 'default_check_date': datetime.today(),
-    #             'default_lift_id': self.id,
-    #             'default_owner_id': self.env.user.id,
-    #         }
-    #     }
-    #
-
-    # def delete_form(self):
-    #     print(self.mapped('name'))
-    #     # if self.name in self.mapped('name'):
-    #     #     raise UserError(("You cannot delete an unbuild order if the state is 'Done'."))
-    #     super(kki_forklift, self).unlink()
-    #     print(self.env)
-    #     action = self.env["kki_forklift.view_lift_kanban"]._for_xml_id("lift.kanban")
-    #     return action
+    def archived_button(self):
+        self.write({'active': False})
 
     def archive_button(self):
-        self.write({"active":False})
-        print(self.id)
+        self.write({"active": False})
         # action = {
         #     'type': 'ir.actions.act_window',
         #     'name': "lift.kanban",
@@ -122,5 +100,3 @@ class kki_forklift(models.Model):
             else:
                 rec.annual_inspection =""
 
-    # def unlink(self):
-    #     raise UserError("消して大丈夫ですか？")

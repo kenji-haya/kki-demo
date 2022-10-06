@@ -8,7 +8,6 @@
                 <tree>
                     <field name="name"/>
                     <field name="owner_id"/>
-<!--                    <field name="next_date"/>-->
                 </tree>
             </field>
         </record>
@@ -120,12 +119,11 @@
                 <search string="Plan">
                     <field name="name"/>
                     <separator/>
-                    <filter string="Archive" name="inactive" domain="[('active', '=', False)]"/>
-                    <filter string="Active" name="inactive" domain="[('active', '=', True)]"/>
+                    <filter string="Archived" name="inactive" domain="[('active', '=', False)]"/>
                 </search>
             </field>
         </record>
-        
+
         <!-- server action to the one above -->
         <!--
             <record model="ir.actions.server" id="kki_forklift.action_server">
