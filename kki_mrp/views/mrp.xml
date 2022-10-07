@@ -7,11 +7,8 @@
             <field name="model">mrp.production</field>
             <field name="inherit_id" ref="mrp.mrp_production_form_view"/>
             <field name="arch" type="xml">
-                <xpath expr="//field[@name='date_planned_start']" position="after">
-                    <gloup>
-                        <label for="create_date" strimg="納品日"/>
-                        <field name="create_date" string="create_date" attrs="{'invisible':False}"/>
-                    </gloup>
+                <xpath expr="//field[@name='user_id']" position="before">
+                    <field name="create_date" string="納品日" attrs="{'invisible':False}"/>
                 </xpath>
             </field>
         </record>
