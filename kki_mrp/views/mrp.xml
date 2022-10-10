@@ -1,0 +1,59 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="kki_mrp.form">
+            <field name="name">kki_mrp form</field>
+            <field name="model">mrp.production</field>
+            <field name="inherit_id" ref="mrp.mrp_production_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='user_id']" position="before">
+                    <field name="create_date" string="納品日" attrs="{'invisible':False}"/>
+                </xpath>
+            </field>
+        </record>
+
+
+    <!-- actions opening views on models -->
+<!--
+    <record model="ir.actions.act_window" id="kki_mrp.action_window">
+      <field name="name">kki_mrp window</field>
+      <field name="res_model">kki_mrp.kki_mrp</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+-->
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="kki_mrp.action_server">
+      <field name="name">kki_mrp server</field>
+      <field name="model_id" ref="model_kki_mrp_kki_mrp"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+<!--
+    <menuitem name="kki_mrp" id="kki_mrp.menu_root"/>
+-->
+    <!-- menu categories -->
+<!--
+    <menuitem name="Menu 1" id="kki_mrp.menu_1" parent="kki_mrp.menu_root"/>
+    <menuitem name="Menu 2" id="kki_mrp.menu_2" parent="kki_mrp.menu_root"/>
+-->
+    <!-- actions -->
+<!--
+    <menuitem name="List" id="kki_mrp.menu_1_list" parent="kki_mrp.menu_1"
+              action="kki_mrp.action_window"/>
+    <menuitem name="Server to list" id="kki_mrp" parent="kki_mrp.menu_2"
+              action="kki_mrp.action_server"/>
+-->
+  </data>
+</odoo>
