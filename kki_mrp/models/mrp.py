@@ -29,6 +29,7 @@ class kki_mrp(models.Model):
             product = self.env['product.product'].search([('default_code', '=', rec.default_code)])
             rec.product_id = product
         print(rec.product_id)
+
 #     name = fields.Char()
 #     value = fields.Integer()
 #     value2 = fields.Float(compute="_value_pc", store=True)
