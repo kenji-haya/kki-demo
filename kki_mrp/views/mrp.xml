@@ -19,6 +19,7 @@
             </field>
         </record>
 
+
         <record model="ir.ui.view" id="kki_mrp.list">
             <field name="name">kki_mrp list</field>
             <field name="model">mrp.production</field>

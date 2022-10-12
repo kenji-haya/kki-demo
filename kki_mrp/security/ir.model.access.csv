@@ -1,2 +1,3 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_kki_mrp_kki_mrp,kki_mrp.kki_mrp,model_kki_mrp_kki_mrp,base.group_user,1,1,1,1
+access_internal_ref_internal_ref,internal_ref.internal_ref,model_internal_ref_internal_ref,base.group_user,1,1,1,1
