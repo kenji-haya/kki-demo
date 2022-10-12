@@ -12,12 +12,12 @@
 <!--                    <field name="product"/>-->
                 </xpath>
                 <xpath expr="//field[@name='user_id']" position="before">
-                <!--                    <label for="order_date" string="納品日"/>-->
-                    <field name="create_date" string="納品日" attrs="{'invisible':False}"/>
-                <!--                    <field name="order_date" string="納品日" attrs="{'readonly': [('state', 'in', ['done', 'cancel'])]}" decoration-warning="state not in ('done', 'cancel') and order_date &lt; now" decoration-danger="state not in ('done', 'cancel') and order_date &lt; current_date" decoration-bf="state not in ('done', 'cancel') and (order_date &lt; current_date or order_date &lt; now)" on_change="1" modifiers="{'readonly':[['state','in',['done','cancel']]],'required':true}" id="order_date"/>-->
-                </xpath>
-            </field>
-        </record>
+        <!--                    <label for="order_date" string="納品日"/>-->
+            <field name="create_date" string="納品日" attrs="{'invisible':False}"/>
+        <!--                    <field name="order_date" string="納品日" attrs="{'readonly': [('state', 'in', ['done', 'cancel'])]}" decoration-warning="state not in ('done', 'cancel') and order_date &lt; now" decoration-danger="state not in ('done', 'cancel') and order_date &lt; current_date" decoration-bf="state not in ('done', 'cancel') and (order_date &lt; current_date or order_date &lt; now)" on_change="1" modifiers="{'readonly':[['state','in',['done','cancel']]],'required':true}" id="order_date"/>-->
+        </xpath>
+    </field>
+</record>
 
     <record model="ir.ui.view" id="kki_mrp.list">
         <field name="name">kki_mrp list</field>
@@ -32,51 +32,6 @@
                 <field name="default_code" readonly="1" optional="show"/>
             </xpath>
 
-<<<<<<< HEAD
-        <!-- actions opening views on models -->
-        <!--
-            <record model="ir.actions.act_window" id="kki_mrp.action_window">
-              <field name="name">kki_mrp window</field>
-              <field name="res_model">kki_mrp.kki_mrp</field>
-              <field name="view_mode">tree,form</field>
-            </record>
-        -->
-
-        <!-- server action to the one above -->
-        <!--
-            <record model="ir.actions.server" id="kki_mrp.action_server">
-              <field name="name">kki_mrp server</field>
-              <field name="model_id" ref="model_kki_mrp_kki_mrp"/>
-              <field name="state">code</field>
-              <field name="code">
-                action = {
-                  "type": "ir.actions.act_window",
-                  "view_mode": "tree,form",
-                  "res_model": model._name,
-                }
-              </field>
-            </record>
-        -->
-
-        <!-- Top menu item -->
-        <!--
-            <menuitem name="kki_mrp" id="kki_mrp.menu_root"/>
-        -->
-        <!-- menu categories -->
-        <!--
-            <menuitem name="Menu 1" id="kki_mrp.menu_1" parent="kki_mrp.menu_root"/>
-            <menuitem name="Menu 2" id="kki_mrp.menu_2" parent="kki_mrp.menu_root"/>
-        -->
-        <!-- actions -->
-        <!--
-            <menuitem name="List" id="kki_mrp.menu_1_list" parent="kki_mrp.menu_1"
-                      action="kki_mrp.action_window"/>
-            <menuitem name="Server to list" id="kki_mrp" parent="kki_mrp.menu_2"
-                      action="kki_mrp.action_server"/>
-        -->
-    </data>
-</odoo>
-=======
             <!--                <xpath expr="//field[@name='name']" position="after">-->
             <!--                    <field name="stock_number" optional="hide" on_change="1" can_create="true" can_write="true"-->
             <!--                           modifiers="{'required':true}"/>-->
@@ -127,4 +82,12 @@
     -->
 </data>
         </odoo>
->>>>>>> hayashi
+
+
+
+
+
+
+
+
+
