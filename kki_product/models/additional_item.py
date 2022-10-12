@@ -61,9 +61,9 @@ class kki_product_additional_item(models.Model):
     """ 販売タブに入れる項目 """
     # 得意先※本当はMany2one
 
-    customer_code = fields.Many2one("res.partner", string="得意先", required= True)
+    customer_code = fields.Many2one("res.partner", string="得意先",)
     # 品番
-    stock_number = fields.Text("品番", default='', required=True)
+    stock_number = fields.Text("品番", default='',)
 
 
 
