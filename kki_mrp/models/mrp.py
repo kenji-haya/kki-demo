@@ -20,15 +20,21 @@ class kki_mrp(models.Model):
     # 商品を選んだら内部参照を表示する
     @api.onchange("product_id")
     def _onchange_default_code(self):
-        self.default_code = self.product_id.default_code
+        if self.default_code:
+            self.default_code = self.product_id.default_code
 
     # デフォルトコードが更新されたら商品を検索してプロダクトに代入する
     @api.onchange("default_code")
     def _cumpute_product_id(self):
         for rec in self:
-            product = self.env['product.product'].search([('default_code', '=', rec.default_code)])
-            rec.product_id = product
-        print(rec.product_id)
+            if rec.default_code:
+                product = self.env['product.product'].search([('default_code', '=', rec.default_code)])
+                if product:
+                    print(rec.product_id)
+                    rec.product_id = product
+                else:
+                    rec.product_id = False
+
 #     name = fields.Char()
 #     value = fields.Integer()
 #     value2 = fields.Float(compute="_value_pc", store=True)
