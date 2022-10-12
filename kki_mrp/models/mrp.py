@@ -13,16 +13,22 @@ class kki_mrp(models.Model):
     default_code = fields.Char(
         string='default_code', help="default_code from product record")
 
+    product = fields.Char(
+        string='product', compute="_cumpute_product_id"
+    )
+
     # 商品を選んだら内部参照を表示する
     @api.onchange("product_id")
     def _onchange_default_code(self):
-        print(self.product_id)
         self.default_code = self.product_id.default_code
 
-    # @api.onchange("default_code")
-    # def _onchange_product_id(self):
-    #     print(self.product_id)
-    #     self.product_id = self.product_id.name
+    # デフォルトコードが更新されたら商品を検索してプロダクトに代入する
+    @api.onchange("default_code")
+    def _cumpute_product_id(self):
+        for rec in self:
+            product = self.env['product.product'].search([('default_code', '=', rec.default_code)])
+            rec.product_id = product
+        print(rec.product_id)
 #     name = fields.Char()
 #     value = fields.Integer()
 #     value2 = fields.Float(compute="_value_pc", store=True)
