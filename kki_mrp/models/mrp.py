@@ -40,5 +40,3 @@ class kki_mrp(models.Model):
 #         for record in self:
 #             record.value2 = float(record.value) / 100
 
-
-
