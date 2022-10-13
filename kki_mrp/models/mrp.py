@@ -10,10 +10,10 @@ class kki_mrp(models.Model):
     # order_date = fields.Datetime("納品日", required=True)
     create_date = fields.Datetime("納品日", required=True)
     default_code = fields.Char(
-        string='default_code', help="default_code from product record")
-
-    product = fields.Char(
-        string='product', compute="_cumpute_product_id"
+        string='default_code', help="default_code from product record"
+    )
+    menu_1 = fields.Char(
+        string="Factory", help="menu_1 from product record"
     )
 
     # 商品を選んだら内部参照を表示する
@@ -21,6 +21,7 @@ class kki_mrp(models.Model):
     def _onchange_default_code(self):
         if self.default_code:
             self.default_code = self.product_id.default_code
+        self.menu_1 = self.product_id.menu_1.name
 
     # デフォルトコードが更新されたら商品を検索してプロダクトに代入する
     @api.onchange("default_code")
@@ -28,11 +29,11 @@ class kki_mrp(models.Model):
         for rec in self:
             if rec.default_code:
                 product = self.env['product.product'].search([('default_code', '=', rec.default_code)])
+                print(product)
                 if product:
-                    print(rec.product_id)
                     rec.product_id = product
-                else:
-                    rec.product_id = False
+            else:
+                rec.product_id = ""
 
 #     name = fields.Char()
 #     value = fields.Integer()
