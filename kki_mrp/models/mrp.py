@@ -9,7 +9,6 @@ class kki_mrp(models.Model):
     # _description = 'kki_mrp.kki_mrp'
     # order_date = fields.Datetime("納品日", required=True)
     create_date = fields.Datetime("納品日", required=True)
-
     default_code = fields.Char(
         string='default_code', help="default_code from product record")
 
