@@ -28,9 +28,9 @@ class kki_mrp(models.Model):
         for rec in self:
             if rec.default_code:
                 product = self.env['product.product'].search([('default_code', '=', rec.default_code)])
-                print(product)
+                print(f'product:{product[0]}')
                 if product:
-                    rec.product_id = product
+                    rec.product_id = product[0]
             else:
                 rec.product_id = ""
 

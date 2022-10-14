@@ -24,7 +24,7 @@ class kki_product_additional_item(models.Model):
 
     # """ 仕様タブに入れる項目（仕様タブは一般情報タブの右隣に新規で作成する） """
     # 材料コード※本当はMany2one
-    material_code = fields.Char("材料コード", default='', required=True)
+    material_code = fields.Many2one("product.material", stirng='Material Code', default='', required=True)
 
     # 内容量
     # content_by_volume = fields.Integer("内容量", default=666)
