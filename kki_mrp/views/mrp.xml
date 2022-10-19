@@ -61,6 +61,21 @@
             </field>
         </record>
 
+    <record model="ir.ui.view" id="kki_mrp.list">
+        <field name="name">kki_mrp list</field>
+        <field name="model">mrp.production</field>
+        <field name="inherit_id" ref="mrp.mrp_production_tree_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='origin']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="origin"/>
+                <field name="default_code" readonly="1" optional="show"/>
+            </xpath>
+            <xpath expr="//field[@name='date_planned_start']" position="after">
+                <field name="kcreate_date" readonly="1" optional="show" widget="remaining_days" on_change="1" modifiers="{'readonly':true,'required':true}"/>
+            </xpath>
 
         <!-- actions opening views on models -->
         <!--
