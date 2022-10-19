@@ -16,8 +16,13 @@ class kki_mrp(models.Model):
         string="Factory", help="menu_1 from product record"
     )
 
+    # arrival_day = fields.Char(
+    #     string='arrival_day', help="date_deadline from stock_move record",compute='_arrival_day')
+    #
     arrival_day = fields.Char(
         string='arrival_day', help="date_deadline from stock_move record")
+
+
 
     # 商品を選んだら内部参照を表示する
     @api.onchange("product_id")
@@ -42,15 +47,14 @@ class kki_mrp(models.Model):
 
     # デフォルトコードが更新されたら商品を検索してプロダクトに代入する
     # def _arrival_day(self):
-    #     print(self)
-        # for rec in self:
-        #     if rec.arrival_day:
-        #         date = self.env['stock.move'].search([('date_deadline', '=', rec.date_deadline)])
-        #         print(date)
-        #         if date:
-        #             rec.product_id = date
-        #     else:
-        #         rec.product_id = ""
+    #     for rec in self:
+    #         if rec.arrival_day:
+    #             date = self.env['stock.move'].search([('date_deadline', '=', rec.date_deadline)])
+    #             print(date)
+    #             if date:
+    #                 rec.product_id = date
+    #         else:
+    #             rec.product_id = ""
 
 
 
