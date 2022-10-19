@@ -40,7 +40,7 @@ class kki_product_additional_item(models.Model):
         ('2', '頭'),
         ('3', 'なし'),
     ], default='',
-        string="出し方向", required=True)
+        string="出し方向",)
 
     # 厚さ
     # thickness = fields.Integer("厚さ", default=666)
