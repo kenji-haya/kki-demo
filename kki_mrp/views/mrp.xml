@@ -44,10 +44,6 @@
                     <field name="date_planned_start" readonly="1" optional="show" string="手配日"/>
                 </xpath>
 
-                <xpath expr="//field[@name='product_qty']" position="after">
-                    <field name="arrival_day" readonly="1" optional="show"/>
-                </xpath>
-
                 <xpath expr="//field[@name='arrival_day']" position="after">
                     <field name="kcreate_date" readonly="1" optional="show" string="納期日"/>
                 </xpath>
