@@ -15,7 +15,7 @@
                 </xpath>
                 <xpath expr="//field[@name='user_id']" position="before">
                     <!--                    <label for="order_date" string="納品日"/>-->
-                    <field name="create_date" string="納品日" attrs="{'invisible':False}"/>
+                    <field name="kcreate_date" string="納品日" attrs="{'invisible':False}"/>
                     <!--                    <field name="order_date" string="納品日" attrs="{'readonly': [('state', 'in', ['done', 'cancel'])]}" decoration-warning="state not in ('done', 'cancel') and order_date &lt; now" decoration-danger="state not in ('done', 'cancel') and order_date &lt; current_date" decoration-bf="state not in ('done', 'cancel') and (order_date &lt; current_date or order_date &lt; now)" on_change="1" modifiers="{'readonly':[['state','in',['done','cancel']]],'required':true}" id="order_date"/>-->
                 </xpath>
             </field>
