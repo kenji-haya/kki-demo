@@ -51,7 +51,7 @@ class kki_forklift_check_history(models.Model):
             '【冷却水・オイル・バッテリー液】規定量か。油や水が落ちていないか',
             default="one")
         remarks_1= fields.Char("remarks")
-        alert_mes = fields.Boolean(string="Warning!!", store=True, Tracking=True)
+        alert_mes = fields.Boolean(string="Warning!!", store=True, tracking=True)
 
         # @api.model
         # def create(self, values):
