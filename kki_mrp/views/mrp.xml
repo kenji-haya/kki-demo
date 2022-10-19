@@ -10,6 +10,7 @@
                 <xpath expr="//field[@name='product_id']" position="before">
                     <field name="default_code" default_focus="1"/>
                     <field name="menu_1" readonly="1"/>
+                    <field name="arrival_day" readonly="1"/>
                     <!--                    <field name="product"/>-->
                 </xpath>
                 <xpath expr="//field[@name='date_planned_start']" position="after">
@@ -36,6 +37,22 @@
                     <field name="menu_1" readonly="1" optional="show"/>
                 </xpath>
 
+                <xpath expr="//field[@name='date_planned_start']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+
+                <xpath expr="//field[@name='product_id']" position="after">
+                    <field name="date_planned_start" readonly="1" optional="show" string="手配日"/>
+                </xpath>
+
+                <xpath expr="//field[@name='product_qty']" position="after">
+                    <field name="arrival_day" readonly="1" optional="show"/>
+                </xpath>
+
+                <xpath expr="//field[@name='arrival_day']" position="after">
+                    <field name="kcreate_date" readonly="1" optional="show" string="納期日"/>
+                </xpath>
+
                 <!--                <xpath expr="//field[@name='name']" position="after">-->
                 <!--                    <field name="stock_number" optional="hide" on_change="1" can_create="true" can_write="true"-->
                 <!--                           modifiers="{'required':true}"/>-->
@@ -43,6 +60,8 @@
                 <!--                </xpath>-->
             </field>
         </record>
+
+
         <!-- actions opening views on models -->
         <!--
             <record model="ir.actions.act_window" id="kki_mrp.action_window">
