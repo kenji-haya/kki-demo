@@ -48,3 +48,7 @@ kki_product_brand/__pycache__/
 kki_product_brand/controllers/__pycache__/
 
 *.pyc
+
+kki_mrp/models/mrp.py
+
+kki_mrp/views/mrp.xml
