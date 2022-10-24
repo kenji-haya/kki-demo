@@ -18,56 +18,71 @@
                 <!--                </xpath>-->
             </field>
         </record>
+    <record model="ir.ui.view" id="kki_mrp.list">
+        <field name="name">kki_mrp list</field>
+        <field name="model">mrp.production</field>
+        <field name="inherit_id" ref="mrp.mrp_production_tree_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='origin']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="origin"/>
+                <field name="default_code" readonly="1" optional="show"/>
+            </xpath>
+            <xpath expr="//field[@name='date_planned_start']" position="before">
+                <field name="kcreate_date" readonly="1" optional="show" widget="" on_change="1" modifiers="{'readonly':true,'required':true}"/>
+            </xpath>
+            <xpath expr="//field[@name='date_planned_start']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='kcreate_date']" position="after">
+                <field name="date_planned_start" readonly="1" optional="show" widget="" on_change="1" modifiers="{'readonly':true,'required':true}"/>
+            </xpath>
+            <xpath expr="//field[@name='date_deadline']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='date_planned_start']" position="after">
+                <field name="date_deadline" readonly="1" optional="show" widget="" on_change="1" modifiers="{'readonly':true,'required':true}"/>
+            </xpath>
+<!--            <field name="model">inherited.model</field>-->
+<!--            <field name="inherit_id" ref="inherited.kki_mrp list"/>-->
+<!--                <field name="arch" type="xml">-->
+<!--                    &lt;!&ndash; find field description and add the field-->
+<!--                        new_field after it &ndash;&gt;-->
+<!--                    <xpath expr="//field[@name='kcreate_date']" position="after">-->
+<!--                        <field name="date_planned_start" widget=""/>-->
+<!--                    </xpath>-->
+<!--                </field>-->
 
-        <record model="ir.ui.view" id="kki_mrp.list">
-            <field name="name">kki_mrp list</field>
-            <field name="model">mrp.production</field>
-            <field name="inherit_id" ref="mrp.mrp_production_tree_view"/>
-            <field name="arch" type="xml">
-                <xpath expr="//field[@name='origin']" position="attributes">
-                    <attribute name="invisible">1</attribute>
-                </xpath>
-                <xpath expr="//field[@name='name']" position="after">
-                    <field name="origin"/>
-                    <field name="default_code" readonly="1" optional="show"/>
-                </xpath>
-                <xpath expr="//field[@name='date_planned_start']" position="before">
-                    <field name="kcreate_date" readonly="1" optional="show" widget="" on_change="1"
-                           modifiers="{'readonly':true,'required':true}"/>
-                </xpath>
-            </field>
+            <!--                <xpath expr="//field[@name='name']" position="after">-->
+            <!--                    <field name="stock_number" optional="hide" on_change="1" can_create="true" can_write="true"-->
+            <!--                           modifiers="{'required':true}"/>-->
+            <!--                    <field name="marge_name"/>-->
+            <!--                </xpath>-->
+        </field>
+    <!-- actions opening views on models -->
+    <!--
+        <record model="ir.actions.act_window" id="kki_mrp.action_window">
+          <field name="name">kki_mrp window</field>
+          <field name="res_model">kki_mrp.kki_mrp</field>
+          <field name="view_mode">tree,form</field>
         </record>
 
-        <record model="ir.ui.view" id="kki_mrp.list">
-            <field name="name">kki_mrp list</field>
-            <field name="model">mrp.production</field>
-            <field name="inherit_id" ref="mrp.mrp_production_tree_view"/>
-            <field name="arch" type="xml">
-                <xpath expr="//field[@name='origin']" position="attributes">
-                    <attribute name="invisible">1</attribute>
-                </xpath>
-
-                <xpath expr="//field[@name='name']" position="after">
-                    <field name="origin"/>
-                    <field name="default_code" readonly="1" optional="show"/>
-                    <field name="menu_1" readonly="1" optional="show"/>
-                </xpath>
-
-                <xpath expr="//field[@name='product_qty']" position="after">
-                    <field name="arrival_day" readonly="1" optional="show"/>
-                </xpath>
-
-                <xpath expr="//field[@name='arrival_day']" position="after">
-                    <field name="kcreate_date" readonly="1" optional="show" string="納期日"/>
-
-                </xpath>
-
-                <!--                <xpath expr="//field[@name='name']" position="after">-->
-                <!--                    <field name="stock_number" optional="hide" on_change="1" can_create="true" can_write="true"-->
-                <!--                           modifiers="{'required':true}"/>-->
-                <!--                    <field name="marge_name"/>-->
-                <!--                </xpath>-->
-            </field>
+    <!-- server action to the one above -->
+    <!--
+        <record model="ir.actions.server" id="kki_mrp.action_server">
+          <field name="name">kki_mrp server</field>
+          <field name="model_id" ref="model_kki_mrp_kki_mrp"/>
+          <field name="state">code</field>
+          <field name="code">
+            action = {
+              "type": "ir.actions.act_window",
+              "view_mode": "tree,form",
+              "res_model": model._name,
+            }
+          </field>
+          -->
         </record>
 
         <record model="ir.ui.view" id="kki_mrp.list">
