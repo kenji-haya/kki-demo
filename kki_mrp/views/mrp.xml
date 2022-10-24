@@ -33,6 +33,27 @@
             <xpath expr="//field[@name='date_planned_start']" position="before">
                 <field name="kcreate_date" readonly="1" optional="show" widget="" on_change="1" modifiers="{'readonly':true,'required':true}"/>
             </xpath>
+            <xpath expr="//field[@name='date_planned_start']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='kcreate_date']" position="after">
+                <field name="date_planned_start" readonly="1" optional="show" widget="" on_change="1" modifiers="{'readonly':true,'required':true}"/>
+            </xpath>
+            <xpath expr="//field[@name='date_deadline']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='date_planned_start']" position="after">
+                <field name="date_deadline" readonly="1" optional="show" widget="" on_change="1" modifiers="{'readonly':true,'required':true}"/>
+            </xpath>
+<!--            <field name="model">inherited.model</field>-->
+<!--            <field name="inherit_id" ref="inherited.kki_mrp list"/>-->
+<!--                <field name="arch" type="xml">-->
+<!--                    &lt;!&ndash; find field description and add the field-->
+<!--                        new_field after it &ndash;&gt;-->
+<!--                    <xpath expr="//field[@name='kcreate_date']" position="after">-->
+<!--                        <field name="date_planned_start" widget=""/>-->
+<!--                    </xpath>-->
+<!--                </field>-->
 
             <!--                <xpath expr="//field[@name='name']" position="after">-->
             <!--                    <field name="stock_number" optional="hide" on_change="1" can_create="true" can_write="true"-->
@@ -40,7 +61,6 @@
             <!--                    <field name="marge_name"/>-->
             <!--                </xpath>-->
         </field>
-    </record>
     <!-- actions opening views on models -->
     <!--
         <record model="ir.actions.act_window" id="kki_mrp.action_window">
@@ -63,8 +83,8 @@
               "res_model": model._name,
             }
           </field>
+          -->
         </record>
-    -->
 
     <!-- Top menu item -->
     <!--
