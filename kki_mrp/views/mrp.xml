@@ -13,26 +13,11 @@
                 <xpath expr="//label[@for='date_planned_start']" position="before">
                     <field name="kcreate_date" string="手配日" attrs="{'invisible':False}"/>
                 </xpath>
-<!--                <xpath expr="//field[@name='user_id']" position="before">-->
-<!--                    <field name="kcreate_date" string="手配日" attrs="{'invisible':False}"/>-->
-<!--                </xpath>-->
+                <!--                <xpath expr="//field[@name='user_id']" position="before">-->
+                <!--                    <field name="kcreate_date" string="手配日" attrs="{'invisible':False}"/>-->
+                <!--                </xpath>-->
             </field>
         </record>
-    <record model="ir.ui.view" id="kki_mrp.list">
-        <field name="name">kki_mrp list</field>
-        <field name="model">mrp.production</field>
-        <field name="inherit_id" ref="mrp.mrp_production_tree_view"/>
-        <field name="arch" type="xml">
-            <xpath expr="//field[@name='origin']" position="attributes">
-                <attribute name="invisible">1</attribute>
-            </xpath>
-            <xpath expr="//field[@name='name']" position="after">
-                <field name="origin"/>
-                <field name="default_code" readonly="1" optional="show"/>
-            </xpath>
-            <xpath expr="//field[@name='date_planned_start']" position="before">
-                <field name="kcreate_date" readonly="1" optional="show" widget="" on_change="1" modifiers="{'readonly':true,'required':true}"/>
-            </xpath>
 
         <record model="ir.ui.view" id="kki_mrp.list">
             <field name="name">kki_mrp list</field>
@@ -45,15 +30,27 @@
                 <xpath expr="//field[@name='name']" position="after">
                     <field name="origin"/>
                     <field name="default_code" readonly="1" optional="show"/>
-                    <field name="menu_1" readonly="1" optional="show"/>
                 </xpath>
+                <xpath expr="//field[@name='date_planned_start']" position="before">
+                    <field name="kcreate_date" readonly="1" optional="show" widget="" on_change="1"
+                           modifiers="{'readonly':true,'required':true}"/>
+                </xpath>
+            </field>
+        </record>
 
-                <xpath expr="//field[@name='date_planned_start']" position="attributes">
+        <record model="ir.ui.view" id="kki_mrp.list">
+            <field name="name">kki_mrp list</field>
+            <field name="model">mrp.production</field>
+            <field name="inherit_id" ref="mrp.mrp_production_tree_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='origin']" position="attributes">
                     <attribute name="invisible">1</attribute>
                 </xpath>
 
-                <xpath expr="//field[@name='product_id']" position="after">
-                    <field name="date_planned_start" readonly="1" optional="show" string="手配日"/>
+                <xpath expr="//field[@name='name']" position="after">
+                    <field name="origin"/>
+                    <field name="default_code" readonly="1" optional="show"/>
+                    <field name="menu_1" readonly="1" optional="show"/>
                 </xpath>
 
                 <xpath expr="//field[@name='product_qty']" position="after">
@@ -62,6 +59,7 @@
 
                 <xpath expr="//field[@name='arrival_day']" position="after">
                     <field name="kcreate_date" readonly="1" optional="show" string="納期日"/>
+
                 </xpath>
 
                 <!--                <xpath expr="//field[@name='name']" position="after">-->
@@ -84,9 +82,15 @@
                     <field name="origin"/>
                     <field name="default_code" readonly="1" optional="show"/>
                 </xpath>
+
+                <xpath expr="//field[@name='date_planned_start']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+
                 <xpath expr="//field[@name='date_planned_start']" position="after">
                     <field name="kcreate_date" readonly="1" optional="show" widget="remaining_days" on_change="1"
                            modifiers="{'readonly':true,'required':true}"/>
+                    <field name="date_planned_start" readonly="1" optional="show" string="入荷日"/>
                 </xpath>
 
                 <!-- actions opening views on models -->
