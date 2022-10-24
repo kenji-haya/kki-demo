@@ -9,17 +9,15 @@
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='product_id']" position="before">
                     <field name="default_code"/>
-<!--                    <field name="product"/>-->
                 </xpath>
-                <xpath expr="//field[@name='user_id']" position="before">
-                <!--                    <label for="order_date" string="納品日"/>-->
-                    <field name="kcreate_date" string="納品日" attrs="{'invisible':False}"/>
-                    <field name="date_deadline" string="期日" readonly="False" invisible="False" required="False" on_change="True"/>
-                <!--                    <field name="order_date" string="納品日" attrs="{'readonly': [('state', 'in', ['done', 'cancel'])]}" decoration-warning="state not in ('done', 'cancel') and order_date &lt; now" decoration-danger="state not in ('done', 'cancel') and order_date &lt; current_date" decoration-bf="state not in ('done', 'cancel') and (order_date &lt; current_date or order_date &lt; now)" on_change="1" modifiers="{'readonly':[['state','in',['done','cancel']]],'required':true}" id="order_date"/>-->
+                <xpath expr="//label[@for='date_planned_start']" position="before">
+                    <field name="kcreate_date" string="手配日" attrs="{'invisible':False}"/>
                 </xpath>
+<!--                <xpath expr="//field[@name='user_id']" position="before">-->
+<!--                    <field name="kcreate_date" string="手配日" attrs="{'invisible':False}"/>-->
+<!--                </xpath>-->
             </field>
         </record>
-
     <record model="ir.ui.view" id="kki_mrp.list">
         <field name="name">kki_mrp list</field>
         <field name="model">mrp.production</field>
@@ -32,8 +30,8 @@
                 <field name="origin"/>
                 <field name="default_code" readonly="1" optional="show"/>
             </xpath>
-            <xpath expr="//field[@name='date_planned_start']" position="after">
-                <field name="kcreate_date" readonly="1" optional="show" widget="remaining_days" on_change="1" modifiers="{'readonly':true,'required':true}"/>
+            <xpath expr="//field[@name='date_planned_start']" position="before">
+                <field name="kcreate_date" readonly="1" optional="show" widget="" on_change="1" modifiers="{'readonly':true,'required':true}"/>
             </xpath>
 
             <!--                <xpath expr="//field[@name='name']" position="after">-->
