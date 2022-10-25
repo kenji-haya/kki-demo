@@ -107,7 +107,7 @@
                 </xpath>
 
                 <xpath expr="//field[@name='date_planned_start']" position="after">
-                    <field name="kcreate_date" readonly="1" optional="show" widget="remaining_days" on_change="1"
+                    <field name="kcreate_date" readonly="1" optional="show" widget="" on_change="1"
                            modifiers="{'readonly':true,'required':true}"/>
                     <field name="date_planned_start" readonly="1" optional="show" string="入荷日"/>
                 </xpath>

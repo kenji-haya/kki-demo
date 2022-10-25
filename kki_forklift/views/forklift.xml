@@ -49,8 +49,8 @@
             <field name="name">kki_forklift form</field>
             <field name="model">kki_forklift.lift</field>
             <field name="arch" type="xml">
-                <form edit="false">
-                    <field name="active" invisible="1"/>
+                <form>
+<!--                    <field name="active" invisible="1"/>-->
                     <header>
                         <button name="create_check" string="Create Check" type="object" class="btn-primary"/>
                         <button id="button_confirm" name="archive_button" string="Archive" type="object" class="btn-primary"
