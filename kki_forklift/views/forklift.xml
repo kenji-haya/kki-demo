@@ -87,8 +87,9 @@
                             <page string="check history">
                                 <field name="check_history_ids">
                                     <tree>
-                                        <field name="name"/>
                                         <field name="check_date"/>
+<!--                                        フォーム修正履歴リストに備考を追加-->
+                                        <field name="remarks_1"/>
                                     </tree>
                                 </field>
                             </page>
