@@ -1,0 +1,63 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="kki_purchase.list">
+      <field name="name">kki_purchase list</field>
+      <field name="model">purchase.order</field>
+      <field name="inherit_id" ref="purchase.purchase_order_kpis_tree"/>
+      <field name="arch" type="xml">
+        <xpath expr="//field[@name='date_order']" position="attributes">
+          <attribute name="invisible">1</attribute>
+        </xpath>
+        <xpath expr="//field[@name='name']" position="after">
+                <field name="date_order" widget=""/>
+        </xpath>
+
+      </field>
+    </record>
+
+
+    <!-- actions opening views on models -->
+<!--
+    <record model="ir.actions.act_window" id="kki_purchase.action_window">
+      <field name="name">kki_purchase window</field>
+      <field name="res_model">kki_purchase.kki_purchase</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+-->
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="kki_purchase.action_server">
+      <field name="name">kki_purchase server</field>
+      <field name="model_id" ref="model_kki_purchase_kki_purchase"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+<!--
+    <menuitem name="kki_purchase" id="kki_purchase.menu_root"/>
+-->
+    <!-- menu categories -->
+<!--
+    <menuitem name="Menu 1" id="kki_purchase.menu_1" parent="kki_purchase.menu_root"/>
+    <menuitem name="Menu 2" id="kki_purchase.menu_2" parent="kki_purchase.menu_root"/>
+-->
+    <!-- actions -->
+<!--
+    <menuitem name="List" id="kki_purchase.menu_1_list" parent="kki_purchase.menu_1"
+              action="kki_purchase.action_window"/>
+    <menuitem name="Server to list" id="kki_purchase" parent="kki_purchase.menu_2"
+              action="kki_purchase.action_server"/>
+-->
+  </data>
+</odoo>
