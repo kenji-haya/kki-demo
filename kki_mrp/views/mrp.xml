@@ -11,7 +11,7 @@
                     <field name="default_code"/>
                 </xpath>
                 <xpath expr="//label[@for='date_planned_start']" position="before">
-                    <field name="kcreate_date" string="手配日" attrs="{'invisible':False}"/>
+                    <field name="kcreate_date" string="入力日" attrs="{'invisible':False}"/>
                 </xpath>
                 <!--                <xpath expr="//field[@name='user_id']" position="before">-->
                 <!--                    <field name="kcreate_date" string="手配日" attrs="{'invisible':False}"/>-->
