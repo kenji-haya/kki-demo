@@ -1,3 +1,3 @@
 # -*- coding: utf-8 -*-
 
-from . import m_report
+from . import seizou_m_report

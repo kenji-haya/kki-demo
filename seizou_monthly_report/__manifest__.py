@@ -1,16 +1,16 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "seizou_m_report",
+    'name': "seizou_monthly_report",
 
     'summary': """
-        Manufacturing Department Monthly Report Management Application""",
+        製造部月次報告アプリ""",
 
     'description': """
-        Used to record monthly reports and attach past weekly reports
+        Long description of module's purpose
     """,
 
-    'author': "KKI Corporation Karasawa",
-    'website': "https://www.v-kki.co.jp",
+    'author': "My Company",
+    'website': "http://www.yourcompany.com",
 
     # Categories can be used to filter modules in modules listing
     # Check https://github.com/odoo/odoo/blob/14.0/odoo/addons/base/data/ir_module_category_data.xml
@@ -19,13 +19,13 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base'],
+    'depends': ['base', 'hr'],
 
     # always loaded
     'data': [
         'security/ir.model.access.csv',
-        'views/seizou_m_report.xml',
-        'views/templates.xml',
+        'views/monthly_report.xml',
+        # 'views/templates.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

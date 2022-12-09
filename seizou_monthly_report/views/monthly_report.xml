@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="seizou_monthly_report.list">
+      <field name="name">seizou_monthly_report list</field>
+      <field name="model">seizou_monthly_report.monthly</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="record_num" string="レコード番号"/>
+          <field name="create_date" string="作成日時"/>
+          <field name="file_name" string="月報添付"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="seizou_monthly_report_form">
+       <field name="name">seizou_monthly_report form</field>
+       <field name="model">seizou_monthly_report.monthly</field>
+       <field name="arch" type="xml">
+           <form>
+               <sheet>
+                   <group>
+                       <group>
+                           <field name="record_num" string="レコード番号"/>
+                            <field name="create_date" string="作成日時"/>
+                   　        <field name="member" string="作成者"/>
+                   　        <field name="position" string="拠点"/>
+                       </group>
+                       <group>
+                           <field name="monthly" string="月度"/>
+                           <field name="comment" string="コメント"/>
+                           <field name="file_data" filename="file_name" string="月報添付"/>
+                           <field name="file_name" invisible="1"/>
+                       </group>
+                   </group>
+                   <notebook>
+                       <page string="関連レコード一覧">
+                           <group>
+                               <field name="record_data" filename="record_name" string="関連1"/>
+                               <field name="record_name" invisible="1"/>
+                           </group>
+                       </page>
+                   </notebook>
+               </sheet>
+           </form>
+       </field>
+    </record>
+-->
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="seizou_monthly_report.action_window">
+      <field name="name">seizou_monthly_report window</field>
+      <field name="res_model">seizou_monthly_report.monthly</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+-->
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="seizou_monthly_report.action_server">
+      <field name="name">seizou_monthly_report server</field>
+      <field name="model_id" ref="model_seizou_monthly_report_seizou_monthly_report"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+    <!-- Top menu item -->
+
+    <menuitem name="seizou_monthly_report" id="seizou_monthly_report.menu_root"
+              web_icon="seizou_monthly_report,static/description/memo.png"/>
+-->
+    <!-- menu categories -->
+
+    <menuitem name="Menu 1" id="seizou_monthly_report.menu_1" parent="seizou_monthly_report.menu_root"/>
+<!--    <menuitem name="Menu 2" id="seizou_monthly_report.menu_2" parent="seizou_monthly_report.menu_root"/>-->
+-->
+    <!-- actions -->
+
+    <menuitem name="List" id="seizou_monthly_report.menu_1_list" parent="seizou_monthly_report.menu_1"
+              action="seizou_monthly_report.action_window"/>
+<!--    <menuitem name="Server to list" id="seizou_monthly_report" parent="seizou_monthly_report.menu_2"-->
+<!--              action="seizou_monthly_report.action_server"/>-->
+<!--&ndash;&gt;-->
+  </data>
+</odoo>

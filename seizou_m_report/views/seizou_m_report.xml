@@ -42,22 +42,19 @@
     <!-- Top menu item -->
 
     <menuitem name="seizou_m_report" id="seizou_m_report.menu_root"
-              web_icon="seizou_m_report,static/description/seizou_m_report.png"/>
+              web_icon="seizou_m_report,static/description/memo.png"/>
 -->
     <!-- menu categories -->
 
     <menuitem name="report" id="seizou_m_report.report" parent="seizou_m_report.menu_root"/>
-<!--
-    <menuitem name="Menu 2" id="seizou_m_report.menu_2" parent="seizou_m_report.menu_root"/>
--->
+<!--    <menuitem name="Menu 2" id="seizou_m_report.menu_2" parent="seizou_m_report.menu_root"/>-->
+<!--&ndash;&gt;-->
     <!-- actions -->
 
-    <menuitem name="report" id="seizou_m_report.report_list" parent="seizou_m_report.report"
+    <menuitem name="List" id="seizou_m_report.report_list" parent="seizou_m_report.report"
               action="seizou_m_report.action_window"/>
- <!--
-    <menuitem name="Server to list" id="seizou_m_report" parent="seizou_m_report.menu_2"
-              action="seizou_m_report.action_server"/>
--->
-
+<!--    <menuitem name="Server to list" id="seizou_m_report" parent="seizou_m_report.menu_2"-->
+<!--              action="seizou_m_report.action_server"/>-->
+<!--&ndash;&gt;-->
   </data>
 </odoo>
