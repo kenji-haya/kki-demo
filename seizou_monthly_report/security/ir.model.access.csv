@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_seizou_monthly_report_monthly,seizou_monthly_report.monthly,model_seizou_monthly_report_monthly,base.group_user,1,1,1,1
+access_seizou_monthly_location_location,seizou_monthly_location.location,model_seizou_monthly_location_location,base.group_user,1,1,1,1
+
