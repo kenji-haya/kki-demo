@@ -26,7 +26,7 @@
                            <field name="record_num" string="レコード番号"/>
                             <field name="create_date" string="作成日時"/>
                    　        <field name="member" string="作成者"/>
-                   　        <field name="position" string="拠点"/>
+                   　        <field name="location" string="拠点"/>
                        </group>
                        <group>
                            <field name="monthly" string="月度"/>

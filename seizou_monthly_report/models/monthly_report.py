@@ -14,7 +14,7 @@ class seizou_monthly_report(models.Model):
     # 作成者
     member = fields.Many2one("hr.employee", string="member")
     # 拠点
-    position = fields.Many2one()
+    location = fields.Many2one('seizou_monthly_location.location', string="location")
     # 月度
     monthly = fields.Many2one()
     # 関連レコード一覧
