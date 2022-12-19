@@ -1,0 +1,68 @@
+<odoo>
+    <data>
+        <!-- explicit list view definition -->
+
+        <record model="ir.ui.view" id="seizou_weekly.list">
+            <field name="name">seizou_weekly list</field>
+            <field name="model">seizou_weekly.report</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="create_date"/>
+                    <field name="author"/>
+                    <field name="base_name"/>
+                    <field name="department"/>
+                    <field name="start_date"/>
+                    <field name="end_date"/>
+                    <field name="end_date"/>
+                    <field name="file"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <!-- actions opening views on models -->
+
+        <record model="ir.actions.act_window" id="seizou_weekly.action_window">
+            <field name="name">seizou_weekly window</field>
+            <field name="res_model">seizou_weekly.report</field>
+            <field name="view_mode">list,kanban,tree,form</field>
+        </record>
+
+
+        <!-- server action to the one above -->
+        <!--
+            <record model="ir.actions.server" id="seizou_weekly.action_server">
+              <field name="name">seizou_weekly server</field>
+              <field name="model_id" ref="model_seizou_weekly_seizou_weekly"/>
+              <field name="state">code</field>
+              <field name="code">
+                action = {
+                  "type": "ir.actions.act_window",
+                  "view_mode": "tree,form",
+                  "res_model": model._name,
+                }
+              </field>
+            </record>
+        -->
+
+        <!-- Top menu item -->
+
+        <menuitem name="seizou_weekly" id="seizou_weekly.menu_root"
+                  web_icon="seizou_weekly,static/description/report.png"/>
+
+        <!-- menu categories -->
+
+        <menuitem name="report" id="seizou_weekly.report" parent="seizou_weekly.menu_root"/>
+        <!--
+        <menuitem name="Menu 2" id="seizou_weekly.menu_2" parent="seizou_weekly.menu_root"/>
+    -->
+        <!-- actions -->
+
+        <menuitem name="List" id="seizou_weekly.report_list" parent="seizou_weekly.report"
+                  action="seizou_weekly.action_window"/>
+        <!--
+            <menuitem name="Server to list" id="seizou_weekly" parent="seizou_weekly.menu_2"
+                      action="seizou_weekly.action_server"/>
+        -->
+    </data>
+</odoo>
