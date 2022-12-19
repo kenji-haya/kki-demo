@@ -8,7 +8,7 @@ from datetime import datetime
 class seizou_weekly(models.Model):
     _name = 'seizou_weekly.report'
     _description = 'seizou_weekly.report'
-    # _inherit = ['mail.thread', 'mail.activity.mixin']
+    _inherit = ['mail.thread', 'mail.activity.mixin']
 
     create_date = fields.Date(string="create_date", default=datetime.today())
     author = fields.Char(string="author")
@@ -17,8 +17,8 @@ class seizou_weekly(models.Model):
     start_date = fields.Date(string="start_date")
     end_date = fields.Date(string="end_date")
     comment = fields.Text(string="comment")
-    file = fields.Binary(string="file")
-
+    file = fields.Binary("file")
+    file_name = fields.Char('file_name')
     # @api.depends('value')
     # def _value_pc(self):
     #     for record in self:
