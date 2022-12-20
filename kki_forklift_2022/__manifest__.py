@@ -27,6 +27,7 @@
         'views/forklift.xml',
         'views/size.xml',
         'views/check_history.xml',
+        'views/place.xml',
         'views/templates.xml',
     ],
     # only loaded in demonstration mode
