@@ -26,9 +26,13 @@ class kki_forklift_2022(models.Model):
     history_count_2 = fields.Integer("test")
     history_count = fields.Integer(compute="_compute_check_history_count")
     owner_id = fields.Many2one("kki_forklift.history", string="owner_id")
+
     last_check_date = fields.Date('last_check_date')
+
+    # check_name = fields.Date('name')
+
     next_date = fields.Date('next_date', compute="_next_date")
-    annual_inspection= fields.Date('annual_inspection', compute="_next_inspection")
+    annual_inspection = fields.Date('annual_inspection', compute="_next_inspection")
     active = fields.Boolean(default=True)
 
     battery_replace_day = fields.Date('battery_check_date')

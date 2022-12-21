@@ -7,7 +7,7 @@
             <field name="arch" type="xml">
                 <tree>
                     <field name="name"/>
-                    <field name="owner_id"/>
+                    <field name="place_possession"/>
                     <field name="last_check_date"/>
                 </tree>
             </field>
@@ -21,7 +21,7 @@
                     <field name="name"/>
                     <field name="image"/>
                     <field name="size"/>
-                    <field name="next_date"/>
+<!--                    <field name="next_date"/>-->
                     <templates>
                         <t t-name="kanban-box">
                             <div t-attf-class="oe_kanban_global_click">
@@ -32,10 +32,16 @@
                                     <ul>
                                         <li>
                                             <field name="name"/>
-                                            <field name="size"/>
                                         </li>
                                         <li>
-                                            <field name="next_date"/>
+                                            <text>所属：</text>
+                                            <field name="place_possession"/>
+                                        </li>
+                                        <li>
+                                            <text>点検日：</text>
+                                            <field name="last_check_date"/>
+<!--                                            <text>点検者：</text>-->
+<!--                                            <field name="last_check_date"/>-->
                                         </li>
                                     </ul>
                                 </div>
@@ -60,31 +66,33 @@
                     <sheet>
 
                         <group>
+<!--                            <field name="image" widget="image" options='{"size": [0, 400]}'/>-->
+                            <field name="image" widget="image"/>
                             <group>
-                                <field name="name"/>
-                                <field name="place_possession"/>
-                                <field name="vendor"/>
                                 <field name="launch_day"/>
-                                <field name="annual_inspection"/>
+                                <field name="name"/>
+                                <field name="vendor"/>
                                 <field name="size"/>
                                 <field name="price"/>
-                                <field name="history_count"/>
-                                <field name="last_check_date"/>
-                                <field name="next_date"/>
                                 <field name="battery_replace_day"/>
-
+                                <!--                                <field name="check_name"/>-->
+                                <!--                                <field name="next_date"/>-->
                             </group>
                             <group>
-                                <field name="image" widget="image"/>
+                                <!--                                <field name="annual_inspection"/>-->
+                                <field name="history_count"/>
+                                <field name="last_check_date"/>
+                                <field name="place_possession"/>
                                 <field name="note"/>
                             </group>
                         </group>
                         <notebook>
                             <page string="check history">
                                 <field name="check_history_ids">
-                                    <tree>
-                                        <field name="check_date"/>
-<!--                                        フォーム修正履歴リストに備考を追加-->
+                                    <tree default_order="check_date desc">
+                                        <field name="name"/>
+                                        <field name= "check_date"/>
+                                        <!--                                        フォーム修正履歴リストに備考を追加-->
                                         <field name="remarks_1"/>
                                     </tree>
                                 </field>

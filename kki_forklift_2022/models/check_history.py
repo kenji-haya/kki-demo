@@ -9,6 +9,10 @@ class kki_forklift_check_history(models.Model):
         _name = 'kki_forklift.history'
         _description = 'kki_forklift.history'
 
+        # _inherit = 'kki_forklift_2022.lift'
+
+        # text = fields.Text("text")
+
         name = fields.Char("name")
         owner_id = fields.Many2one('res.users', 'owner_id', default=lambda self: self.env.user)
         check_date = fields.Date("check date", required="True", default=datetime.today())
