@@ -32,16 +32,14 @@
                                     <ul>
                                         <li>
                                             <field name="name"/>
-                                        </li>
-                                        <li>
                                             <text>所属：</text>
                                             <field name="place_possession"/>
                                         </li>
                                         <li>
                                             <text>点検日：</text>
                                             <field name="last_check_date"/>
-<!--                                            <text>点検者：</text>-->
-<!--                                            <field name="last_check_date"/>-->
+                                            <text>点検者：</text>
+                                            <field name="last_check_name"/>
                                         </li>
                                     </ul>
                                 </div>
@@ -75,14 +73,14 @@
                                 <field name="size"/>
                                 <field name="price"/>
                                 <field name="battery_replace_day"/>
-                                <!--                                <field name="check_name"/>-->
                                 <!--                                <field name="next_date"/>-->
                             </group>
                             <group>
                                 <!--                                <field name="annual_inspection"/>-->
-                                <field name="history_count"/>
-                                <field name="last_check_date"/>
                                 <field name="place_possession"/>
+                                <field name="last_check_date" readonly="1"/>
+                                <field name="history_count"/>
+                                <field name="last_check_name" readonly="1"/>
                                 <field name="note"/>
                             </group>
                         </group>
@@ -91,8 +89,9 @@
                                 <field name="check_history_ids">
                                     <tree default_order="check_date desc">
                                         <field name="name"/>
-                                        <field name= "check_date"/>
+                                        <field name="check_date"/>
                                         <!--                                        フォーム修正履歴リストに備考を追加-->
+<!--                                        <field name="last_check_name"/>-->
                                         <field name="remarks_1"/>
                                     </tree>
                                 </field>

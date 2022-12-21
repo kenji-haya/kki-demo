@@ -29,10 +29,12 @@ class kki_forklift_2022(models.Model):
 
     last_check_date = fields.Date('last_check_date')
 
-    # check_name = fields.Date('name')
+    last_check_name = fields.Char('last_check_name')
 
-    next_date = fields.Date('next_date', compute="_next_date")
+    # next_date = fields.Date('next_date', compute="_next_date")
+
     annual_inspection = fields.Date('annual_inspection', compute="_next_inspection")
+
     active = fields.Boolean(default=True)
 
     battery_replace_day = fields.Date('battery_check_date')
@@ -89,14 +91,14 @@ class kki_forklift_2022(models.Model):
             }
         }
 
-    @api.depends('last_check_date')
-    def _next_date(self):
-        # 日程がない場合の処理をここで判定させる
-        for rec in self:
-            if rec.last_check_date:
-                rec.next_date = rec.last_check_date + timedelta(days=30)
-            else:
-                rec.next_date =""
+    # @api.depends('last_check_date')
+    # def _next_date(self):
+    #     # 日程がない場合の処理をここで判定させる
+    #     for rec in self:
+    #         if rec.last_check_date:
+    #             rec.next_date = rec.last_check_date + timedelta(days=30)
+    #         else:
+    #             rec.next_date =""
 
     @api.depends('launch_day')
     def _next_inspection(self):

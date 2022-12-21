@@ -80,14 +80,19 @@ class kki_forklift_check_history(models.Model):
             if self.lift_id.last_check_date:
                 if self.lift_id.last_check_date > self.check_date:
                     print(self.lift_id.last_check_date)
+                    print(self.lift_id.name)
                 else:
                     print(self.lift_id._origin.id)
                     self.env['kki_forklift_2022.lift'].search([('id', '=', self.lift_id._origin.id), ]).write({
-                        'last_check_date': self.check_date
+                        'last_check_date': self.check_date,
+                        'last_check_name': self.name
                     })
+
             self.env['kki_forklift_2022.lift'].search([('id', '=', self.lift_id._origin.id), ]).write({
-                'last_check_date': self.check_date
+                'last_check_date': self.check_date,
+                'last_check_name': self.name
             })
+
 
         #　未実施項目があればアラートを出す
         @api.constrains('alert_mes')
