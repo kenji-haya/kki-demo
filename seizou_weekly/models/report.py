@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from odoo import models, fields, api
+from odoo import _, models, fields, api
 from datetime import datetime
 
 
@@ -17,9 +17,13 @@ class seizou_weekly(models.Model):
     start_date = fields.Date(string="start_date")
     end_date = fields.Date(string="end_date")
     comment = fields.Text(string="comment")
-    file = fields.Binary("file")
-    file_name = fields.Char('file_name')
-    # @api.depends('value')
-    # def _value_pc(self):
-    #     for record in self:
-    #         record.value2 = float(record.value) / 100
+    file = fields.Binary(string="file")
+    file_name = fields.Char(string='file_name')
+    file1 = fields.Binary(string="   ")
+    file_name1 = fields.Char("file_name1")
+    file2 = fields.Binary(string="   ")
+    file_name2 = fields.Char("file_name2")
+    file3 = fields.Binary(string="   ")
+    file_name3 = fields.Char("file_name3")
+
+

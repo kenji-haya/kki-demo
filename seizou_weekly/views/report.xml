@@ -7,6 +7,7 @@
             <field name="model">seizou_weekly.report</field>
             <field name="arch" type="xml">
                 <tree>
+                    <field name="id"/>
                     <field name="create_date"/>
                     <field name="author"/>
                     <field name="base_name"/>
@@ -15,33 +16,40 @@
                     <field name="end_date"/>
                     <field name="file" filename="file_name" widget="binary"/>
                     <field name="file_name" invisible="1"/>
+                    <field name="file1" filename="file_name1" widget="binary"/>
+                    <field name="file_name1" invisible="1"/>
+                    <field name="file2" filename="file_name2" widget="binary"/>
+                    <field name="file_name2" invisible="1"/>
+                    <field name="file3" filename="file_name3" widget="binary"/>
+                    <field name="file_name3" invisible="1"/>
                 </tree>
             </field>
         </record>
 
-        <record model="ir.ui.view" id="kki_forklift.form">
+        <record model="ir.ui.view" id="seizou_weekly.form">
             <field name="name">seizou_weekly form</field>
             <field name="model">seizou_weekly.report</field>
             <field name="arch" type="xml">
                 <form>
-<!--                    <field name="active" invisible="1"/>-->
-<!--                    <header>-->
-<!--                        <button name="create_check" string="Create Check" type="object" class="btn-primary"/>-->
-<!--                        <button id="button_confirm" name="archive_button" string="Archive" type="object" class="btn-primary"-->
-<!--                                confirm="アーカイブしますか？"/>-->
-<!--                    </header>-->
+                    <!--                    <field name="active" invisible="1"/>-->
+                    <!--                    <header>-->
+                    <!--                        <button name="create_check" string="Create Check" type="object" class="btn-primary"/>-->
+                    <!--                        <button id="button_confirm" name="archive_button" string="Archive" type="object" class="btn-primary"-->
+                    <!--                                confirm="アーカイブしますか？"/>-->
+                    <!--                    </header>-->
                     <sheet>
-<!--                        <div class="oe_button_box" name="button_box">-->
-<!--                            <button name="action_view_check" type="object" class="oe_stat_button"-->
-<!--                                    icon="fa-pencil-square-o">-->
-<!--                                <div class="o_stat_info">-->
-<!--                                    <div class="o_stat_text">Check history</div>-->
-<!--                                    <field name="history_count" widget="statinfo" string="Check history"/>-->
-<!--                                </div>-->
-<!--                            </button>-->
-<!--                        </div>-->
+                        <!--                        <div class="oe_button_box" name="button_box">-->
+                        <!--                            <button name="action_view_check" type="object" class="oe_stat_button"-->
+                        <!--                                    icon="fa-pencil-square-o">-->
+                        <!--                                <div class="o_stat_info">-->
+                        <!--                                    <div class="o_stat_text">Check history</div>-->
+                        <!--                                    <field name="history_count" widget="statinfo" string="Check history"/>-->
+                        <!--                                </div>-->
+                        <!--                            </button>-->
+                        <!--                        </div>-->
                         <group>
                             <group>
+                                <field name="id"/>
                                 <field name="create_date"/>
                                 <field name="author"/>
                                 <field name="base_name"/>
@@ -51,6 +59,12 @@
                                 <field name="comment"/>
                                 <field name="file" filename="file_name"/>
                                 <field name="file_name" invisible="1"/>
+                                <field name="file1" filename="file_name1" widget="binary"/>
+                                <field name="file_name1" invisible="1"/>
+                                <field name="file2" filename="file_name2" widget="binary"/>
+                                <field name="file_name2" invisible="1"/>
+                                <field name="file3" filename="file_name3" widget="binary"/>
+                                <field name="file_name3" invisible="1"/>
                             </group>
                         </group>
                     </sheet>
