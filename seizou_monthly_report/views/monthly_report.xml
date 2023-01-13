@@ -37,22 +37,22 @@
                            <field name="file_name" invisible="1"/>
                        </group>
                    </group>
-                   <notebook>
-                       <page string="関連レコード一覧">
-                           <group>
-                               <field name="record_data_1" filename="record_name_1" string="関連1"/>
-                               <field name="record_name_1" invisible="1"/>
-                               <field name="record_data_2" filename="record_name_2" string="関連2"/>
-                               <field name="record_name_2" invisible="1"/>
-                               <field name="record_data_3" filename="record_name_3" string="関連3"/>
-                               <field name="record_name_3" invisible="1"/>
-                               <field name="record_data_4" filename="record_name_4" string="関連4"/>
-                               <field name="record_name_4" invisible="1"/>
-                               <field name="record_data_5" filename="record_name_5" string="関連5"/>
-                               <field name="record_name_5" invisible="1"/>
-                           </group>
-                       </page>
-                   </notebook>
+<!--                   <notebook>-->
+<!--                       <page string="関連レコード一覧">-->
+<!--                           <group>-->
+<!--                               <field name="record_data_1" filename="record_name_1" string="関連1"/>-->
+<!--                               <field name="record_name_1" invisible="1"/>-->
+<!--                               <field name="record_data_2" filename="record_name_2" string="関連2"/>-->
+<!--                               <field name="record_name_2" invisible="1"/>-->
+<!--                               <field name="record_data_3" filename="record_name_3" string="関連3"/>-->
+<!--                               <field name="record_name_3" invisible="1"/>-->
+<!--                               <field name="record_data_4" filename="record_name_4" string="関連4"/>-->
+<!--                               <field name="record_name_4" invisible="1"/>-->
+<!--                               <field name="record_data_5" filename="record_name_5" string="関連5"/>-->
+<!--                               <field name="record_name_5" invisible="1"/>-->
+<!--                           </group>-->
+<!--                       </page>-->
+<!--                   </notebook>-->
                </sheet>
                <div class="oe_chatter">
                 <field name="message_follower_ids"/>

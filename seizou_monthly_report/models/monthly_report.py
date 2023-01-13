@@ -25,25 +25,25 @@ class seizou_monthly_report(models.Model):
          ('seven', '7'), ('eight', '8'), ('nine', '9'), ('ten', '10'), ('eleven', '11'), ('twelve', '12')],
         "monthly", default='one', required=True)
     # 関連レコード一覧1
-    record_data_1 = fields.Binary("record_data")
+    # record_data_1 = fields.Binary("record_data")
     # 関連レコード一覧のファイルネーム1
-    record_name_1 = fields.Char('record_name')
+    # record_name_1 = fields.Char('record_name')
     # 関連レコード一覧2
-    record_data_2 = fields.Binary("record_data")
+    # record_data_2 = fields.Binary("record_data")
     # 関連レコード一覧のファイルネーム2
-    record_name_2 = fields.Char('record_name')
+    # record_name_2 = fields.Char('record_name')
     # 関連レコード一覧3
-    record_data_3 = fields.Binary("record_data")
+    # record_data_3 = fields.Binary("record_data")
     # 関連レコード一覧のファイルネーム3
-    record_name_3 = fields.Char('record_name')
+    # record_name_3 = fields.Char('record_name')
     # 関連レコード一覧4
-    record_data_4 = fields.Binary("record_data")
+    # record_data_4 = fields.Binary("record_data")
     # 関連レコード一覧のファイルネーム4
-    record_name_4 = fields.Char('record_name')
+    # record_name_4 = fields.Char('record_name')
     # 関連レコード一覧5
-    record_data_5 = fields.Binary("record_data")
+    # record_data_5 = fields.Binary("record_data")
     # 関連レコード一覧のファイルネーム5
-    record_name_5 = fields.Char('record_name')
+    # record_name_5 = fields.Char('record_name')
 
 
     # コメント
