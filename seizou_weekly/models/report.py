@@ -25,5 +25,15 @@ class seizou_weekly(models.Model):
     file_name2 = fields.Char("file_name2")
     file3 = fields.Binary(string="   ")
     file_name3 = fields.Char("file_name3")
+    active = fields.Boolean(default=True)
 
+    def archived_button(self):
+        self.write({'active': False})
 
+    def archive_button(self):
+        self.write({"active": False})
+        action = {'type': 'ir.actions.act_url',
+                  'target': 'self',
+                  'url': '/web#model=seizou_weekly.report&view_type=list'
+                  }
+        return action
