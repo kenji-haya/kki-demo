@@ -21,7 +21,7 @@
                     <field name="name"/>
                     <field name="image"/>
                     <field name="size"/>
-<!--                    <field name="next_date"/>-->
+                    <!--                    <field name="next_date"/>-->
                     <templates>
                         <t t-name="kanban-box">
                             <div t-attf-class="oe_kanban_global_click">
@@ -55,17 +55,17 @@
             <field name="model">kki_forklift_2022.lift</field>
             <field name="arch" type="xml">
                 <form>
-<!--                    <field name="active" invisible="1"/>-->
+                    <!--                    <field name="active" invisible="1"/>-->
                     <header>
                         <button name="create_check" string="Create Check" type="object" class="btn-primary"/>
-                        <button id="button_confirm" name="archive_button" string="Archive" type="object" class="btn-primary"
+                        <button id="button_confirm" name="archive_button" string="Archive" type="object"
+                                class="btn-primary"
                                 confirm="アーカイブしますか？"/>
                     </header>
                     <sheet>
-
                         <group>
-<!--                            <field name="image" widget="image" options='{"size": [0, 400]}'/>-->
                             <field name="image" widget="image"/>
+                            <!--                            <field name="image" widget="image" options='{"size": [0, 400]}'/>-->
                             <group>
                                 <field name="launch_day"/>
                                 <field name="name"/>
@@ -73,6 +73,7 @@
                                 <field name="size"/>
                                 <field name="price"/>
                                 <field name="battery_replace_day"/>
+                                <field name="next_inspect_day" readonly="0"/>
                                 <!--                                <field name="next_date"/>-->
                             </group>
                             <group>
@@ -91,7 +92,7 @@
                                         <field name="name"/>
                                         <field name="check_date"/>
                                         <!--                                        フォーム修正履歴リストに備考を追加-->
-<!--                                        <field name="last_check_name"/>-->
+                                        <!--                                        <field name="last_check_name"/>-->
                                         <field name="remarks_1"/>
                                     </tree>
                                 </field>

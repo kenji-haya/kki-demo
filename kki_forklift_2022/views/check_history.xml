@@ -6,7 +6,7 @@
             <field name="arch" type="xml">
                 <tree>
                     <field name="name"/>
-                    <field name="owner_id"/>
+<!--                    <field name="owner_id"/>-->
 <!--                    <field name="next_date"/>-->
                 </tree>
             </field>
@@ -43,7 +43,7 @@
                         </div>
                         <group>
                             <group>
-                                <field name="owner_id"/>
+<!--                                <field name="owner_id"/>-->
                                 <field name="name"/>
                                 <field name="check_date"/>
 <!--                                <field name="check_date" readonly="1"/>-->

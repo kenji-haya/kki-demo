@@ -14,6 +14,9 @@ class kki_forklift_check_history(models.Model):
         # text = fields.Text("text")
 
         name = fields.Char("name")
+        # name = fields.Many2one('hr.employee', "name")
+        # name = fields.Many2one('ir.model.fields', "name")
+        # name = fields.Many2one('res.users',"name")
         owner_id = fields.Many2one('res.users', 'owner_id', default=lambda self: self.env.user)
         check_date = fields.Date("check date", required="True", default=datetime.today())
         lift_id = fields.Many2one("kki_forklift_2022.lift", "Forklift")
@@ -82,15 +85,14 @@ class kki_forklift_check_history(models.Model):
                     print(self.lift_id.last_check_date)
                     print(self.lift_id.name)
                 else:
-                    print(self.lift_id._origin.id)
+                    print(self.name)
                     self.env['kki_forklift_2022.lift'].search([('id', '=', self.lift_id._origin.id), ]).write({
                         'last_check_date': self.check_date,
-                        'last_check_name': self.name
+                        'last_check_name': self.name,
                     })
-
             self.env['kki_forklift_2022.lift'].search([('id', '=', self.lift_id._origin.id), ]).write({
                 'last_check_date': self.check_date,
-                'last_check_name': self.name
+                'last_check_name': self.name,
             })
 
 

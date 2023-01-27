@@ -29,7 +29,10 @@ class kki_forklift_2022(models.Model):
 
     last_check_date = fields.Date('last_check_date')
 
+    # last_check_name = fields.Char('last_check_name',related='.name', store=True)
     last_check_name = fields.Char('last_check_name')
+    # last_check_name = fields.Char('last_check_name',related='user_id.partner_id.name', store=True)
+    # last_check_name = fields.Many2one("kki_forklift.history", string="last_check_name")
 
     # next_date = fields.Date('next_date', compute="_next_date")
 
@@ -38,6 +41,8 @@ class kki_forklift_2022(models.Model):
     active = fields.Boolean(default=True)
 
     battery_replace_day = fields.Date('battery_check_date')
+
+    next_inspect_day = fields.Date('inspect_day', compute="_inspect_day")
 
     def _compute_check_history_count(self):
         for rec in self:
@@ -108,6 +113,32 @@ class kki_forklift_2022(models.Model):
                 rec.annual_inspection = rec.launch_day + timedelta(days=365)
             else:
                 rec.annual_inspection =""
+
+    # # 年次点検の日付検索
+    # @api.depends('next_inspect_day')
+    # def _inspect_day(self):
+    #     # 日程がない場合の処理をここで判定させる
+    #     print(timedelta(days=365))
+    #     for rec in self:
+    #         if rec.next_inspect_day:
+    #             rec.next_inspect_day = datetime.today() + timedelta(days=365)
+    #         else:
+    #             rec.next_inspect_day = datetime.today() + timedelta(days=365)
+
+    # 年次点検の日付検索(一年後を提示)
+    @api.depends('next_inspect_day')
+    def _inspect_day(self):
+        # 日程がない場合の処理をここで判定させる
+        # print(timedelta(days=365))
+        for rec in self:
+            print(rec.next_inspect_day)
+            if rec.next_inspect_day:
+                print(1)
+                pass
+            else:
+                print(2)
+                rec.next_inspect_day = datetime.today() + timedelta(days=365)
+
 
     # @api.depends('last_check_date')
     # def _next_date(self):
