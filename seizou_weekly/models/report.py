@@ -11,13 +11,13 @@ class seizou_weekly(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin']
 
     create_date = fields.Date(string="create_date", default=datetime.today())
-    author = fields.Char(string="author")
+    author = fields.Char(string="author", required="True")
     base_name = fields.Char(string="base_name")
     department = fields.Char(string="department")
     start_date = fields.Date(string="start_date")
     end_date = fields.Date(string="end_date")
     comment = fields.Text(string="comment")
-    file = fields.Binary(string="file")
+    file = fields.Char(string="file")
     file_name = fields.Char(string='file_name')
     file1 = fields.Binary(string="   ")
     file_name1 = fields.Char("file_name1")
