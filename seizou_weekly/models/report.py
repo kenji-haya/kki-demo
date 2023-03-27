@@ -11,15 +11,19 @@ class seizou_weekly(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin']
 
     create_date = fields.Date(string="create_date", default=datetime.today())
-    author = fields.Char(string="author", required="True")
-    base_name = fields.Char(string="base_name")
-    department = fields.Char(string="department")
+    # author = fields.Char(string="author", required="True")
+    author = fields.Many2one("hr.employee", string="member", required=True)
+    # base_name = fields.Char(string="base_name")
+    base_name = fields.Selection(
+        [('one', '本社'), ('two', '摂津'), ('three', '厚木'), ('four', '沖縄')],
+        "base_name", default='one', required=True)
+    department = fields.Selection(
+        [('one', '製袋'), ('two', 'スリッター'), ('three', 'すべて')],
+        "department", required=True)
     start_date = fields.Date(string="start_date")
     end_date = fields.Date(string="end_date")
     comment = fields.Text(string="comment")
-    file = fields.Char(string="file")
-    file_name = fields.Char(string='file_name')
-    file1 = fields.Binary(string="   ")
+    file1 = fields.Binary(string="file1")
     file_name1 = fields.Char("file_name1")
     file2 = fields.Binary(string="   ")
     file_name2 = fields.Char("file_name2")
