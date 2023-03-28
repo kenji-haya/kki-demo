@@ -2,12 +2,12 @@
     <data>
         <record model="ir.ui.view" id="kki_forklift_history_list">
             <field name="name">kki_forklift list</field>
-            <field name="model">kki_forklift.lift</field>
+            <field name="model">kki_forklift_2022.lift</field>
             <field name="arch" type="xml">
                 <tree>
                     <field name="name"/>
-                    <field name="owner_id"/>
-                    <field name="next_date"/>
+<!--                    <field name="owner_id"/>-->
+<!--                    <field name="next_date"/>-->
                 </tree>
             </field>
         </record>
@@ -16,10 +16,10 @@
             <field name="name">kki_forklift_history_list</field>
             <field name="model">kki_forklift.history</field>
             <field name="arch" type="xml">
-                <tree>
+                <tree default_order="check_date desc">
                     <field name="name"/>
                     <field name="owner_id"/>
-<!--                    <field name="check_date"/>-->
+                    <field name="check_date"/>
 <!--                    <field name="next_date"/>-->
                 </tree>
             </field>
@@ -43,9 +43,13 @@
                         </div>
                         <group>
                             <group>
-                                <field name="owner_id"/>
-                                <field name="check_date"/>
+<!--                                <field name="owner_id"/>-->
+                                <field name="name"/>
+<!--                                <field name="check_date" readonly="1" style="font-size: 25px;"/>-->
+                                <field name="check_date" readonly="1"/>
+<!--                                <field name="check_date" readonly="1"/>-->
 <!--                                <field name="authorized_transaction_ids"/>-->
+<!--                                <field name="fork_1" widget="toggle_button" options="{'size': 10}"/>-->
                                 <field name="fork_1" widget="radio" options="{'horizontal': true}"/>
                                 <field name="back_1" widget="radio" options="{'horizontal': true}"/>
                                 <field name="chain_1" widget="radio" options="{'horizontal': true}"/>
@@ -75,7 +79,7 @@
             <field name="view_mode">tree,form</field>
         </record>
 
-        <menuitem name="check_history" id="kki_check_history_list" parent="kki_forklift.lift"
+        <menuitem name="check_history" id="kki_check_history_list" parent="kki_forklift_2022.lift"
                   action="kki_check_history_window"/>
 
     </data>
