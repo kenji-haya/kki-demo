@@ -1,0 +1,191 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* kki_forklift
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-08-31 06:43+0000\n"
+"PO-Revision-Date: 2022-08-31 06:43+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: kki_forklift
+#: model:ir.model.fields,field_description:kki_forklift.field_kki_forklift_history__create_uid
+#: model:ir.model.fields,field_description:kki_forklift.field_kki_forklift_lift__create_uid
+#: model:ir.model.fields,field_description:kki_forklift.field_kki_forklift_size__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: kki_forklift
+#: model:ir.model.fields,field_description:kki_forklift.field_kki_forklift_history__create_date
+#: model:ir.model.fields,field_description:kki_forklift.field_kki_forklift_lift__create_date
+#: model:ir.model.fields,field_description:kki_forklift.field_kki_forklift_size__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: kki_forklift
+#: model:ir.model.fields,field_description:kki_forklift.field_kki_forklift_history__display_name
+#: model:ir.model.fields,field_description:kki_forklift.field_kki_forklift_lift__display_name
+#: model:ir.model.fields,field_description:kki_forklift.field_kki_forklift_size__display_name
+msgid "Display Name"
+msgstr "表示名"
+
+#. module: kki_forklift
+#: model:ir.model.fields,field_description:kki_forklift.field_kki_forklift_history__lift_id
+msgid "Forklift"
+msgstr "フォークリフト"
+
+#. module: kki_forklift
+#: model:ir.model.fields,field_description:kki_forklift.field_kki_forklift_history__id
+#: model:ir.model.fields,field_description:kki_forklift.field_kki_forklift_lift__id
+#: model:ir.model.fields,field_description:kki_forklift.field_kki_forklift_size__id
+msgid "ID"
+msgstr ""
+
+#. module: kki_forklift
+#: model:ir.model.fields,field_description:kki_forklift.field_kki_forklift_history____last_update
+#: model:ir.model.fields,field_description:kki_forklift.field_kki_forklift_lift____last_update
+#: model:ir.model.fields,field_description:kki_forklift.field_kki_forklift_size____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: kki_forklift
+#: model:ir.model.fields,field_description:kki_forklift.field_kki_forklift_history__write_uid
+#: model:ir.model.fields,field_description:kki_forklift.field_kki_forklift_lift__write_uid
+#: model:ir.model.fields,field_description:kki_forklift.field_kki_forklift_size__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: kki_forklift
+#: model:ir.model.fields,field_description:kki_forklift.field_kki_forklift_history__write_date
+#: model:ir.model.fields,field_description:kki_forklift.field_kki_forklift_lift__write_date
+#: model:ir.model.fields,field_description:kki_forklift.field_kki_forklift_size__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: kki_forklift
+#: model:ir.model.fields,field_description:kki_forklift.field_kki_forklift_lift__launch_day
+msgid "Launch Day"
+msgstr "導入日"
+
+#. module: kki_forklift
+#: model:ir.model.fields,field_description:kki_forklift.field_kki_forklift_history__check_date
+msgid "check date"
+msgstr "点検日"
+
+#. module: kki_forklift
+#: model:ir.model.fields,field_description:kki_forklift.field_kki_forklift_lift__check_history_ids
+#: model_terms:ir.ui.view,arch_db:kki_forklift.form
+msgid "check history"
+msgstr "点検履歴"
+
+#. module: kki_forklift
+#: model:ir.model.fields,field_description:kki_forklift.field_kki_forklift_history__image
+#: model:ir.model.fields,field_description:kki_forklift.field_kki_forklift_lift__image
+msgid "image"
+msgstr "画像"
+
+#. module: kki_forklift
+#: model:ir.ui.menu,name:kki_forklift.menu_root
+msgid "kki_forklift"
+msgstr "フォークリフト"
+
+#. module: kki_forklift
+#: model:ir.actions.act_window,name:kki_forklift.action_window
+msgid "kki_forklift window"
+msgstr "フォークリフト"
+
+#. module: kki_forklift
+#: model:ir.model,name:kki_forklift.model_kki_forklift_history
+msgid "kki_forklift.history"
+msgstr ""
+
+#. module: kki_forklift
+#: model:ir.model,name:kki_forklift.model_kki_forklift_lift
+msgid "kki_forklift.lift"
+msgstr ""
+
+#. module: kki_forklift
+#: model:ir.model,name:kki_forklift.model_kki_forklift_size
+msgid "kki_forklift.size"
+msgstr ""
+
+#. module: kki_forklift
+#: model:ir.actions.act_window,name:kki_forklift.size_action_window
+msgid "kki_forklift_size window"
+msgstr ""
+
+#. module: kki_forklift
+#: model:ir.ui.menu,name:kki_forklift.lift
+#: model:ir.ui.menu,name:kki_forklift.lift_list
+msgid "lift"
+msgstr "フォークリフト"
+
+#. module: kki_forklift
+#: model:ir.model.fields,field_description:kki_forklift.field_kki_forklift_history__name
+#: model:ir.model.fields,field_description:kki_forklift.field_kki_forklift_lift__name
+#: model:ir.model.fields,field_description:kki_forklift.field_kki_forklift_size__name
+msgid "name"
+msgstr "件名"
+
+#. module: kki_forklift
+#: model:ir.model.fields,field_description:kki_forklift.field_kki_forklift_lift__note
+msgid "note"
+msgstr "備考"
+
+#. module: kki_forklift
+#: model:ir.model.fields,field_description:kki_forklift.field_kki_forklift_lift__price
+msgid "price"
+msgstr "価格"
+
+#. module: kki_forklift
+#: model:ir.model.fields,field_description:kki_forklift.field_kki_forklift_lift__size
+#: model:ir.ui.menu,name:kki_forklift.size_list
+msgid "size"
+msgstr "サイズ"
+
+#. module: kki_forklift
+#: model:ir.model.fields,field_description:kki_forklift.field_kki_forklift_lift__tax
+msgid "tax"
+msgstr ""
+
+#. module: kki_forklift
+#: model:ir.model.fields,field_description:kki_forklift.field_kki_forklift_lift__vendor
+msgid "vendor"
+msgstr "メーカー"
+
+#. module: kki_forklift
+#: model:ir.model.fields,field_description:kki_forklift.field_kki_forklift_history__tire_1
+msgid "【タイヤ】"
+msgstr ""
+
+#. module: kki_forklift
+#: model:ir.model.fields,field_description:kki_forklift.field_kki_forklift_history__chain_1
+msgid "【チェーン】"
+msgstr ""
+
+#. module: kki_forklift
+#: model:ir.model.fields,field_description:kki_forklift.field_kki_forklift_history__handle_1
+msgid "【ハンドル】"
+msgstr ""
+
+#. module: kki_forklift
+#: model:ir.model.fields,field_description:kki_forklift.field_kki_forklift_history__back_1
+msgid "【バックレスト】"
+msgstr ""
+
+#. module: kki_forklift
+#: model:ir.model.fields,field_description:kki_forklift.field_kki_forklift_history__fork_1
+msgid "【フォーク】亀裂や曲がりはないか"
+msgstr ""
+
+#. module: kki_forklift
+#: model:ir.model.fields,field_description:kki_forklift.field_kki_forklift_history__mast_1
+msgid "【マスト】"
+msgstr ""

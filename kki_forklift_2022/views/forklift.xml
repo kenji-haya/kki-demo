@@ -1,26 +1,27 @@
 <odoo>
     <data>
         <!-- explicit list view definition -->
-        <record model="ir.ui.view" id="kki_forklift.list">
+        <record model="ir.ui.view" id="kki_forklift_2022.list">
             <field name="name">kki_forklift list</field>
-            <field name="model">kki_forklift.lift</field>
+            <field name="model">kki_forklift_2022.lift</field>
             <field name="arch" type="xml">
                 <tree>
                     <field name="name"/>
-                    <field name="owner_id"/>
+                    <field name="place_possession"/>
+                    <field name="last_check_date"/>
                 </tree>
             </field>
         </record>
 
         <record model="ir.ui.view" id="view_lift_kanban">
             <field name="name">lift.kanban</field>
-            <field name="model">kki_forklift.lift</field>
+            <field name="model">kki_forklift_2022.lift</field>
             <field name="arch" type="xml">
                 <kanban class="o_kanban_mobile">
                     <field name="name"/>
                     <field name="image"/>
                     <field name="size"/>
-                    <field name="next_date"/>
+                    <!--                    <field name="next_date"/>-->
                     <templates>
                         <t t-name="kanban-box">
                             <div t-attf-class="oe_kanban_global_click">
@@ -31,10 +32,14 @@
                                     <ul>
                                         <li>
                                             <field name="name"/>
-                                            <field name="size"/>
+                                            <text>所属：</text>
+                                            <field name="place_possession"/>
                                         </li>
                                         <li>
-                                            <field name="next_date"/>
+                                            <text>点検日：</text>
+                                            <field name="last_check_date"/>
+                                            <text>点検者：</text>
+                                            <field name="last_check_name"/>
                                         </li>
                                     </ul>
                                 </div>
@@ -45,50 +50,49 @@
             </field>
         </record>
 
-        <record model="ir.ui.view" id="kki_forklift.form">
+        <record model="ir.ui.view" id="kki_forklift_2022.form">
             <field name="name">kki_forklift form</field>
-            <field name="model">kki_forklift.lift</field>
+            <field name="model">kki_forklift_2022.lift</field>
             <field name="arch" type="xml">
                 <form>
-<!--                    <field name="active" invisible="1"/>-->
+                    <!--                    <field name="active" invisible="1"/>-->
                     <header>
                         <button name="create_check" string="Create Check" type="object" class="btn-primary"/>
-                        <button id="button_confirm" name="archive_button" string="Archive" type="object" class="btn-primary"
+                        <button id="button_confirm" name="archive_button" string="Archive" type="object"
+                                class="btn-primary"
                                 confirm="アーカイブしますか？"/>
                     </header>
                     <sheet>
-                        <div class="oe_button_box" name="button_box">
-                            <button name="action_view_check" type="object" class="oe_stat_button"
-                                    icon="fa-pencil-square-o">
-                                <div class="o_stat_info">
-                                    <div class="o_stat_text">Check history</div>
-                                    <field name="history_count" widget="statinfo" string="Check history"/>
-                                </div>
-                            </button>
-                        </div>
                         <group>
+                            <field name="image" widget="image"/>
+                            <!--                            <field name="image" widget="image" options='{"size": [0, 400]}'/>-->
                             <group>
+                                <field name="launch_day"/>
                                 <field name="name"/>
                                 <field name="vendor"/>
-                                <field name="launch_day"/>
-                                <field name="annual_inspection"/>
-                                <field name="note"/>
                                 <field name="size"/>
                                 <field name="price"/>
-                                <field name="history_count"/>
-                                <field name="last_check_date"/>
-                                <field name="next_date"/>
+                                <field name="battery_replace_day"/>
+                                <field name="next_inspect_day" readonly="0"/>
+                                <!--                                <field name="next_date"/>-->
                             </group>
                             <group>
-                                <field name="image" widget="image"/>
+                                <!--                                <field name="annual_inspection"/>-->
+                                <field name="place_possession"/>
+                                <field name="last_check_date" readonly="1"/>
+                                <field name="history_count"/>
+                                <field name="last_check_name" readonly="1"/>
+                                <field name="note"/>
                             </group>
                         </group>
                         <notebook>
                             <page string="check history">
                                 <field name="check_history_ids">
-                                    <tree>
+                                    <tree default_order="check_date desc">
+                                        <field name="name"/>
                                         <field name="check_date"/>
-<!--                                        フォーム修正履歴リストに備考を追加-->
+                                        <!--                                        フォーム修正履歴リストに備考を追加-->
+                                        <!--                                        <field name="last_check_name"/>-->
                                         <field name="remarks_1"/>
                                     </tree>
                                 </field>
@@ -107,15 +111,15 @@
 
         <!-- actions opening views on models -->
 
-        <record model="ir.actions.act_window" id="kki_forklift.action_window">
+        <record model="ir.actions.act_window" id="kki_forklift_2022.action_window">
             <field name="name">kki_forklift window</field>
-            <field name="res_model">kki_forklift.lift</field>
+            <field name="res_model">kki_forklift_2022.lift</field>
             <field name="view_mode">kanban,tree,form</field>
         </record>
 
         <record id="hr_plan_view_search" model="ir.ui.view">
             <field name="name">kki_forklift.lift.search</field>
-            <field name="model">kki_forklift.lift</field>
+            <field name="model">kki_forklift_2022.lift</field>
             <field name="arch" type="xml">
                 <search string="Plan">
                     <field name="name"/>
@@ -143,19 +147,19 @@
 
         <!-- Top menu item -->
 
-        <menuitem name="kki_forklift" id="kki_forklift.menu_root"
-                  web_icon="kki_forklift,static/description/forklift.png"/>
+        <menuitem name="kki_forklift_2022" id="kki_forklift_2022.menu_root"
+                  web_icon="kki_forklift_2022,static/description/forklift.png"/>
 
         <!-- menu categories -->
 
-        <menuitem name="lift" id="kki_forklift.lift" parent="kki_forklift.menu_root"/>
+        <menuitem name="lift" id="kki_forklift_2022.lift" parent="kki_forklift_2022.menu_root"/>
         <!--
             <menuitem name="Menu 2" id="kki_forklift.menu_2" parent="kki_forklift.menu_root"/>
         -->
         <!-- actions -->
 
-        <menuitem name="lift" id="kki_forklift.lift_list" parent="kki_forklift.lift"
-                  action="kki_forklift.action_window"/>
+        <menuitem name="lift" id="kki_forklift_2022.lift_list" parent="kki_forklift_2022.lift"
+                  action="kki_forklift_2022.action_window"/>
 
         <!--
             <menuitem name="Server to list" id="kki_forklift" parent="kki_forklift.menu_2"
