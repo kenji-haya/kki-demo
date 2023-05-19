@@ -5,7 +5,6 @@ from datetime import date,datetime, timedelta, timezone
 
 from odoo.exceptions import ValidationError
 
-
 class kki_forklift_check_history(models.Model):
         _name = 'kki_forklift.history'
         _description = 'kki_forklift.history'
@@ -20,7 +19,10 @@ class kki_forklift_check_history(models.Model):
         # name = fields.Many2one('res.users',"name")
         # owner_id = fields.Many2one('res.users', 'owner_id', default=lambda self: self.env.user)
 
-        check_date = fields.Date("check date", required="True", default=datetime.today()) #UTCの為
+        #UTCの為
+        # check_date = fields.Date("check date", required="True", default=datetime.today())
+        check_date = fields.Date("check date", default=lambda self: fields.Date.today())
+
         # today = date.today()
         # t_delta = timedelta(hours=9)  # 9時間
         # JST = timezone(t_delta, 'JST')  # UTCから9時間差の「JST」タイムゾーン
