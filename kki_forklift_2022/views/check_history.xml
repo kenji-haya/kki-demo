@@ -45,11 +45,9 @@
                             <group>
 <!--                                <field name="owner_id"/>-->
                                 <field name="name"/>
-<!--                                <field name="check_date" readonly="1" style="font-size: 25px;"/>-->
+<!--                                <field name="check_date"/>-->
                                 <field name="check_date" readonly="1"/>
-<!--                                <field name="check_date" readonly="1"/>-->
 <!--                                <field name="authorized_transaction_ids"/>-->
-<!--                                <field name="fork_1" widget="toggle_button" options="{'size': 10}"/>-->
                                 <field name="fork_1" widget="radio" options="{'horizontal': true}"/>
                                 <field name="back_1" widget="radio" options="{'horizontal': true}"/>
                                 <field name="chain_1" widget="radio" options="{'horizontal': true}"/>
