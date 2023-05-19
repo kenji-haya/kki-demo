@@ -20,7 +20,8 @@ class kki_forklift_check_history(models.Model):
         # owner_id = fields.Many2one('res.users', 'owner_id', default=lambda self: self.env.user)
 
         #UTCの為
-        check_date = fields.Date("check date", required="True", default=datetime.today())
+        # check_date = fields.Date("check date", required="True", default=datetime.today())
+        check_date = fields.Date("check date", default=lambda self: fields.Date.today())
 
         # today = date.today()
         # t_delta = timedelta(hours=9)  # 9時間
