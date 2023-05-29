@@ -14,12 +14,12 @@ class kki_forklift_check_history(models.Model):
 
         # text = fields.Text("text")
 
-        # lambda関数を使用して日本時間に変換
-        # convert_to_jst = lambda: datetime.now()+ timedelta(hours=9)
+        # # lambda関数を使用して日本時間に変換
+        convert_to_jst = lambda: datetime.now()
 
-        # 現在の日本時間を取得
-        # jst_current_datetime = convert_to_jst()
-        jst = lambda:pytz.timezone('Asia/Tokyo')
+        # # 現在の日本時間を取得
+        jst_current_datetime = convert_to_jst() + timedelta(hours=9)
+        # jst = lambda:pytz.timezone('Asia/Tokyo')
 
         # now = datetime.now(jst)
 
@@ -31,7 +31,8 @@ class kki_forklift_check_history(models.Model):
         # UTCの為
         # check_date = fields.Date("check date", required="True", default=datetime.today())
         # check_date = fields.Date("check date", default=lambda self: fields.Date.today())
-        check_date = fields.Date("check date", default= jst)
+        check_date = fields.Date("check date", default=jst_current_datetime)
+
 
         lift_id = fields.Many2one("kki_forklift_2022.lift", "Forklift")
         defective_parts_im = fields.Binary("image")
