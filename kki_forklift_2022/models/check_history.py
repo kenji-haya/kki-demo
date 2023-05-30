@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 from odoo import _, api, fields, models
 from datetime import datetime,timedelta
 from odoo.exceptions import ValidationError
@@ -14,13 +13,6 @@ class kki_forklift_check_history(models.Model):
 
         # text = fields.Text("text")
 
-        # # lambda関数を使用して日本時間に変換
-        convert_to_jst = lambda: datetime.now()
-
-        # # 現在の日本時間を取得
-        jst_current_datetime = convert_to_jst() + timedelta(hours=9)
-        # jst = lambda:pytz.timezone('Asia/Tokyo')
-
         # now = datetime.now(jst)
 
         name = fields.Char("name")
@@ -28,10 +20,19 @@ class kki_forklift_check_history(models.Model):
         # name = fields.Many2one('ir.model.fields', "name")
         # name = fields.Many2one('res.users',"name")
         owner_id = fields.Many2one('res.users', 'owner_id', default=lambda self: self.env.user)
+
+        # # lambda関数を使用して日本時間に変換
+        # convert_to_jst = lambda: datetime.now()+ timedelta(hours=9)
+
+        # # 現在の日本時間を取得
+        # jst_current_datetime = convert_to_jst()
+        jst = pytz.timezone('Asia/Tokyo')
+        today = datetime.now(jst).date()
+
         # UTCの為
         # check_date = fields.Date("check date", required="True", default=datetime.today())
-        # check_date = fields.Date("check date", default=lambda self: fields.Date.today())
-        check_date = fields.Date("check date", default=jst_current_datetime)
+        check_date = fields.Date("check date", default=lambda self: fields.Date.today())
+        # check_date = fields.Date("check date", default=jst_current_datetime)
 
 
         lift_id = fields.Many2one("kki_forklift_2022.lift", "Forklift")
