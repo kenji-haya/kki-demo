@@ -24,16 +24,14 @@ class kki_forklift_check_history(models.Model):
         # # lambda関数を使用して日本時間に変換
         # convert_to_jst = lambda: datetime.now()+ timedelta(hours=9)
 
-        # # 現在の日本時間を取得
-        # jst_current_datetime = convert_to_jst()
+        # UTCの為(下記の書き方であれば時間取得ができたがUTC標準時となる)
+        # check_date = fields.Date("check date", default=lambda self: fields.Date.today())
+
+        # 日本時間（Asia/Tokyo）取得
         jst = pytz.timezone('Asia/Tokyo')
         today = datetime.now(jst).date()
-
-        # UTCの為
-        # check_date = fields.Date("check date", required="True", default=datetime.today())
         check_date = fields.Date("check date", default=lambda self: fields.Date.today())
-        # check_date = fields.Date("check date", default=jst_current_datetime)
-
+        print(check_date)
 
         lift_id = fields.Many2one("kki_forklift_2022.lift", "Forklift")
         defective_parts_im = fields.Binary("image")
