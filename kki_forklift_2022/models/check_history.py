@@ -15,11 +15,12 @@ class kki_forklift_check_history(models.Model):
 
         # now = datetime.now(jst)
 
-        name = fields.Char("name")
         # name = fields.Many2one('hr.employee', "name")
         # name = fields.Many2one('ir.model.fields', "name")
         # name = fields.Many2one('res.users',"name")
+        name = fields.Many2one("hr.employee", string="name", required=True)
         owner_id = fields.Many2one('res.users', 'owner_id', default=lambda self: self.env.user)
+        # owner_id = fields.Many2one("hr.employee", string="name", required=True)
 
         # # lambda関数を使用して日本時間に変換
         # convert_to_jst = lambda: datetime.now()+ timedelta(hours=9)
