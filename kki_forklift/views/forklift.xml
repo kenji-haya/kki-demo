@@ -49,23 +49,23 @@
             <field name="name">kki_forklift form</field>
             <field name="model">kki_forklift.lift</field>
             <field name="arch" type="xml">
-                <form edit="false">
-                    <field name="active" invisible="1"/>
+                <form>
+<!--                    <field name="active" invisible="1"/>-->
                     <header>
                         <button name="create_check" string="Create Check" type="object" class="btn-primary"/>
                         <button id="button_confirm" name="archive_button" string="Archive" type="object" class="btn-primary"
                                 confirm="アーカイブしますか？"/>
                     </header>
                     <sheet>
-<!--                        <div class="oe_button_box" name="button_box">-->
-<!--                            <button name="action_view_check" type="object" class="oe_stat_button"-->
-<!--                                    icon="fa-pencil-square-o">-->
-<!--                                <div class="o_stat_info">-->
-<!--                                    <div class="o_stat_text">Check history</div>-->
-<!--                                    <field name="history_count" widget="statinfo" string="Check history"/>-->
-<!--                                </div>-->
-<!--                            </button>-->
-<!--                        </div>-->
+                        <div class="oe_button_box" name="button_box">
+                            <button name="action_view_check" type="object" class="oe_stat_button"
+                                    icon="fa-pencil-square-o">
+                                <div class="o_stat_info">
+                                    <div class="o_stat_text">Check history</div>
+                                    <field name="history_count" widget="statinfo" string="Check history"/>
+                                </div>
+                            </button>
+                        </div>
                         <group>
                             <group>
                                 <field name="name"/>
@@ -87,8 +87,9 @@
                             <page string="check history">
                                 <field name="check_history_ids">
                                     <tree>
-                                        <field name="name"/>
                                         <field name="check_date"/>
+<!--                                        フォーム修正履歴リストに備考を追加-->
+                                        <field name="remarks_1"/>
                                     </tree>
                                 </field>
                             </page>

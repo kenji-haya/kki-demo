@@ -1,0 +1,12 @@
+<odoo>
+    <data>
+        <record model="ir.actions.act_window" id="place_action_window">
+            <field name="name">kki_forklift_place window</field>
+            <field name="res_model">kki_forklift.place</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem name="place_possession" id="kki_forklift_2022.place_list" parent="kki_forklift_2022.lift"
+                  action="place_action_window"/>
+    </data>
+</odoo>

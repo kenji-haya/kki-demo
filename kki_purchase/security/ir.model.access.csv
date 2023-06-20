@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_kki_purchase_kki_purchase,kki_purchase.kki_purchase,model_kki_purchase_kki_purchase,base.group_user,1,1,1,1
