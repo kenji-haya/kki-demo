@@ -13,7 +13,7 @@ class seizou_monthly_report(models.Model):
     # 作成日時
     create_date = fields.Datetime("create_date", default=datetime.now(), readonly=True)
     # 作成者
-    member = fields.Many2one("hr.employee", string="member", required=True)
+    member = fields.Many2one("hr.employee", required=True)
     # 拠点
     # 拠点
     location = fields.Selection(

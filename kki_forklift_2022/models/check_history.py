@@ -13,8 +13,6 @@ class kki_forklift_check_history(models.Model):
 
         # text = fields.Text("text")
 
-        # now = datetime.now(jst)
-
         # name = fields.Many2one('hr.employee', "name")
         # name = fields.Many2one('ir.model.fields', "name")
         # name = fields.Many2one('res.users',"name")
@@ -29,9 +27,11 @@ class kki_forklift_check_history(models.Model):
         # check_date = fields.Date("check date", default=lambda self: fields.Date.today())
 
         # 日本時間（Asia/Tokyo）取得
-        jst = pytz.timezone('Asia/Tokyo')
-        today = datetime.now(jst).date()
-        check_date = fields.Date("check date", default=lambda self: fields.Date.today())
+        # jst = pytz.timezone('Asia/Tokyo')
+        # today = datetime.now(jst).date()
+        # check_date = fields.Date("check date", default=datetime.now(jst).date())
+
+        check_date = fields.Date("check date", default=datetime.today())
         print(check_date)
 
         lift_id = fields.Many2one("kki_forklift_2022.lift", "Forklift")
