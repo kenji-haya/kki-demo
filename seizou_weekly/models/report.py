@@ -6,6 +6,9 @@ from datetime import datetime
 
 # 製造部週間報告書
 class seizou_weekly(models.Model):
+    """
+
+    """
     _name = 'seizou_weekly.report'
     _description = 'seizou_weekly.report'
     _inherit = ['mail.thread', 'mail.activity.mixin']
