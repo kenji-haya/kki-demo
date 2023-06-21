@@ -27,9 +27,11 @@ class kki_forklift_check_history(models.Model):
         # check_date = fields.Date("check date", default=lambda self: fields.Date.today())
 
         # 日本時間（Asia/Tokyo）取得
-        jst = pytz.timezone('Asia/Tokyo')
-        today = datetime.now(jst).date()
-        check_date = fields.Date("check date", default=lambda self: fields.Date.today())
+        # jst = pytz.timezone('Asia/Tokyo')
+        # today = datetime.now(jst).date()
+        # check_date = fields.Date("check date", default=datetime.now(jst).date())
+
+        check_date = fields.Date("check date", default=datetime.today())
         print(check_date)
 
 
