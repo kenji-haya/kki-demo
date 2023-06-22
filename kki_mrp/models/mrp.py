@@ -25,10 +25,13 @@ class kki_mrp(models.Model):
     # 商品を選んだら内部参照を表示する
     @api.onchange("product_id")
     def _onchange_default_code(self):
+
+        if self.default_code:
+            self.default_code = self.product_id.default_code
+
         # if self.default_code:
             self.menu_1 = self.product_id.menu_1.name
             self.default_code = self.product_id.default_code
-
 
     # デフォルトコードが更新されたら商品を検索してプロダクトに代入する
     @api.onchange("default_code")
@@ -60,6 +63,7 @@ class kki_mrp(models.Model):
     #                 rec.product_id = date
     #         else:
     #             rec.product_id = ""
+
 
 
 
