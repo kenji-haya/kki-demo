@@ -13,7 +13,7 @@ class seizou_weekly(models.Model):
     _description = 'seizou_weekly.report'
     _inherit = ['mail.thread', 'mail.activity.mixin']
 
-    create_date = fields.Date(string="create_date", default=datetime.now(), readonly=True)
+    create_date = fields.Datetime(string="create_date", default=datetime.now(), readonly=True)
     # author = fields.Char(string="author", required="True")
     author = fields.Many2one("hr.employee", string="member", required=True)
     # base_name = fields.Char(string="base_name")
