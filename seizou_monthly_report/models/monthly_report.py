@@ -10,7 +10,7 @@ class seizou_monthly_report(models.Model):
 
     # レコード番号
     # record_num = fields.Boolean("id")
-    # 作成日時
+    # 作成日時　datetime
     create_date = fields.Datetime("create_date", default=datetime.now(), readonly=True)
     # 作成者
     member = fields.Many2one("hr.employee", required=True)
