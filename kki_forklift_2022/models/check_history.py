@@ -1,9 +1,8 @@
 # -*- coding: utf-8 -*-
-
 from odoo import _, api, fields, models
-from datetime import datetime, timedelta, timezone
-
+from datetime import datetime,timedelta
 from odoo.exceptions import ValidationError
+import pytz
 
 
 class kki_forklift_check_history(models.Model):
@@ -18,14 +17,15 @@ class kki_forklift_check_history(models.Model):
         # name = fields.Many2one('hr.employee', "name")
         # name = fields.Many2one('ir.model.fields', "name")
         # name = fields.Many2one('res.users',"name")
+        name = fields.Many2one("hr.employee", string="name", required=True)
         owner_id = fields.Many2one('res.users', 'owner_id', default=lambda self: self.env.user)
 
         # check_date = fields.Date("check date", required="True", default=datetime.today()) #UTCの為
-        t_delta = timedelta(hours=9)  # 9時間
-        JST = timezone(t_delta, 'JST')  # UTCから9時間差の「JST」タイムゾーン
-        dt = datetime.now(JST)  # タイムゾーン付きでローカルな日付と時刻を取得
-        check_date = fields.Date("check date", required="True", default=dt)
-        print(dt)
+        # t_delta = timedelta(hours=9)  # 9時間
+        # JST = timezone(t_delta, 'JST')  # UTCから9時間差の「JST」タイムゾーン
+        # dt = datetime.now(JST)  # タイムゾーン付きでローカルな日付と時刻を取得
+        check_date = fields.Date("check date", required="True", default=datetime.now())
+        # print(dt)
 
         lift_id = fields.Many2one("kki_forklift_2022.lift", "Forklift")
         defective_parts_im = fields.Binary("image")

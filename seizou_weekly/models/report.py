@@ -6,11 +6,14 @@ from datetime import datetime
 
 # 製造部週間報告書
 class seizou_weekly(models.Model):
+    """
+
+    """
     _name = 'seizou_weekly.report'
     _description = 'seizou_weekly.report'
     _inherit = ['mail.thread', 'mail.activity.mixin']
 
-    create_date = fields.Date(string="create_date", default=datetime.today())
+    create_date = fields.Date(string="create_date", default=datetime.now(), readonly=True)
     # author = fields.Char(string="author", required="True")
     author = fields.Many2one("hr.employee", string="member", required=True)
     # base_name = fields.Char(string="base_name")
