@@ -27,6 +27,7 @@ class kki_forklift_check_history(models.Model):
         check_date = fields.Date("check date", required="True", default=datetime.now())
         # print(dt)
 
+
         lift_id = fields.Many2one("kki_forklift_2022.lift", "Forklift")
         defective_parts_im = fields.Binary("image")
         fork_1= fields.Selection(
