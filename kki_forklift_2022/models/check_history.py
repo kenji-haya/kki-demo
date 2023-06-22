@@ -31,7 +31,7 @@ class kki_forklift_check_history(models.Model):
         # today = datetime.now(jst).date()
         # check_date = fields.Date("check date", default=datetime.now(jst).date())
 
-        check_date = fields.Date("check date", default=datetime.today())
+        check_date = fields.Datetime("check date", default=datetime.today())
         print(check_date)
 
         lift_id = fields.Many2one("kki_forklift_2022.lift", "Forklift")
