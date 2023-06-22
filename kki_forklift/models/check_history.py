@@ -6,9 +6,8 @@ from odoo.exceptions import ValidationError
 
 
 class kki_forklift_check_history(models.Model):
-        _name = 'kki_forklift.history'
-        _description = 'kki_forklift.history'
-
+    _name = 'kki_forklift.history'
+    _description = 'kki_forklift.history'
 
     name = fields.Char("name")
     owner_id = fields.Many2one('res.users', 'owner_id', default=lambda self: self.env.user)
@@ -98,55 +97,53 @@ class kki_forklift_check_history(models.Model):
         remarks_1= fields.Char("remarks")
         alert_mes = fields.Boolean(string="Warning!!", store=True, tracking=True)
 
-        # @api.model
-        # def create(self, values):
-        #     res = super(kki_forklift_check_history, self).create(values)
-        #     print(self.fork_1)
-        #     print(res)
-        #     return res
+    # @api.model
+    # def create(self, values):
+    #     res = super(kki_forklift_check_history, self).create(values)
+    #     print(self.fork_1)
+    #     print(res)
+    #     return res
 
-        # 未実施項目があればalert_mesをTrueにする
-        @api.model
-        def create(self, values):
-            for i in values.values():
-                if i == 'one':
-                    values['alert_mes'] = True
-                    break
+    # 未実施項目があればalert_mesをTrueにする
+    @api.model
+    def create(self, values):
+        for i in values.values():
+            if i == 'one':
+                values['alert_mes'] = True
+                break
 
-            res = super(kki_forklift_check_history, self).create(values)
-            return res
+        res = super(kki_forklift_check_history, self).create(values)
+        return res
 
-        # 最新のチェック日付を表示
-        @api.onchange("check_date")
-        def _get_last_date(self):
-            if self.lift_id.last_check_date:
-                if self.lift_id.last_check_date > self.check_date:
-                    print(self.lift_id.last_check_date)
-                else:
-                    print(self.lift_id._origin.id)
-                    self.env['kki_forklift.lift'].search([('id', '=', self.lift_id._origin.id), ]).write({
-                        'last_check_date': self.check_date
-                    })
-            self.env['kki_forklift.lift'].search([('id', '=', self.lift_id._origin.id), ]).write({
-                'last_check_date': self.check_date
-            })
+    # 最新のチェック日付を表示
+    @api.onchange("check_date")
+    def _get_last_date(self):
+        if self.lift_id.last_check_date:
+            if self.lift_id.last_check_date > self.check_date:
+                print(self.lift_id.last_check_date)
+            else:
+                print(self.lift_id._origin.id)
+                self.env['kki_forklift.lift'].search([('id', '=', self.lift_id._origin.id), ]).write({
+                    'last_check_date': self.check_date
+                })
+        self.env['kki_forklift.lift'].search([('id', '=', self.lift_id._origin.id), ]).write({
+            'last_check_date': self.check_date
+        })
 
-        #　未実施項目があればアラートを出す
-        @api.constrains('alert_mes')
-        def constrains_no_check_warning(self):
-            if self.alert_mes:
-                raise ValidationError(message="未実施項目があります。確認してください。")
+    # 　未実施項目があればアラートを出す
+    @api.constrains('alert_mes')
+    def constrains_no_check_warning(self):
+        if self.alert_mes:
+            raise ValidationError(message="未実施項目があります。確認してください。")
 
+    # @api.depend()
+    # def _create(self, alert):
+    #     self.alert_mes = alert
 
-
-        # @api.depend()
-        # def _create(self, alert):
-        #     self.alert_mes = alert
-
-            # res.update(
-            #     crm_alias_prefix=alias.alias_name if alias else False,
-            # )
-            # return res
+    # res.update(
+    #     crm_alias_prefix=alias.alias_name if alias else False,
+    # )
+    # return res
 
     # @api.model
     # def write(self, values):
