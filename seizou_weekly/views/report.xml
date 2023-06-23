@@ -14,11 +14,10 @@
                     <field name="department"/>
                     <field name="start_date"/>
                     <field name="end_date"/>
-                    <field name="file" filename="file_name" widget="url"/>
-                    <field name="file_name"/>
                     <field name="file1" filename="file_name1" widget="binary"/>
+                    <field name="file_name1" invisible="1"/>
                     <field name="file2" filename="file_name2" widget="binary"/>
-                    <field name="file_name2"/>
+                    <field name="file_name2" invisible="1"/>
                     <field name="file3" filename="file_name3" widget="binary"/>
                     <field name="file_name3" invisible="1"/>
                 </tree>
@@ -46,8 +45,7 @@
                                 <field name="start_date"/>
                                 <field name="end_date"/>
                                 <field name="comment"/>
-                                <field name="file" widget="url"/>
-                                <field name="file_name" invisible="1"/>
+                                <field name="file_name1" invisible="1"/>
                                 <field name="file1" filename="file_name1" widget="binary"/>
                                 <field name="file_name1" invisible="1"/>
                                 <field name="file2" filename="file_name2" widget="binary"/>
