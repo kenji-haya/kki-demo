@@ -31,7 +31,7 @@ class kki_forklift_check_history(models.Model):
         # today = datetime.now(jst).date()
         # check_date = fields.Date("check date", default=datetime.now(jst).date())
 
-        check_date = fields.Datetime("check date", default=datetime.now())
+        check_date = fields.Date("check date", default=datetime.now())
         print(check_date)
 
 
