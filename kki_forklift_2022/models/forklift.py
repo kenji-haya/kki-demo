@@ -27,7 +27,7 @@ class kki_forklift_2022(models.Model):
     history_count = fields.Integer(compute="_compute_check_history_count")
     owner_id = fields.Many2one("kki_forklift.history", string="owner_id")
 
-    last_check_date = fields.Datetime('last_check_date')
+    last_check_date = fields.Date('last_check_date')
 
     last_check_name = fields.Char('last_check_name')
     # last_check_name = fields.Char('last_check_name',related='user_id.partner_id.name', store=True)
