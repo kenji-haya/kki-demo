@@ -10,12 +10,9 @@ class kki_forklift_check_history(models.Model):
         _description = 'kki_forklift.history'
 
         # _inherit = 'kki_forklift_2022.lift'
-
         # text = fields.Text("text")
 
         # name = fields.Many2one('hr.employee', "name")
-        # name = fields.Many2one('ir.model.fields', "name")
-        # name = fields.Many2one('res.users',"name")
         name = fields.Many2one("hr.employee", string="name", required=True)
         owner_id = fields.Many2one('res.users', 'owner_id', default=lambda self: self.env.user)
         # owner_id = fields.Many2one("hr.employee", string="name", required=True)
@@ -31,9 +28,8 @@ class kki_forklift_check_history(models.Model):
         # today = datetime.now(jst).date()
         # check_date = fields.Date("check date", default=datetime.now(jst).date())
 
-        check_date = fields.Date("check date", default=datetime.now())
+        check_date = fields.Datetime("check date", default=datetime.now())
         print(check_date)
-
 
         lift_id = fields.Many2one("kki_forklift_2022.lift", "Forklift")
         defective_parts_im = fields.Binary("image")
@@ -111,14 +107,11 @@ class kki_forklift_check_history(models.Model):
                 'last_check_name': self.name,
             })
 
-
         #　未実施項目があればアラートを出す
         @api.constrains('alert_mes')
         def constrains_no_check_warning(self):
             if self.alert_mes:
                 raise ValidationError(message="未実施項目があります。確認してください。")
-
-
 
         # @api.depend()
         # def _create(self, alert):
