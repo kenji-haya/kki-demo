@@ -9,24 +9,8 @@ class kki_forklift_check_history(models.Model):
         _name = 'kki_forklift.history'
         _description = 'kki_forklift.history'
 
-        # _inherit = 'kki_forklift_2022.lift'
-        # text = fields.Text("text")
-
-        # name = fields.Many2one('hr.employee', "name")
         name = fields.Many2one("hr.employee", string="name", required=True)
         owner_id = fields.Many2one('res.users', 'owner_id', default=lambda self: self.env.user)
-        # owner_id = fields.Many2one("hr.employee", string="name", required=True)
-
-        # # lambda関数を使用して日本時間に変換
-        # convert_to_jst = lambda: datetime.now()+ timedelta(hours=9)
-
-        # UTCの為(下記の書き方であれば時間取得ができたがUTC標準時となる)
-        # check_date = fields.Date("check date", default=lambda self: fields.Date.today())
-
-        # 日本時間（Asia/Tokyo）取得
-        # jst = pytz.timezone('Asia/Tokyo')
-        # today = datetime.now(jst).date()
-        # check_date = fields.Date("check date", default=datetime.now(jst).date())
 
         check_date = fields.Date("check date", default=lambda self: fields.Date.today())
         print(check_date)
@@ -71,13 +55,6 @@ class kki_forklift_check_history(models.Model):
         remarks_1= fields.Char("remarks")
         alert_mes = fields.Boolean(string="Warning!!", store=True, tracking=True)
 
-        # @api.model
-        # def create(self, values):
-        #     res = super(kki_forklift_check_history, self).create(values)
-        #     print(self.fork_1)
-        #     print(res)
-        #     return res
-
         # 未実施項目があればalert_mesをTrueにする
         @api.model
         def create(self, values):
@@ -90,21 +67,22 @@ class kki_forklift_check_history(models.Model):
             return res
 
         # 最新のチェック日付を表示
-        @api.onchange("check_date")
+        @api.constrains("check_date")
         def _get_last_date(self):
             if self.lift_id.last_check_date:
                 if self.lift_id.last_check_date > self.check_date:
-                    print(self.lift_id.last_check_date)
+                    print(f'print1:{self.lift_id.last_check_date}')
                     print(self.lift_id.name)
                 else:
-                    print(self.name)
+                    print(f'print3:{self.name.name}')
+                    print(f'print{self.check_date}')
                     self.env['kki_forklift_2022.lift'].search([('id', '=', self.lift_id._origin.id), ]).write({
                         'last_check_date': self.check_date,
-                        'last_check_name': self.name,
+                        'last_check_name': self.name.name,
                     })
             self.env['kki_forklift_2022.lift'].search([('id', '=', self.lift_id._origin.id), ]).write({
                 'last_check_date': self.check_date,
-                'last_check_name': self.name,
+                'last_check_name': self.name.name,
             })
 
         #　未実施項目があればアラートを出す
