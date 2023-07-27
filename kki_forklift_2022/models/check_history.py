@@ -12,7 +12,7 @@ class kki_forklift_check_history(models.Model):
         name = fields.Many2one("hr.employee", string="name", required=True)
         owner_id = fields.Many2one('res.users', 'owner_id', default=lambda self: self.env.user)
 
-        check_date = fields.Datetime(string="check_date", default=datetime.now(), readonly=True)
+        check_date = fields.Date("check date", default=lambda self: fields.Date.today())
         print(check_date)
 
         lift_id = fields.Many2one("kki_forklift_2022.lift", "Forklift")
