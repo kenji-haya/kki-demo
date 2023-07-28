@@ -12,7 +12,7 @@ class kki_forklift_check_history(models.Model):
         name = fields.Many2one("hr.employee", string="name", required=True)
         owner_id = fields.Many2one('res.users', 'owner_id', default=lambda self: self.env.user)
 
-        check_date = fields.Date("check date", default=lambda self: fields.Date.today())
+        check_date = fields.Date("check date", required=True)
         print(check_date)
 
         lift_id = fields.Many2one("kki_forklift_2022.lift", "Forklift")
@@ -54,6 +54,14 @@ class kki_forklift_check_history(models.Model):
             default="one")
         remarks_1= fields.Char("remarks")
         alert_mes = fields.Boolean(string="Warning!!", store=True, tracking=True)
+
+        @api.onchange("name")
+        def _get_date(self):
+            n_time = timedelta(hours=9)
+            now_date = datetime.today() + n_time
+            print(f'今日の日付は{now_date}')
+            if self.name:
+                self.check_date = now_date
 
         # 未実施項目があればalert_mesをTrueにする
         @api.model
