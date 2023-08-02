@@ -11,7 +11,7 @@ class seizou_monthly_report(models.Model):
     # レコード番号
     # record_num = fields.Boolean("id")
     # 作成日時　datetime
-    create_date = fields.Datetime("create_date", default=datetime.now(), readonly=True)
+    create_date = fields.Datetime("create_date", readonly=True)
     # 作成者
     member = fields.Many2one("hr.employee", required=True)
     # 拠点
@@ -45,6 +45,11 @@ class seizou_monthly_report(models.Model):
     # 関連レコード一覧のファイルネーム5
     # record_name_5 = fields.Char('record_name')
 
+    @api.constrains('member')
+    def _get_date(self):
+        now_date = datetime.now()
+        if self.member:
+            self.create_date = now_date
 
     # コメント
     comment = fields.Char()

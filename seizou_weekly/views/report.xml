@@ -6,7 +6,7 @@
             <field name="name">seizou_weekly list</field>
             <field name="model">seizou_weekly.report</field>
             <field name="arch" type="xml">
-                <tree>
+                <tree default_order="create_date desc">
                     <field name="id"/>
                     <field name="create_date"/>
                     <field name="author"/>
@@ -20,6 +20,8 @@
                     <field name="file_name2" invisible="1"/>
                     <field name="file3" filename="file_name3" widget="binary"/>
                     <field name="file_name3" invisible="1"/>
+                    <field name="file4" filename="file_name4" widget="binary"/>
+                    <field name="file_name4" invisible="1"/>
                 </tree>
             </field>
         </record>
@@ -45,13 +47,23 @@
                                 <field name="start_date"/>
                                 <field name="end_date"/>
                                 <field name="comment"/>
-                                <field name="file_name1" invisible="1"/>
-                                <field name="file1" filename="file_name1" widget="binary"/>
-                                <field name="file_name1" invisible="1"/>
-                                <field name="file2" filename="file_name2" widget="binary"/>
-                                <field name="file_name2" invisible="1"/>
-                                <field name="file3" filename="file_name3" widget="binary"/>
-                                <field name="file_name3" invisible="1"/>
+                                <div attrs="{'invisible': [('author', '=', False)]}">
+                                    <field name="file1" filename="file_name1" widget="binary" posion="right"/>
+                                    <field name="file_name1" invisible="1"/>
+                                </div>
+                                <div attrs="{'invisible': [('file1', '=', False)]}">
+                                    <field name="file2" filename="file_name2" widget="binary" posion="right"/>
+                                    <field name="file_name2" invisible="1"/>
+                                </div>
+                                <div attrs="{'invisible': [('file2', '=', False)]}">
+                                    <field name="file3" filename="file_name3" widget="binary" posion="right"/>
+                                    <field name="file_name3" invisible="1"/>
+                                </div>
+                                <div attrs="{'invisible': [('file3', '=', False)]}">
+                                    <!--                                    <field name="file_name2" invisible="1"/>-->
+                                    <field name="file4" filename="file_name4" widget="binary" posion="right"/>
+                                    <field name="file_name4" invisible="1"/>
+                                </div>
                             </group>
                         </group>
                     </sheet>

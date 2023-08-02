@@ -59,7 +59,6 @@ class kki_forklift_check_history(models.Model):
         def _get_date(self):
             n_time = timedelta(hours=9)
             now_date = datetime.today() + n_time
-            print(f'今日の日付は{now_date}')
             if self.name:
                 self.check_date = now_date
 
@@ -99,17 +98,3 @@ class kki_forklift_check_history(models.Model):
             if self.alert_mes:
                 raise ValidationError(message="未実施項目があります。確認してください。")
 
-        # @api.depend()
-        # def _create(self, alert):
-        #     self.alert_mes = alert
-
-            # res.update(
-            #     crm_alias_prefix=alias.alias_name if alias else False,
-            # )
-            # return res
-
-        # @api.model
-        # def write(self, values):
-        #     res = super(kki_forklift_check_history, self).write(values)
-        #     print(self.lift_id)
-        #     return res

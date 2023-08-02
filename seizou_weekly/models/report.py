@@ -1,20 +1,15 @@
 # -*- coding: utf-8 -*-
 
-from odoo import _, models, fields, api
+from odoo import models, fields, api
 from datetime import datetime
 # 製造部週間報告書
 class seizou_weekly(models.Model):
-    """
-
-    """
     _name = 'seizou_weekly.report'
     _description = 'seizou_weekly.report'
     _inherit = ['mail.thread', 'mail.activity.mixin']
 
-    create_date = fields.Datetime("create_date", default=datetime.now(), readonly=True)
-    # author = fields.Char(string="author", required="True")
     author = fields.Many2one("hr.employee", string="member", required=True)
-    # base_name = fields.Char(string="base_name")
+    create_date = fields.Datetime("create_date", readonly=True)
     base_name = fields.Selection(
         [('one', '本社'), ('two', '摂津'), ('three', '厚木'), ('four', '沖縄')],
         "base_name", default='one', required=True)
@@ -30,7 +25,15 @@ class seizou_weekly(models.Model):
     file_name2 = fields.Char("file_name2")
     file3 = fields.Binary(string="   ")
     file_name3 = fields.Char("file_name3")
+    file4 = fields.Binary(string="   ")
+    file_name4 = fields.Char("file_name4")
     active = fields.Boolean(default=True)
+
+    @api.constrains('author')
+    def _get_date(self):
+        now_date = datetime.now()
+        if self.author:
+            self.create_date = now_date
 
     def archived_button(self):
         self.write({'active': False})

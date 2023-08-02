@@ -7,7 +7,7 @@
       <field name="name">seizou_monthly_report list</field>
       <field name="model">seizou_monthly_report.monthly</field>
       <field name="arch" type="xml">
-        <tree>
+        <tree default_order="id desc">
           <field name="id" string="レコード番号"/>
           <field name="member" string="作成者"/>
           <field name="create_date" string="作成日時"/>
