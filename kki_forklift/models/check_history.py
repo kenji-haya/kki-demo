@@ -9,7 +9,6 @@ class kki_forklift_check_history(models.Model):
     _name = 'kki_forklift.history'
     _description = 'kki_forklift.history'
 
-<<<<<<< HEAD
     name = fields.Char("name")
     owner_id = fields.Many2one('res.users', 'owner_id', default=lambda self: self.env.user)
     check_date = fields.Date("check date", required="True", default=datetime.today())
@@ -53,7 +52,7 @@ class kki_forklift_check_history(models.Model):
         default="one")
     remarks_1 = fields.Char("remarks")
     alert_mes = fields.Boolean(string="Warning!!", store=True, tracking=True)
-=======
+
         name = fields.Char("name")
         owner_id = fields.Many2one('res.users', 'owner_id', default=lambda self: self.env.user)
         check_date = fields.Date("check date", required="True", default=datetime.today())
@@ -97,7 +96,6 @@ class kki_forklift_check_history(models.Model):
             default="one")
         remarks_1= fields.Char("remarks")
         alert_mes = fields.Boolean(string="Warning!!", store=True, tracking=True)
->>>>>>> fujita
 
     # @api.model
     # def create(self, values):
