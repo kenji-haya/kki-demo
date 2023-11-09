@@ -16,8 +16,8 @@ class seizou_weekly(models.Model):
     department = fields.Selection(
         [('one', '製袋'), ('two', 'スリッター'), ('three', 'すべて')],
         "department", required=True)
-    start_date = fields.Date(string="start_date")
-    end_date = fields.Date(string="end_date")
+    start_date = fields.Date(string="start_date", required=True)
+    end_date = fields.Date(string="end_date", required=True)
     comment = fields.Text(string="comment")
     file1 = fields.Binary(string="file1")
     file_name1 = fields.Char("file_name1")
