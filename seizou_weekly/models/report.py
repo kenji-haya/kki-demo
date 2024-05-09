@@ -2,6 +2,7 @@
 
 from odoo import models, fields, api
 from datetime import datetime
+
 # 製造部週間報告書
 class seizou_weekly(models.Model):
     _name = 'seizou_weekly.report'
