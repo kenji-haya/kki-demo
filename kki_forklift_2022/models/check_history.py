@@ -4,6 +4,9 @@ from datetime import datetime,timedelta
 from odoo.exceptions import ValidationError
 import pytz
 
+from odoo.odoo import http
+from odoo.odoo.http import request
+
 
 class kki_forklift_check_history(models.Model):
     _name = 'kki_forklift.history'
@@ -101,18 +104,18 @@ class kki_forklift_check_history(models.Model):
 
     # 保存アクションの定義
     # @api.multi
-    def action_save(self):
-        # 必要な処理を実行
-        # 例：データを保存するなど
+    def action_save_and_confirm(self):
+        # レコードを保存
+        self.ensure_one()
+        self.write(self._context.get('default_values', {}))
 
-        # 特定の画面に遷移させる
+        # 確定画面への遷移アクションを返す
         return {
-            'name': 'Target View Name',
             'type': 'ir.actions.act_window',
-            'res_model': 'kki_forklift_2022.lift',  # 遷移先のモデル名
-            'domain': [('lift_id', '=', self.id)],
-            'view_mode': 'form',
+            'name': 'Confirmation',
+            'res_model': 'kki_forklift.history',  # 適切なモデル名に置き換える
+            'view_mode': 'form',  # 遷移先がフォームビューの場合
             'view_type': 'form',
-            'res_id': self.id,  # 遷移先レコードのID
-            'target': 'current',  # 遷移方法（currentは同じタブ、newは新しいタブ）
+            'res_id': self.id,  # 保存したレコードのIDを指定
+            'target': 'current',
         }

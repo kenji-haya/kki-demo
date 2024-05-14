@@ -97,6 +97,17 @@
                                     </tree>
                                 </field>
                             </page>
+                            <page string="check history_monthly">
+<!--                                <field name="check_history_monthly_ids">-->
+<!--                                    <tree default_order="check_date desc">-->
+<!--                                        <field name="name"/>-->
+<!--                                        <field name="check_date_monthly"/>-->
+<!--                                        &lt;!&ndash;                                        フォーム修正履歴リストに備考を追加&ndash;&gt;-->
+<!--                                        &lt;!&ndash;                                        <field name="last_check_name"/>&ndash;&gt;-->
+<!--                                        <field name="remarks_1_monthly"/>-->
+<!--                                    </tree>-->
+<!--                                </field>-->
+                            </page>
                         </notebook>
                     </sheet>
                     <div class="oe_chatter">
