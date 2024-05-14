@@ -58,6 +58,7 @@
                     <!--                    <field name="active" invisible="1"/>-->
                     <header>
                         <button name="create_check" string="Create Check" type="object" class="btn-primary"/>
+                        <button name="monthly_check" string="monthly Check" type="object" class="btn-primary"/>
                         <button id="button_confirm" name="archive_button" string="Archive" type="object"
                                 class="btn-primary"
                                 confirm="アーカイブしますか？"/>

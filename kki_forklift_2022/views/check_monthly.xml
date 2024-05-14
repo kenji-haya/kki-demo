@@ -1,0 +1,75 @@
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="kki_forklift_monthly_list">
+            <field name="name">kki_forklift_monthly_list</field>
+            <field name="model">kki_forklift.monthly</field>
+            <field name="arch" type="xml">
+                <tree default_order="check_date desc">
+                    <field name="name"/>
+                    <field name="owner_id"/>
+                    <field name="check_date"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="kki_forklift_monthly_form">
+            <field name="name">kki_forklift_monthly form</field>
+            <field name="model">kki_forklift.monthly</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <div class="alert alert-danger text-center o_form_header" role="alert"
+                             attrs="{'invisible': [('alert_mes', '=', False)]}">
+                            <!--                            <a class="close" data-dismiss="alert" href="#">x</a>-->
+                            <div>
+                                <strong>未実施項目があります。確認してください。</strong>
+                            </div>
+                            <div>You can archive the contact
+                                <field name="name" required="0" readonly="1"/>
+                            </div>
+                        </div>
+
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="check_date" readonly="0"/>
+                            </group>
+                            <group>
+                                <field name="fork_1" widget="radio" options="{'horizontal': true}"/>
+                                <field name="back_1" widget="radio" options="{'horizontal': true}"/>
+                                <field name="chain_1" widget="radio" options="{'horizontal': true}"/>
+                                <field name="mast_1" widget="radio" options="{'horizontal': true}"/>
+                                <field name="tire_1" widget="radio" options="{'horizontal': true}"/>
+                            </group>
+                            <group>
+                                <field name="handle_1" widget="radio" options="{'horizontal': true}"/>
+                                <field name="break_1" widget="radio" options="{'horizontal': true}"/>
+                                <field name="horn_1" widget="radio" options="{'horizontal': true}"/>
+                                <field name="volt_1" widget="radio" options="{'horizontal': true}"/>
+                                <field name="oil_1" widget="radio" options="{'horizontal': true}"/>
+                                <field name="alert_mes" invisible="1"/>
+                                <field name="defective_parts_im" widget="image" class="oe_left"/>
+                                <field name="remarks_1"/>
+                            </group>
+                        </group>
+                        <footer>
+                            <button name="action_save_and_confirm" string="Save and Confirm" type="object"
+                                    class="btn-primary"/>
+                        </footer>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="kki_check_monthly_window">
+            <field name="name">kki_check_monthly window</field>
+            <field name="res_model">kki_forklift.monthly</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem name="check_monthly" id="kki_check_monthly_list" parent="kki_forklift_2022.lift"
+                  action="kki_check_monthly_window"/>
+
+    </data>
+</odoo>

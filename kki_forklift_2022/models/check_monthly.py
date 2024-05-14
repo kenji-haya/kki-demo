@@ -4,9 +4,9 @@ from datetime import datetime,timedelta
 from odoo.exceptions import ValidationError
 import pytz
 
-class kki_forklift_check_history(models.Model):
-    _name = 'kki_forklift.history'
-    _description = 'kki_forklift.history'
+class kki_forklift_check_monthly(models.Model):
+    _name = 'kki_forklift.monthly'
+    _description = 'kki_forklift.monthly'
 
     name = fields.Many2one("hr.employee", string="name", required=True)
     owner_id = fields.Many2one('res.users', 'owner_id', default=lambda self: self.env.user)
