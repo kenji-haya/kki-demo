@@ -6,70 +6,116 @@
             <field name="model">kki_forklift.monthly</field>
             <field name="arch" type="xml">
                 <tree default_order="check_date desc">
-                    <field name="name"/>
-                    <field name="owner_id"/>
-                    <field name="check_date"/>
+                    <field name="name_month"/>
+                    <field name="owner_id_month"/>
+                    <field name="check_date_month"/>
+                    <!--                    <field name="next_date"/>-->
                 </tree>
             </field>
         </record>
 
         <record model="ir.ui.view" id="kki_forklift_monthly_form">
-            <field name="name">kki_forklift_monthly form</field>
+            <field name="name">kki_forklift_monthly_form</field>
             <field name="model">kki_forklift.monthly</field>
             <field name="arch" type="xml">
                 <form>
                     <sheet>
                         <div class="alert alert-danger text-center o_form_header" role="alert"
-                             attrs="{'invisible': [('alert_mes', '=', False)]}">
+                             attrs="{'invisible': [('alert_mes1', '=', False)]}">
                             <!--                            <a class="close" data-dismiss="alert" href="#">x</a>-->
                             <div>
                                 <strong>未実施項目があります。確認してください。</strong>
                             </div>
                             <div>You can archive the contact
-                                <field name="name" required="0" readonly="1"/>
+                                <field name="name_month" required="0" readonly="1"/>
                             </div>
                         </div>
 
-                        <group>
-                            <group>
-                                <field name="name"/>
-                                <field name="check_date" readonly="0"/>
+                        <group string="- 基本情報 -" colspan="2">
+                            <field name="name_month"/>
+                            <field name="check_date_month" readonly="0"/>
+                            <field name="alert_mes1" invisible="1"/>
+                        </group>
+                        <!-- 一般点検項目 -->
+                        <group string="- 操縦装置 -" colspan="2" col="3"
+                               style="border-top: 2px solid #ccc; margin-top: 2px; margin-bottom: 2px;">
+                            <group col="1">
+                                <div style="background-color: #CCCCFF; padding: 5px; border-radius: 3px;">
+                                    <label for="name" string="検査項目"/>
+                                </div>
+                                <label for="name" string="ハンドルの遊び、がた"/>
                             </group>
-                            <group>
-                                <field name="fork_1" widget="radio" options="{'horizontal': true}"/>
-                                <field name="back_1" widget="radio" options="{'horizontal': true}"/>
-                                <field name="chain_1" widget="radio" options="{'horizontal': true}"/>
-                                <field name="mast_1" widget="radio" options="{'horizontal': true}"/>
-                                <field name="tire_1" widget="radio" options="{'horizontal': true}"/>
+                            <group col="1">
+                                <div style="background-color: #CCCCFF; padding: 5px; border-radius: 3px;">
+                                    <label for="name" string="check"/>
+                                </div>
+                                <div style="text-align: center;">
+                                    <field name="handle_check" widget="radio" options="{'horizontal': true}"
+                                           nolabel="1"/>
+                                </div>
                             </group>
-                            <group>
-                                <field name="handle_1" widget="radio" options="{'horizontal': true}"/>
-                                <field name="break_1" widget="radio" options="{'horizontal': true}"/>
-                                <field name="horn_1" widget="radio" options="{'horizontal': true}"/>
-                                <field name="volt_1" widget="radio" options="{'horizontal': true}"/>
-                                <field name="oil_1" widget="radio" options="{'horizontal': true}"/>
-                                <field name="alert_mes" invisible="1"/>
-                                <field name="defective_parts_im" widget="image" class="oe_left"/>
-                                <field name="remarks_1"/>
+                            <group col="1">
+                                <div style="background-color: #CCCCFF; padding: 5px; border-radius: 3px;">
+                                    <label for="name" string="検査方法"/>
+                                </div>
+                                <label for="name" string="操作、目視"/>
+                            </group>
+                        </group>
+
+                        <!-- 追加点検項目 -->
+                        <group string="- 荷役装置 -" colspan="2" col="3"
+                               style="border-top: 2px solid #ccc; margin-top: 2px; margin-bottom: 2px;">
+                            <group col="1">
+                                <div style="background-color: #CCCCFF; padding: 5px; border-radius: 3px;">
+                                    <label for="name" string="検査項目"/>
+                                </div>
+                                <label for="name" string="フォークの亀裂、摩耗"/>
+                                <label for="name" string="フォーク止めピン部の摩耗"/>
+                                <label for="name" string="マストの変形、亀裂、損傷"/>
+                                <label for="name" string="リフトチェーンの貼り具合"/>
+                            </group>
+                            <group col="1">
+                                <div style="background-color: #CCCCFF; padding: 5px; border-radius: 3px;">
+                                    <label for="name" string="check"/>
+                                </div>
+                                <div style="text-align: center;">
+                                    <field name="fork_check1" widget="radio" options="{'horizontal': true}"
+                                           nolabel="1"/>
+                                    <field name="fork_check2" widget="radio" options="{'horizontal': true}"
+                                           nolabel="1"/>
+                                    <field name="fork_check3" widget="radio" options="{'horizontal': true}"
+                                           nolabel="1"/>
+                                    <field name="fork_check4" widget="radio" options="{'horizontal': true}"
+                                           nolabel="1"/>
+                                </div>
+                            </group>
+                            <group col="1">
+                                <div style="background-color: #CCCCFF; padding: 5px; border-radius: 3px;">
+                                    <label for="name" string="検査方法"/>
+                                </div>
+                                <label for="name" string="操作、目視"/>
+                                <label for="name" string="目視、触診"/>
+                                <label for="name" string="目視、触診"/>
+                                <label for="name" string="操作、触診"/>
+                                <label for="name" string="目視、触診"/>
                             </group>
                         </group>
                         <footer>
-                            <button name="action_save_and_confirm" string="Save and Confirm" type="object"
-                                    class="btn-primary"/>
+                            <button name="action_save" string="Save (Same Action)" type="button"/>
                         </footer>
                     </sheet>
+
                 </form>
             </field>
         </record>
 
-        <record model="ir.actions.act_window" id="kki_check_monthly_window">
-            <field name="name">kki_check_monthly window</field>
+        <record model="ir.actions.act_window" id="kki_forklift_monthly_window">
+            <field name="name">kki_forklift_monthly window</field>
             <field name="res_model">kki_forklift.monthly</field>
             <field name="view_mode">tree,form</field>
         </record>
 
-        <menuitem name="check_monthly" id="kki_check_monthly_list" parent="kki_forklift_2022.lift"
-                  action="kki_check_monthly_window"/>
-
+        <menuitem name="check_monthly" id="kki_monthly_list" parent="kki_forklift_2022.lift"
+                  action="kki_forklift_monthly_window"/>
     </data>
 </odoo>

@@ -22,6 +22,10 @@ class kki_forklift_2022(models.Model):
         comodel_name="kki_forklift.history",
         inverse_name="lift_id",
         string="check history")
+    check_monthly_ids = fields.One2many(
+        comodel_name="kki_forklift.monthly",
+        inverse_name="lift_id",
+        string="check monthly")
     price = fields.Integer("price")
     history_count_2 = fields.Integer("test")
     history_count = fields.Integer(compute="_compute_check_history_count")

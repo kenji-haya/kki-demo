@@ -3,3 +3,5 @@ access_kki_forklift_2022_lift,kki_forklift_2022.lift,model_kki_forklift_2022_lif
 access_kki_forklift_size,kki_forklift.size,model_kki_forklift_size,base.group_user,1,1,1,1
 access_kki_forklift_history,kki_forklift.history,model_kki_forklift_history,base.group_user,1,1,1,1
 access_kki_forklift_place,kki_forklift.place,model_kki_forklift_place,base.group_user,1,1,1,1
+access_kki_forklift_monthly,kki_forklift.monthly,model_kki_forklift_monthly,base.group_user,1,1,1,1
+

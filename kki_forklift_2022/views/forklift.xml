@@ -99,15 +99,15 @@
                                 </field>
                             </page>
                             <page string="check history_monthly">
-<!--                                <field name="check_history_monthly_ids">-->
-<!--                                    <tree default_order="check_date desc">-->
-<!--                                        <field name="name"/>-->
-<!--                                        <field name="check_date_monthly"/>-->
-<!--                                        &lt;!&ndash;                                        フォーム修正履歴リストに備考を追加&ndash;&gt;-->
-<!--                                        &lt;!&ndash;                                        <field name="last_check_name"/>&ndash;&gt;-->
-<!--                                        <field name="remarks_1_monthly"/>-->
-<!--                                    </tree>-->
-<!--                                </field>-->
+                                <field name="check_monthly_ids">
+                                    <tree default_order="check_date desc">
+                                        <field name="name_month"/>
+                                        <field name="check_date_month"/>
+                                        <!--                                        フォーム修正履歴リストに備考を追加-->
+                                        <!--                                        <field name="last_check_name"/>-->
+                                        <field name="remarks_2"/>
+                                    </tree>
+                                </field>
                             </page>
                         </notebook>
                     </sheet>
@@ -143,18 +143,18 @@
 
         <!-- server action to the one above -->
 
-<!--        <record model="ir.actions.server" id="kki_forklift.action_server">-->
-<!--            <field name="name">kki_forklift server</field>-->
-<!--            <field name="model_id" ref="model_kki_forklift_kki_forklift"/>-->
-<!--            <field name="state">code</field>-->
-<!--            <field name="code">-->
-<!--                action = {-->
-<!--                "type": "ir.actions.act_window",-->
-<!--                "view_mode": "tree,form",-->
-<!--                "res_model": model._name,-->
-<!--                }-->
-<!--            </field>-->
-<!--        </record>-->
+        <!--        <record model="ir.actions.server" id="kki_forklift.action_server">-->
+        <!--            <field name="name">kki_forklift server</field>-->
+        <!--            <field name="model_id" ref="model_kki_forklift_kki_forklift"/>-->
+        <!--            <field name="state">code</field>-->
+        <!--            <field name="code">-->
+        <!--                action = {-->
+        <!--                "type": "ir.actions.act_window",-->
+        <!--                "view_mode": "tree,form",-->
+        <!--                "res_model": model._name,-->
+        <!--                }-->
+        <!--            </field>-->
+        <!--        </record>-->
 
 
         <!-- Top menu item -->
