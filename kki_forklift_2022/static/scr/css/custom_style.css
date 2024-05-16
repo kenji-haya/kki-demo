@@ -1,0 +1,14 @@
+.vertical-line {
+    border-left: 1px solid #000;
+    height: 100%; /* 高さを適切に調整 */
+    position: absolute;
+    top: 0;
+}
+
+.first-line {
+    left: 25%; /* 位置を調整 */
+}
+
+.second-line {
+    left: 75%; /* 位置を調整 */
+}

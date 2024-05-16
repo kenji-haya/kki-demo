@@ -31,75 +31,78 @@
                             </div>
                         </div>
 
-                        <group string="- 基本情報 -" colspan="2">
-                            <field name="name_month"/>
-                            <field name="check_date_month" readonly="0"/>
-                            <field name="alert_mes1" invisible="1"/>
-                        </group>
+                        <!-- 縦線を追加するためのdiv要素 -->
+                            <group string="- 基本情報 -" colspan="2">
+                                <field name="name_month"/>
+                                <field name="check_date_month" readonly="0"/>
+                                <field name="alert_mes1" invisible="1"/>
+                            </group>
 
                         <!-- 一般点検項目 -->
-                        <group string="- 操縦装置 -" colspan="2" col="3"
-                               style="border-top: 2px solid #ccc; margin-top: 2px; margin-bottom: 2px;">
-                            <group col="1">
-                                <div style="background-color: #CCCCFF; padding: 5px; border-radius: 3px;">
-                                    <text>検査項目</text>
-                                </div>
-                                <text>ハンドルの遊び、がた</text>
-                            </group>
-                            <group col="1">
-                                <div style="background-color: #CCCCFF; padding: 5px; border-radius: 3px;">
-                                    <text>check</text>
-                                </div>
-                                <field name="handle_check" widget="radio" options="{'horizontal': true}"
-                                       nolabel="1"/>
-                            </group>
-                            <group col="1">
-                                <div style="background-color: #CCCCFF; padding: 5px; border-radius: 3px;">
-                                    <text>検査方法</text>
-                                </div>
-                                <text>操作、目視</text>
-                            </group>
-                        </group>
+                        <div class="vertical-line">
+                        </div>
+                            <group string="- 操縦装置 -" colspan="2" col="3"
+                                   style="border-top: 2px solid #ccc; margin-top: 2px; margin-bottom: 2px;">
+                                <group col="1">
+                                    <div style="background-color: #dcdcdc; padding: 5px; border-radius: 3px;">
+                                        <text>検査項目</text>
+                                    </div>
+                                    <text>ハンドルの遊び、がた</text>
+                                </group>
 
-                        <!-- 追加点検項目 -->
-                        <group string="- 荷役装置 -" colspan="2" col="3"
-                               style="border-top: 2px solid #ccc; margin-top: 2px; margin-bottom: 2px;">
-                            <!-- 検査項目 -->
-                            <group col="1">
-                                <div style="background-color: #CCCCFF; padding: 5px; border-radius: 3px;">
-                                    <text>検査項目</text>
-                                </div>
-                                <text>フォークの亀裂、摩耗</text>
-                                <text>フォーク止めピン部の摩耗</text>
-                                <text>マストの変形、亀裂、損傷</text>
-                                <text>リフトチェーンの貼り具合</text>
+                                <group col="1">
+                                    <div style="background-color: #dcdcdc; padding: 5px; border-radius: 3px;">
+                                        <text>check</text>
+                                    </div>
+                                    <div style="text-align: center;">
+                                        <field name="handle_check" widget="radio" options="{'horizontal': true}"
+                                               nolabel="1"/>
+                                    </div>
+                                </group>
+                                <group col="1">
+                                    <div style="background-color: #dcdcdc; padding: 5px; border-radius: 3px;">
+                                        <text>検査方法</text>
+                                    </div>
+                                    <text>操作、目視</text>
+                                </group>
                             </group>
-                            <!-- check -->
-                            <group col="1">
-                                <div style="background-color: #CCCCFF; padding: 5px; border-radius: 3px;">
-                                    <text>check</text>
-                                </div>
-                                <field name="fork_check1" widget="radio" options="{'horizontal': true}"
-                                       nolabel="1"/>
-                                <field name="fork_check2" widget="radio" options="{'horizontal': true}"
-                                       nolabel="1"/>
-                                <field name="fork_check3" widget="radio" options="{'horizontal': true}"
-                                       nolabel="1"/>
-                                <field name="fork_check4" widget="radio" options="{'horizontal': true}"
-                                       nolabel="1"/>
+
+                            <!-- 追加点検項目 -->
+                            <group string="- 荷役装置 -" colspan="2" col="3"
+                                   style="border-top: 2px solid #ccc; margin-top: 2px; margin-bottom: 2px;">
+                                <group col="1">
+                                    <div style="background-color: #dcdcdc; padding: 5px; border-radius: 3px;">
+                                        <text>検査項目</text>
+                                    </div>
+                                    <text>フォークの亀裂、摩耗</text>
+                                    <text>フォーク止めピン部の摩耗</text>
+                                    <text>マストの変形、亀裂、損傷</text>
+                                    <text>リフトチェーンの貼り具合</text>
+                                </group>
+                                <group col="1">
+                                    <div style="background-color: #dcdcdc; padding: 5px; border-radius: 3px;">
+                                        <text>check</text>
+                                    </div>
+                                    <field name="fork_check1" widget="radio" options="{'horizontal': true}"
+                                           nolabel="1"/>
+                                    <field name="fork_check2" widget="radio" options="{'horizontal': true}"
+                                           nolabel="1"/>
+                                    <field name="fork_check3" widget="radio" options="{'horizontal': true}"
+                                           nolabel="1"/>
+                                    <field name="fork_check4" widget="radio" options="{'horizontal': true}"
+                                           nolabel="1"/>
+                                </group>
+                                <group col="1">
+                                    <div style="background-color: #dcdcdc; padding: 5px; border-radius: 3px;">
+                                        <text>検査方法</text>
+                                    </div>
+                                    <text>操作、目視</text>
+                                    <text>目視、触診</text>
+                                    <text>目視、触診</text>
+                                    <text>操作、触診</text>
+                                    <text>目視、触診</text>
+                                </group>
                             </group>
-                            <!-- 検査方法 -->
-                            <group col="1">
-                                <div style="background-color: #CCCCFF; padding: 5px; border-radius: 3px;">
-                                    <text>検査方法</text>
-                                </div>
-                                <text>操作、目視</text>
-                                <text>目視、触診</text>
-                                <text>目視、触診</text>
-                                <text>操作、触診</text>
-                                <text>目視、触診</text>
-                            </group>
-                        </group>
 
                         <footer>
                             <button name="action_save_and_confirm_month" string="Save and Confirm" type="object"

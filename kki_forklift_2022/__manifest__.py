@@ -27,6 +27,7 @@
         'views/forklift.xml',
         'views/size.xml',
         'views/check_history.xml',
+        'views/check_monthly.xml',
         'views/place.xml',
         'views/check_monthly.xml',
         'views/templates.xml',
