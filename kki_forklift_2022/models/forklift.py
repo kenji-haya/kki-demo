@@ -97,6 +97,13 @@ class kki_forklift_2022(models.Model):
 
     def archive_button(self):
         self.write({"active": False})
+        # action = {
+        #     'type': 'ir.actions.act_window',
+        #     'name': "lift.kanban",
+        #     'res_model': 'kki_forklift.lift',
+        #     'view_mode': 'kanban',  # list
+        # }
+
         action = {'type': 'ir.actions.act_url',
                   'target': 'self',
                   'url': '/web#model=kki_forklift.lift&view_type=kanban'
@@ -117,6 +124,15 @@ class kki_forklift_2022(models.Model):
             }
         }
 
+    # @api.depends('last_check_date')
+    # def _next_date(self):
+    #     # 日程がない場合の処理をここで判定させる
+    #     for rec in self:
+    #         if rec.last_check_date:
+    #             rec.next_date = rec.last_check_date + timedelta(days=30)
+    #         else:
+    #             rec.next_date =""
+
     @api.depends('launch_day')
     def _next_inspection(self):
         # 日程がない場合の処理をここで判定させる
@@ -125,6 +141,17 @@ class kki_forklift_2022(models.Model):
                 rec.annual_inspection = rec.launch_day + timedelta(days=365)
             else:
                 rec.annual_inspection =""
+
+    # # 年次点検の日付検索
+    # @api.depends('next_inspect_day')
+    # def _inspect_day(self):
+    #     # 日程がない場合の処理をここで判定させる
+    #     print(timedelta(days=365))
+    #     for rec in self:
+    #         if rec.next_inspect_day:
+    #             rec.next_inspect_day = datetime.today() + timedelta(days=365)
+    #         else:
+    #             rec.next_inspect_day = datetime.today() + timedelta(days=365)
 
     # 年次点検の日付検索(一年後を提示)
     @api.depends('next_inspect_day')
@@ -140,3 +167,12 @@ class kki_forklift_2022(models.Model):
                 print(2)
                 rec.next_inspect_day = datetime.today() + timedelta(days=365)
 
+
+    # @api.depends('last_check_date')
+    # def _next_date(self):
+    #     # 日程がない場合の処理をここで判定させる
+    #     for rec in self:
+    #         if rec.last_check_date:
+    #             rec.next_date = rec.last_check_date + timedelta(days=30)
+    #         else:
+    #             rec.next_date =""
