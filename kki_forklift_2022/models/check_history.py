@@ -8,7 +8,8 @@ class kki_forklift_check_history(models.Model):
     _name = 'kki_forklift.history'
     _description = 'kki_forklift.history'
 
-    name = fields.Many2one("hr.employee", string="name", required=True)
+    name = fields.Many2one("hr.employee", string="name", required=True,
+                           default=lambda self: self._get_default_inspector_history())
     owner_id = fields.Many2one('res.users', 'owner_id', default=lambda self: self.env.user)
     check_date = fields.Date("check date", required=True)
     print(check_date)
@@ -91,6 +92,18 @@ class kki_forklift_check_history(models.Model):
             'last_check_date': self.check_date,
             'last_check_name': self.name.name,
         })
+
+    @api.model
+    def _get_default_inspector_history(self):
+        # 最終点検日のレコード番号を取得
+        last_fork = self.env['kki_forklift.history'].search([], order='check_date desc', limit=1)
+        print(f'last_fork:{last_fork.name.name}')
+        print(f'last_fork:{last_fork.check_date}')
+        if last_fork.name:
+            print(f'last_fork.name:{last_fork.name}')
+            print(f'last_fork.nametype:{type(last_fork.id)}')
+            return last_fork.name
+        return False
 
     #　未実施項目があればアラートを出す
     @api.constrains('alert_mes')

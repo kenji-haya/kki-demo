@@ -8,7 +8,8 @@ class kki_forklift_check_monthly(models.Model):
     _name = 'kki_forklift.monthly'
     _description = 'kki_forklift.monthly'
 
-    name_month = fields.Many2one("hr.employee", string="name", required=True)
+    name_month = fields.Many2one("hr.employee", string="name", required=True,
+                                 default=lambda self: self._get_default_inspector())
     owner_id_month = fields.Many2one('res.users', 'owner_id', default=lambda self: self.env.user)
     check_date_month = fields.Date("check_date_month", required=True)
     lift_id = fields.Many2one("kki_forklift_2022.lift", "Forklift")
@@ -70,9 +71,9 @@ class kki_forklift_check_monthly(models.Model):
     # 最新のチェック日付を表示
     @api.constrains("check_date_month")
     def _get_last_date(self):
-        if self.lift_id.last_check_date:
-            if self.lift_id.last_check_date > self.check_date_month:
-                print(f'print1:{self.lift_id.last_check_date}')
+        if self.lift_id.last_date_month:
+            if self.lift_id.last_date_month > self.check_date_month:
+                print(f'print1:{self.lift_id.last_date_month}')
                 print(self.lift_id.name)
             else:
                 # print(f'print3:{self.name.name}')
@@ -86,7 +87,19 @@ class kki_forklift_check_monthly(models.Model):
             'last_name_month': self.name_month.name,
         })
 
-    #　未実施項目があればアラートを出す
+    @api.model
+    def _get_default_inspector(self):
+        # 最終点検日のレコード番号を取得
+        last_fork = self.env['kki_forklift.monthly'].search([], order='check_date_month desc', limit=1)
+        print(f'last_fork:{last_fork.name_month.name}')
+        print(f'last_fork:{last_fork.check_date_month}')
+        if last_fork.name_month:
+            print(f'last_fork.name:{last_fork.name_month}')
+            print(f'last_fork.nametype:{type(last_fork.id)}')
+            return last_fork.name_month
+        return False
+
+    # 未実施項目があればアラートを出す
     @api.constrains('alert_mes1')
     def constrains_no_check_warning(self):
         if self.alert_mes1:

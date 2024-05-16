@@ -75,110 +75,112 @@
                                 <field name="price"/>
                                 <field name="battery_replace_day"/>
                                 <field name="next_inspect_day" readonly="0"/>
+                                <field name="place_possession"/>
                                 <!--                                <field name="next_date"/>-->
                             </group>
                             <group>
                                 <!--                                <field name="annual_inspection"/>-->
-                                <field name="place_possession"/>
                                 <field name="last_check_date" readonly="1"/>
                                 <field name="history_count"/>
                                 <field name="last_check_name" readonly="1"/>
+                            </group>
+                            <group>
                                 <field name="last_date_month" readonly="1"/>
                                 <field name="history_cnt_month" readonly="1"/>
                                 <field name="last_name_month" readonly="1"/>
                                 <field name="note"/>
                             </group>
                         </group>
-                        <notebook>
-                            <page string="check history">
-                                <field name="check_history_ids">
-                                    <tree default_order="check_date desc">
-                                        <field name="name"/>
-                                        <field name="check_date"/>
-                                        <!--                                        フォーム修正履歴リストに備考を追加-->
-                                        <!--                                        <field name="last_check_name"/>-->
-                                        <field name="remarks_1"/>
-                                    </tree>
-                                </field>
-                            </page>
-                            <page string="check history_monthly">
-                                <field name="check_monthly_ids">
-                                    <tree default_order="check_date_month desc">
-                                        <field name="name_month"/>
-                                        <field name="check_date_month"/>
-                                        <!--                                        フォーム修正履歴リストに備考を追加-->
-                                        <!--                                        <field name="last_check_name"/>-->
-                                        <field name="remarks_2"/>
-                                    </tree>
-                                </field>
-                            </page>
-                        </notebook>
-                    </sheet>
-                    <div class="oe_chatter">
-                        <field name="message_follower_ids"/>
-                        <field name="activity_ids"/>
-                        <field name="message_ids"/>
-                    </div>
-                </form>
-            </field>
-        </record>
+                    <notebook>
+                        <page string="check history">
+                            <field name="check_history_ids">
+                                <tree default_order="check_date desc">
+                                    <field name="name"/>
+                                    <field name="check_date"/>
+                                    <!--                                        フォーム修正履歴リストに備考を追加-->
+                                    <!--                                        <field name="last_check_name"/>-->
+                                    <field name="remarks_1"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="check history_monthly">
+                            <field name="check_monthly_ids">
+                                <tree default_order="check_date_month desc">
+                                    <field name="name_month"/>
+                                    <field name="check_date_month"/>
+                                    <!--                                        フォーム修正履歴リストに備考を追加-->
+                                    <!--                                        <field name="last_check_name"/>-->
+                                    <field name="remarks_2"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
 
 
-        <!-- actions opening views on models -->
+    <!-- actions opening views on models -->
 
-        <record model="ir.actions.act_window" id="kki_forklift_2022.action_window">
-            <field name="name">kki_forklift window</field>
-            <field name="res_model">kki_forklift_2022.lift</field>
-            <field name="view_mode">kanban,tree,form</field>
-        </record>
+    <record model="ir.actions.act_window" id="kki_forklift_2022.action_window">
+        <field name="name">kki_forklift window</field>
+        <field name="res_model">kki_forklift_2022.lift</field>
+        <field name="view_mode">kanban,tree,form</field>
+    </record>
 
-        <record id="hr_plan_view_search" model="ir.ui.view">
-            <field name="name">kki_forklift.lift.search</field>
-            <field name="model">kki_forklift_2022.lift</field>
-            <field name="arch" type="xml">
-                <search string="Plan">
-                    <field name="name"/>
-                    <separator/>
-                    <filter string="Archived" name="inactive" domain="[('active', '=', False)]"/>
-                </search>
-            </field>
-        </record>
+    <record id="hr_plan_view_search" model="ir.ui.view">
+        <field name="name">kki_forklift.lift.search</field>
+        <field name="model">kki_forklift_2022.lift</field>
+        <field name="arch" type="xml">
+            <search string="Plan">
+                <field name="name"/>
+                <separator/>
+                <filter string="Archived" name="inactive" domain="[('active', '=', False)]"/>
+            </search>
+        </field>
+    </record>
 
-        <!-- server action to the one above -->
+    <!-- server action to the one above -->
 
-        <!--        <record model="ir.actions.server" id="kki_forklift.action_server">-->
-        <!--            <field name="name">kki_forklift server</field>-->
-        <!--            <field name="model_id" ref="model_kki_forklift_kki_forklift"/>-->
-        <!--            <field name="state">code</field>-->
-        <!--            <field name="code">-->
-        <!--                action = {-->
-        <!--                "type": "ir.actions.act_window",-->
-        <!--                "view_mode": "tree,form",-->
-        <!--                "res_model": model._name,-->
-        <!--                }-->
-        <!--            </field>-->
-        <!--        </record>-->
+    <!--        <record model="ir.actions.server" id="kki_forklift.action_server">-->
+    <!--            <field name="name">kki_forklift server</field>-->
+    <!--            <field name="model_id" ref="model_kki_forklift_kki_forklift"/>-->
+    <!--            <field name="state">code</field>-->
+    <!--            <field name="code">-->
+    <!--                action = {-->
+    <!--                "type": "ir.actions.act_window",-->
+    <!--                "view_mode": "tree,form",-->
+    <!--                "res_model": model._name,-->
+    <!--                }-->
+    <!--            </field>-->
+    <!--        </record>-->
 
 
-        <!-- Top menu item -->
+    <!-- Top menu item -->
 
-        <menuitem name="kki_forklift_2022" id="kki_forklift_2022.menu_root"
-                  web_icon="kki_forklift_2022,static/description/forklift.png"/>
+    <menuitem name="kki_forklift_2022" id="kki_forklift_2022.menu_root"
+              web_icon="kki_forklift_2022,static/description/forklift.png"/>
 
-        <!-- menu categories -->
+    <!-- menu categories -->
 
-        <menuitem name="lift" id="kki_forklift_2022.lift" parent="kki_forklift_2022.menu_root"/>
-        <!--
-            <menuitem name="Menu 2" id="kki_forklift.menu_2" parent="kki_forklift.menu_root"/>
-        -->
-        <!-- actions -->
+    <menuitem name="lift" id="kki_forklift_2022.lift" parent="kki_forklift_2022.menu_root"/>
+    <!--
+        <menuitem name="Menu 2" id="kki_forklift.menu_2" parent="kki_forklift.menu_root"/>
+    -->
+    <!-- actions -->
 
-        <menuitem name="lift" id="kki_forklift_2022.lift_list" parent="kki_forklift_2022.lift"
-                  action="kki_forklift_2022.action_window"/>
+    <menuitem name="lift" id="kki_forklift_2022.lift_list" parent="kki_forklift_2022.lift"
+              action="kki_forklift_2022.action_window"/>
 
-        <!--
-            <menuitem name="Server to list" id="kki_forklift" parent="kki_forklift.menu_2"
-                      action="kki_forklift.action_server"/>
-        -->
-    </data>
-</odoo>
+    <!--
+        <menuitem name="Server to list" id="kki_forklift" parent="kki_forklift.menu_2"
+                  action="kki_forklift.action_server"/>
+    -->
+</data>
+        </odoo>
