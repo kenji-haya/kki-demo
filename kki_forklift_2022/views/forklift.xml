@@ -83,6 +83,9 @@
                                 <field name="last_check_date" readonly="1"/>
                                 <field name="history_count"/>
                                 <field name="last_check_name" readonly="1"/>
+                                <field name="last_date_month" readonly="1"/>
+                                <field name="history_cnt_month" readonly="1"/>
+                                <field name="last_name_month" readonly="1"/>
                                 <field name="note"/>
                             </group>
                         </group>
@@ -100,7 +103,7 @@
                             </page>
                             <page string="check history_monthly">
                                 <field name="check_monthly_ids">
-                                    <tree default_order="check_date desc">
+                                    <tree default_order="check_date_month desc">
                                         <field name="name_month"/>
                                         <field name="check_date_month"/>
                                         <!--                                        フォーム修正履歴リストに備考を追加-->

@@ -5,7 +5,7 @@
             <field name="name">kki_forklift_monthly_list</field>
             <field name="model">kki_forklift.monthly</field>
             <field name="arch" type="xml">
-                <tree default_order="check_date desc">
+                <tree default_order="check_date_month desc">
                     <field name="name_month"/>
                     <field name="owner_id_month"/>
                     <field name="check_date_month"/>
@@ -36,18 +36,19 @@
                             <field name="check_date_month" readonly="0"/>
                             <field name="alert_mes1" invisible="1"/>
                         </group>
+
                         <!-- 一般点検項目 -->
                         <group string="- 操縦装置 -" colspan="2" col="3"
                                style="border-top: 2px solid #ccc; margin-top: 2px; margin-bottom: 2px;">
                             <group col="1">
                                 <div style="background-color: #CCCCFF; padding: 5px; border-radius: 3px;">
-                                    <label for="name" string="検査項目"/>
+                                    <text>検査項目</text>
                                 </div>
-                                <label for="name" string="ハンドルの遊び、がた"/>
+                                <text>ハンドルの遊び、がた</text>
                             </group>
                             <group col="1">
                                 <div style="background-color: #CCCCFF; padding: 5px; border-radius: 3px;">
-                                    <label for="name" string="check"/>
+                                    <text>check</text>
                                 </div>
                                 <div style="text-align: center;">
                                     <field name="handle_check" widget="radio" options="{'horizontal': true}"
@@ -56,9 +57,9 @@
                             </group>
                             <group col="1">
                                 <div style="background-color: #CCCCFF; padding: 5px; border-radius: 3px;">
-                                    <label for="name" string="検査方法"/>
+                                    <text>検査方法</text>
                                 </div>
-                                <label for="name" string="操作、目視"/>
+                                <text>操作、目視</text>
                             </group>
                         </group>
 
@@ -67,18 +68,17 @@
                                style="border-top: 2px solid #ccc; margin-top: 2px; margin-bottom: 2px;">
                             <group col="1">
                                 <div style="background-color: #CCCCFF; padding: 5px; border-radius: 3px;">
-                                    <label for="name" string="検査項目"/>
+                                    <text>検査項目</text>
                                 </div>
-                                <label for="name" string="フォークの亀裂、摩耗"/>
-                                <label for="name" string="フォーク止めピン部の摩耗"/>
-                                <label for="name" string="マストの変形、亀裂、損傷"/>
-                                <label for="name" string="リフトチェーンの貼り具合"/>
+                                <text>フォークの亀裂、摩耗</text>
+                                <text>フォーク止めピン部の摩耗</text>
+                                <text>マストの変形、亀裂、損傷</text>
+                                <text>リフトチェーンの貼り具合</text>
                             </group>
                             <group col="1">
                                 <div style="background-color: #CCCCFF; padding: 5px; border-radius: 3px;">
-                                    <label for="name" string="check"/>
+                                    <text>check</text>
                                 </div>
-                                <div style="text-align: center;">
                                     <field name="fork_check1" widget="radio" options="{'horizontal': true}"
                                            nolabel="1"/>
                                     <field name="fork_check2" widget="radio" options="{'horizontal': true}"
@@ -87,21 +87,22 @@
                                            nolabel="1"/>
                                     <field name="fork_check4" widget="radio" options="{'horizontal': true}"
                                            nolabel="1"/>
-                                </div>
                             </group>
                             <group col="1">
                                 <div style="background-color: #CCCCFF; padding: 5px; border-radius: 3px;">
-                                    <label for="name" string="検査方法"/>
+                                    <text>検査方法</text>
                                 </div>
-                                <label for="name" string="操作、目視"/>
-                                <label for="name" string="目視、触診"/>
-                                <label for="name" string="目視、触診"/>
-                                <label for="name" string="操作、触診"/>
-                                <label for="name" string="目視、触診"/>
+                                <text>操作、目視</text>
+                                <text>目視、触診</text>
+                                <text>目視、触診</text>
+                                <text>操作、触診</text>
+                                <text>目視、触診</text>
                             </group>
                         </group>
+
                         <footer>
-                            <button name="action_save" string="Save (Same Action)" type="button"/>
+                            <button name="action_save_and_confirm_month" string="Save and Confirm" type="object"
+                                    class="btn-primary"/>
                         </footer>
                     </sheet>
 

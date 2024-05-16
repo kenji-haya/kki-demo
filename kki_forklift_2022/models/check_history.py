@@ -85,11 +85,11 @@ class kki_forklift_check_history(models.Model):
                 print(f'print{self.check_date}')
                 self.env['kki_forklift_2022.lift'].search([('id', '=', self.lift_id._origin.id), ]).write({
                     'last_check_date': self.check_date,
-                    # 'last_check_name': self.name.name,
+                    'last_check_name': self.name.name,
                 })
         self.env['kki_forklift_2022.lift'].search([('id', '=', self.lift_id._origin.id), ]).write({
             'last_check_date': self.check_date,
-            # 'last_check_name': self.name.name,
+            'last_check_name': self.name.name,
         })
 
     #　未実施項目があればアラートを出す
