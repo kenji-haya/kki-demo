@@ -23,43 +23,47 @@
                             <div>
                                 <strong>未実施項目があります。確認してください。</strong>
                             </div>
-                            <div>
-                                You can archive the contact
+                            <div>You can archive the contact
                                 <field name="name_month" required="0" readonly="1"/>
                             </div>
                         </div>
 
+                        <!-- 縦線を追加するためのdiv要素 -->
                         <group string="- 基本情報 -" colspan="2">
                             <field name="name_month"/>
                             <field name="check_date_month" readonly="0"/>
                             <field name="alert_mes1" invisible="1"/>
                         </group>
 
-                        <!-- 一般点検項目 -->
-                        <group string="- 操縦装置 -" colspan="2" col="3" style="border-top: 2px solid #ccc; margin-top: 2px; margin-bottom: 2px;">
+                        <!-- 操縦装置 -->
+                        <div class="vertical-line">
+                        </div>
+                        <group string="- 操縦装置 -" colspan="2" col="3">
                             <group col="1">
                                 <div style="background-color: #dcdcdc; padding: 5px; border-radius: 3px;">
                                     <text>検査項目</text>
                                 </div>
-                                <text>ハンドルの遊び、がた</text>
+                                <span class="custom-text">ハンドルの遊び・がた</span>
+                                <span class="custom-text">ハンドルの操作具合</span>
                             </group>
-                            <div class="vertical-line">
-                            </div>
+
                             <group col="1">
                                 <div style="background-color: #dcdcdc; padding: 5px; border-radius: 3px;">
                                     <text>check</text>
                                 </div>
                                 <div style="text-align: center;">
-                                    <field name="handle_check" widget="radio" options="{'horizontal': true}" nolabel="1"/>
+                                    <field name="handle_check1" widget="radio" options="{'horizontal': true}"
+                                           nolabel="1"/>
+                                    <field name="handle_check2" widget="radio" options="{'horizontal': true}"
+                                           nolabel="1"/>
                                 </div>
                             </group>
-                            <div class="vertical-line">
-                            </div>
                             <group col="1">
                                 <div style="background-color: #dcdcdc; padding: 5px; border-radius: 3px;">
                                     <text>検査方法</text>
                                 </div>
-                                <text>操作、目視</text>
+                                <span class="custom-text">操作・目視</span>
+                                <span class="custom-text">走行・操作</span>
                             </group>
                         </group>
 
@@ -101,7 +105,8 @@
                         </group>
 
                         <footer>
-                            <button name="action_save_and_confirm_month" string="Save and Confirm" type="object" class="btn-primary"/>
+                            <button name="action_save_and_confirm_month" string="Save and Confirm" type="object"
+                                    class="btn-primary"/>
                         </footer>
                     </sheet>
                 </form>
@@ -114,6 +119,7 @@
             <field name="view_mode">tree,form</field>
         </record>
 
-        <menuitem name="check_monthly" id="kki_monthly_list" parent="kki_forklift_2022.lift" action="kki_forklift_monthly_window"/>
+        <menuitem name="check_monthly" id="kki_monthly_list" parent="kki_forklift_2022.lift"
+                  action="kki_forklift_monthly_window"/>
     </data>
 </odoo>

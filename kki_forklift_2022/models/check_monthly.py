@@ -15,7 +15,10 @@ class kki_forklift_check_monthly(models.Model):
     lift_id = fields.Many2one("kki_forklift_2022.lift", "Forklift")
     defective_parts_im = fields.Binary("image")
 
-    handle_check = fields.Selection(
+    handle_check1 = fields.Selection(
+        [('one', '未実施'), ('two', '点検済'), ('three', '不具合有')],
+        default='one')
+    handle_check2 = fields.Selection(
         [('one', '未実施'), ('two', '点検済'), ('three', '不具合有')],
         default='one')
 
@@ -31,19 +34,57 @@ class kki_forklift_check_monthly(models.Model):
     fork_check4= fields.Selection(
         [('one', '未実施'), ('two', '点検済'), ('three', '不具合有')],
         default='one')
-    handle_1= fields.Selection(
+
+    hydraulic1= fields.Selection(
         [('one', '未実施'), ('two', '点検済'), ('three', '不具合有')],
         default="one")
-    break_1= fields.Selection(
+    hydraulic2= fields.Selection(
         [('one', '未実施'), ('two', '点検済'), ('three', '不具合有')],
         default="one")
-    horn_1= fields.Selection(
+    hydraulic3= fields.Selection(
         [('one', '未実施'), ('two', '点検済'), ('three', '不具合有')],
         default="one")
-    volt_1= fields.Selection(
+    hydraulic4= fields.Selection(
         [('one', '未実施'), ('two', '点検済'), ('three', '不具合有')],
         default="one")
-    oil_1= fields.Selection(
+    hydraulic5= fields.Selection(
+        [('one', '未実施'), ('two', '点検済'), ('three', '不具合有')],
+        default="one")
+    hydraulic6= fields.Selection(
+        [('one', '未実施'), ('two', '点検済'), ('three', '不具合有')],
+        default="one")
+
+    running1 = fields.Selection(
+        [('one', '未実施'), ('two', '点検済'), ('three', '不具合有')],
+        default="one")
+    running2 = fields.Selection(
+        [('one', '未実施'), ('two', '点検済'), ('three', '不具合有')],
+        default="one")
+
+    safety1 = fields.Selection(
+        [('one', '未実施'), ('two', '点検済'), ('three', '不具合有')],
+        default="one")
+    safety2 = fields.Selection(
+        [('one', '未実施'), ('two', '点検済'), ('three', '不具合有')],
+        default="one")
+    safety3 = fields.Selection(
+        [('one', '未実施'), ('two', '点検済'), ('three', '不具合有')],
+        default="one")
+    safety4 = fields.Selection(
+        [('one', '未実施'), ('two', '点検済'), ('three', '不具合有')],
+        default="one")
+    safety5 = fields.Selection(
+        [('one', '未実施'), ('two', '点検済'), ('three', '不具合有')],
+        default="one")
+    safety6 = fields.Selection(
+        [('one', '未実施'), ('two', '点検済'), ('three', '不具合有')],
+        default="one")
+
+    brake1 = fields.Selection(
+        [('one', '未実施'), ('two', '点検済'), ('three', '不具合有')],
+        default="one")
+
+    comp1 = fields.Selection(
         [('one', '未実施'), ('two', '点検済'), ('three', '不具合有')],
         default="one")
 

@@ -57,7 +57,8 @@
                             </group>
                         </group>
                         <footer>
-                            <button name="action_save" string="Save (Same Action)" type="button"/>
+                            <button name="action_save_and_confirm" string="Save and Confirm" type="object"
+                                    class="btn-primary"/>
                         </footer>
                     </sheet>
                 </form>
