@@ -36,7 +36,7 @@
                         </group>
 
                         <!-- 一般点検項目 -->
-                        <group string="- 操縦装置 -" colspan="2" col="3" style="border-top: 2px solid #ccc; margin-top: 2px; margin-bottom: 2px;">
+                        <group string="- 操縦装置 -">
                             <group col="1">
                                 <div style="background-color: #dcdcdc; padding: 5px; border-radius: 3px;">
                                     <text>検査項目</text>
@@ -50,7 +50,8 @@
                                     <text>check</text>
                                 </div>
                                 <div style="text-align: center;">
-                                    <field name="handle_check" widget="radio" options="{'horizontal': true}" nolabel="1"/>
+                                    <field name="handle_check" widget="radio" options="{'horizontal': true}"
+                                           nolabel="1"/>
                                 </div>
                             </group>
                             <div class="vertical-line">
@@ -64,7 +65,7 @@
                         </group>
 
                         <!-- 追加点検項目 -->
-                        <group string="- 荷役装置 -" colspan="2" col="3" style="border-top: 2px solid #ccc; margin-top: 2px; margin-bottom: 2px;">
+                        <group string="- 荷役装置 -">
                             <group col="1">
                                 <div style="background-color: #dcdcdc; padding: 5px; border-radius: 3px;">
                                     <text>検査項目</text>
@@ -86,7 +87,6 @@
                                 <field name="fork_check4" widget="radio" options="{'horizontal': true}" nolabel="1"/>
                             </group>
                             <div class="vertical-line">
-
                             </div>
                             <group col="1">
                                 <div style="background-color: #dcdcdc; padding: 5px; border-radius: 3px;">
@@ -99,6 +99,7 @@
                                 <text>目視、触診</text>
                             </group>
                         </group>
+
 
                         <footer>
                             <button name="action_save_and_confirm_month" string="Save and Confirm" type="object" class="btn-primary"/>
