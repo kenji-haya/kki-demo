@@ -1,8 +1,14 @@
 # -*- coding: utf-8 -*-
+import base64
+import os
+
 from odoo import _, api, fields, models
 from datetime import datetime,timedelta
 from odoo.exceptions import ValidationError
 import pytz
+
+from odoo.odoo.exceptions import UserError
+
 
 class kki_forklift_check_history(models.Model):
     _name = 'kki_forklift.history'
@@ -12,10 +18,10 @@ class kki_forklift_check_history(models.Model):
                            default=lambda self: self._get_default_inspector_history())
     owner_id = fields.Many2one('res.users', 'owner_id', default=lambda self: self.env.user)
     check_date = fields.Date("check date", required=True)
-    print(check_date)
-
     lift_id = fields.Many2one("kki_forklift_2022.lift", "Forklift")
-    defective_parts_im = fields.Binary("image")
+    defective_history_im = fields.Binary("image")
+    defective_history_im_path = fields.Char("Image Path", readonly=True)  # 画像パスのフィールドを追加
+    image_url = fields.Char("Image URL", compute="_get_image_url")
 
     fork_1= fields.Selection(
         [('one', '未実施'), ('two', '点検済'), ('three', '不具合有')],
@@ -93,17 +99,77 @@ class kki_forklift_check_history(models.Model):
             'last_check_name': self.name.name,
         })
 
-    @api.model
-    def _get_default_inspector_history(self):
-        # 最終点検日のレコード番号を取得
-        last_fork = self.env['kki_forklift.history'].search([], order='check_date desc', limit=1)
-        print(f'last_fork:{last_fork.name.name}')
-        print(f'last_fork:{last_fork.check_date}')
-        if last_fork.name:
-            print(f'last_fork.name:{last_fork.name}')
-            print(f'last_fork.nametype:{type(last_fork.id)}')
-            return last_fork.name
+    @api.onchange('lift_id')
+    def _onchange_lift_id(self):
+        if self.lift_id:
+            self.name = self._get_default_inspector(self.lift_id)
+        else:
+            self.name = False
+
+    def _get_default_inspector_history(self, lift_record=None):
+        # If lift_record is not provided, try to fetch the default one from the context or return False
+        if not lift_record:
+            lift_record = self.env.context.get('default_lift_id')
+            if lift_record:
+                lift_record = self.env['kki_forklift_2022.lift'].browse(lift_record)
+
+        if lift_record and lift_record.last_check_name:
+            # Search for the hr.employee with the matching name
+            employee = self.env['hr.employee'].search([('name', '=', lift_record.last_check_name)], limit=1)
+            return employee.id if employee else False
         return False
+
+    @api.model
+    def create(self, vals):
+        record = super(kki_forklift_check_history, self).create(vals)
+        if 'defective_history_im' in vals:
+            record._save_image_to_filesystem()
+        return record
+
+    def write(self, vals):
+        result = super(kki_forklift_check_history, self).write(vals)
+        if 'defective_history_im' in vals:
+            self._save_image_to_filesystem()
+        return result
+
+    def _save_image_to_filesystem(self):
+        for record in self:
+            if record.defective_history_im:
+                # 保存先のディレクトリを指定
+                save_dir = r'\Odoo_kki\addons\kki-demo\kki_forklift_2022\static\images'
+                if not os.path.exists(save_dir):
+                    os.makedirs(save_dir)
+
+                # ファイル名を設定
+                if record.name:
+                    file_name = f"{record.name.id}_{record.id}.png"
+                else:
+                    file_name = f"{record.id}.png"
+
+                file_path = os.path.join(save_dir, file_name)
+
+                try:
+                    # バイナリデータをデコードしてファイルに書き込み
+                    with open(file_path, 'wb') as file:
+                        file.write(base64.b64decode(record.defective_history_im))
+
+                    # 必要に応じて、データベース内のフィールドをクリアするなどの操作を行う
+                    record.defective_history_im = False
+                except Exception as e:
+                    raise UserError(f"Failed to save image: {e}")
+
+    @api.depends('defective_history_im_path')
+    def _get_image_url(self):
+        for record in self:
+            if record.defective_history_im_path:
+                # WindowsパスをWeb URLに変換
+                # パスのセパレータを適切に変換
+                image_path = record.defective_history_im_path.replace('\\', '/')
+                record.image_url = f'/kki_forklift/static/images/{image_path}'
+                print(record.image_url)
+            else:
+                record.image_url = False
+
 
     #　未実施項目があればアラートを出す
     @api.constrains('alert_mes')
