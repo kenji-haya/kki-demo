@@ -6,13 +6,14 @@ from odoo.exceptions import AccessError, UserError
 from dateutil.relativedelta import relativedelta
 
 
-class kki_forklift(models.Model):
-    _name = 'kki_forklift.lift'
-    _description = 'kki_forklift.lift'
+class kki_forklift_2022(models.Model):
+    _name = 'kki_forklift_2022.lift'
+    _description = 'kki_forklift_2022.lift'
     _inherit = ['mail.thread', 'mail.activity.mixin']
 
     name = fields.Char("name")
     image = fields.Binary("image")
+    place_possession = fields.Many2one("kki_forklift.place", string="place")
     launch_day = fields.Date("Launch Day")
     vendor = fields.Many2one("res.partner", string="vendor")
     note = fields.Text("note")
@@ -25,10 +26,22 @@ class kki_forklift(models.Model):
     history_count_2 = fields.Integer("test")
     history_count = fields.Integer(compute="_compute_check_history_count")
     owner_id = fields.Many2one("kki_forklift.history", string="owner_id")
+
     last_check_date = fields.Date('last_check_date')
-    next_date = fields.Date('next_date', compute="_next_date")
-    annual_inspection= fields.Date('annual_inspection', compute="_next_inspection")
+
+    last_check_name = fields.Char('last_check_name')
+    # last_check_name = fields.Char('last_check_name',related='user_id.partner_id.name', store=True)
+    # last_check_name = fields.Many2one("kki_forklift.history", string="last_check_name")
+
+    # next_date = fields.Date('next_date', compute="_next_date")
+
+    annual_inspection = fields.Date('annual_inspection', compute="_next_inspection")
+
     active = fields.Boolean(default=True)
+
+    battery_replace_day = fields.Date('battery_check_date')
+
+    next_inspect_day = fields.Date('inspect_day', compute="_inspect_day")
 
     def _compute_check_history_count(self):
         for rec in self:
@@ -82,14 +95,14 @@ class kki_forklift(models.Model):
             }
         }
 
-    @api.depends('last_check_date')
-    def _next_date(self):
-        # 日程がない場合の処理をここで判定させる
-        for rec in self:
-            if rec.last_check_date:
-                rec.next_date = rec.last_check_date + timedelta(days=30)
-            else:
-                rec.next_date =""
+    # @api.depends('last_check_date')
+    # def _next_date(self):
+    #     # 日程がない場合の処理をここで判定させる
+    #     for rec in self:
+    #         if rec.last_check_date:
+    #             rec.next_date = rec.last_check_date + timedelta(days=30)
+    #         else:
+    #             rec.next_date =""
 
     @api.depends('launch_day')
     def _next_inspection(self):
@@ -100,3 +113,37 @@ class kki_forklift(models.Model):
             else:
                 rec.annual_inspection =""
 
+    # # 年次点検の日付検索
+    # @api.depends('next_inspect_day')
+    # def _inspect_day(self):
+    #     # 日程がない場合の処理をここで判定させる
+    #     print(timedelta(days=365))
+    #     for rec in self:
+    #         if rec.next_inspect_day:
+    #             rec.next_inspect_day = datetime.today() + timedelta(days=365)
+    #         else:
+    #             rec.next_inspect_day = datetime.today() + timedelta(days=365)
+
+    # 年次点検の日付検索(一年後を提示)
+    @api.depends('next_inspect_day')
+    def _inspect_day(self):
+        # 日程がない場合の処理をここで判定させる
+        # print(timedelta(days=365))
+        for rec in self:
+            print(rec.next_inspect_day)
+            if rec.next_inspect_day:
+                # print(1)
+                pass
+            else:
+                # print(2)
+                rec.next_inspect_day = datetime.today() + timedelta(days=365)
+
+
+    # @api.depends('last_check_date')
+    # def _next_date(self):
+    #     # 日程がない場合の処理をここで判定させる
+    #     for rec in self:
+    #         if rec.last_check_date:
+    #             rec.next_date = rec.last_check_date + timedelta(days=30)
+    #         else:
+    #             rec.next_date =""

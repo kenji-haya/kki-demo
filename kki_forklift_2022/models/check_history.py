@@ -99,24 +99,16 @@ class kki_forklift_check_history(models.Model):
             'last_check_name': self.name.name,
         })
 
-    @api.onchange('lift_id')
-    def _onchange_lift_id(self):
-        if self.lift_id:
-            self.name = self._get_default_inspector(self.lift_id)
-        else:
-            self.name = False
-
-    def _get_default_inspector_history(self, lift_record=None):
-        # If lift_record is not provided, try to fetch the default one from the context or return False
-        if not lift_record:
-            lift_record = self.env.context.get('default_lift_id')
-            if lift_record:
-                lift_record = self.env['kki_forklift_2022.lift'].browse(lift_record)
-
-        if lift_record and lift_record.last_check_name:
-            # Search for the hr.employee with the matching name
-            employee = self.env['hr.employee'].search([('name', '=', lift_record.last_check_name)], limit=1)
-            return employee.id if employee else False
+    @api.model
+    def _get_default_inspector_history(self):
+        # 最終点検日のレコード番号を取得
+        last_fork = self.env['kki_forklift.history'].search([], order='check_date desc', limit=1)
+        print(f'last_fork:{last_fork.name.name}')
+        print(f'last_fork:{last_fork.check_date}')
+        if last_fork.name:
+            print(f'last_fork.name:{last_fork.name}')
+            print(f'last_fork.nametype:{type(last_fork.id)}')
+            return last_fork.name
         return False
 
     @api.model

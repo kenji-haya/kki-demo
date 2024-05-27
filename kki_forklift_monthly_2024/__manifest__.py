@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "kki_forklift",
+    'name': "kki_forklift_monthly",
 
     'summary': """
         fork lift management""",
@@ -19,7 +19,7 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'mail'],
+    'depends': ['base', 'mail','hr'],
 
     # always loaded
     'data': [
@@ -27,6 +27,7 @@
         'views/forklift.xml',
         'views/size.xml',
         'views/check_history.xml',
+        'views/place.xml',
         'views/templates.xml',
     ],
     # only loaded in demonstration mode
