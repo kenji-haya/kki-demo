@@ -23,8 +23,7 @@
                             <div>
                                 <strong>未実施項目があります。確認してください。</strong>
                             </div>
-                            <div>
-                                You can archive the contact
+                            <div>You can archive the contact
                                 <field name="name_month" required="0" readonly="1"/>
                             </div>
                         </div>
@@ -35,74 +34,213 @@
                             <field name="alert_mes1" invisible="1"/>
                         </group>
 
-                        <!-- 一般点検項目 -->
-                        <group string="- 操縦装置 -">
+                        <!-- 操縦装置 -->
+                        <group string="- 操縦装置 -" colspan="2" col="3">
                             <group col="1">
                                 <div style="background-color: #dcdcdc; padding: 5px; border-radius: 3px;">
                                     <text>検査項目</text>
                                 </div>
-                                <text>ハンドルの遊び、がた</text>
+                                <span class="custom-text">ハンドルの遊び・がた</span>
+                                <span class="custom-text">ハンドルの操作具合</span>
                             </group>
-                            <div class="vertical-line">
-                            </div>
+
                             <group col="1">
                                 <div style="background-color: #dcdcdc; padding: 5px; border-radius: 3px;">
-                                    <text>check</text>
+                                    <text>チェック</text>
                                 </div>
-                                <div style="text-align: center;">
-                                    <field name="handle_check" widget="radio" options="{'horizontal': true}"
-                                           nolabel="1"/>
-                                </div>
+                                <field name="handle_check1" widget="radio" options="{'horizontal': true}"
+                                       nolabel="1"/>
+                                <field name="handle_check2" widget="radio" options="{'horizontal': true}"
+                                       nolabel="1"/>
                             </group>
-                            <div class="vertical-line">
-                            </div>
                             <group col="1">
                                 <div style="background-color: #dcdcdc; padding: 5px; border-radius: 3px;">
                                     <text>検査方法</text>
                                 </div>
-                                <text>操作、目視</text>
+                                <span class="custom-text">操作・目視</span>
+                                <span class="custom-text">走行・操作</span>
                             </group>
                         </group>
 
-                        <!-- 追加点検項目 -->
-                        <group string="- 荷役装置 -">
+                        <!-- 荷役装置 -->
+                        <group string="- 荷役装置 -" colspan="2" col="3">
                             <group col="1">
                                 <div style="background-color: #dcdcdc; padding: 5px; border-radius: 3px;">
                                     <text>検査項目</text>
                                 </div>
-                                <text>フォークの亀裂、摩耗</text>
-                                <text>フォーク止めピン部の摩耗</text>
-                                <text>マストの変形、亀裂、損傷</text>
-                                <text>リフトチェーンの貼り具合</text>
+                                <span class="custom-text">フォークの亀裂・摩耗</span>
+                                <span class="custom-text">フォーク止めピン部の摩耗</span>
+                                <span class="custom-text">マストの変形・亀裂・損傷</span>
+                                <span class="custom-text">リフトチェーンの貼り具合</span>
                             </group>
-                            <div class="vertical-line">
-                            </div>
                             <group col="1">
                                 <div style="background-color: #dcdcdc; padding: 5px; border-radius: 3px;">
-                                    <text>check</text>
+                                    <text>チェック</text>
                                 </div>
                                 <field name="fork_check1" widget="radio" options="{'horizontal': true}" nolabel="1"/>
                                 <field name="fork_check2" widget="radio" options="{'horizontal': true}" nolabel="1"/>
                                 <field name="fork_check3" widget="radio" options="{'horizontal': true}" nolabel="1"/>
                                 <field name="fork_check4" widget="radio" options="{'horizontal': true}" nolabel="1"/>
                             </group>
-                            <div class="vertical-line">
-                            </div>
                             <group col="1">
                                 <div style="background-color: #dcdcdc; padding: 5px; border-radius: 3px;">
                                     <text>検査方法</text>
                                 </div>
-                                <text>操作、目視</text>
-                                <text>目視、触診</text>
-                                <text>目視、触診</text>
-                                <text>操作、触診</text>
-                                <text>目視、触診</text>
+                                <span class="custom-text">操作・目視</span>
+                                <span class="custom-text">目視・触診</span>
+                                <span class="custom-text">目視・触診</span>
+                                <span class="custom-text">操作・触診</span>
+                                <span class="custom-text">目視・触診</span>
                             </group>
                         </group>
 
+                        <!-- 油圧装置 -->
+                        <group string="- 油圧装置 -" colspan="2" col="3">
+                            <group col="1">
+                                <div style="background-color: #dcdcdc; padding: 5px; border-radius: 3px;">
+                                    <text>検査項目</text>
+                                </div>
+                                <span class="custom-text">作動油の量・作動油タンクからの漏れ</span>
+                                <span class="custom-text">各ホース・パイプの損傷・油漏れ</span>
+                                <span class="custom-text">リフトシリンダの動作・油漏れ</span>
+                                <span class="custom-text">チルトシリンダの動作・油漏れ</span>
+                                <span class="custom-text">リーチシリンダの動作・油漏れ</span>
+                                <span class="custom-text">コントロールレバーのがた</span>
+                            </group>
+                            <group col="1">
+                                <div style="background-color: #dcdcdc; padding: 5px; border-radius: 3px;">
+                                    <text>チェック</text>
+                                </div>
+                                <field name="hydraulic1" widget="radio" options="{'horizontal': true}" nolabel="1"/>
+                                <field name="hydraulic2" widget="radio" options="{'horizontal': true}" nolabel="1"/>
+                                <field name="hydraulic3" widget="radio" options="{'horizontal': true}" nolabel="1"/>
+                                <field name="hydraulic4" widget="radio" options="{'horizontal': true}" nolabel="1"/>
+                                <field name="hydraulic5" widget="radio" options="{'horizontal': true}" nolabel="1"/>
+                                <field name="hydraulic6" widget="radio" options="{'horizontal': true}" nolabel="1"/>
+                            </group>
+                            <group col="1">
+                                <div style="background-color: #dcdcdc; padding: 5px; border-radius: 3px;">
+                                    <text>検査方法</text>
+                                </div>
+                                <span class="custom-text">目視</span>
+                                <span class="custom-text">目視・触診</span>
+                                <span class="custom-text">操作・目視</span>
+                                <span class="custom-text">操作・目視</span>
+                                <span class="custom-text">操作・目視</span>
+                                <span class="custom-text">操作・目視</span>
+                            </group>
+                        </group>
 
+                        <!-- 走行装置 -->
+                        <group string="- 走行装置 -" colspan="2" col="3">
+                            <group col="1">
+                                <div style="background-color: #dcdcdc; padding: 5px; border-radius: 3px;">
+                                    <text>検査項目</text>
+                                </div>
+                                <span class="custom-text">タイヤの亀裂、損傷、異常摩耗</span>
+                                <span class="custom-text">ホイール、ボルトの緩み</span>
+                            </group>
+                            <group col="1">
+                                <div style="background-color: #dcdcdc; padding: 5px; border-radius: 3px;">
+                                    <text>チェック</text>
+                                </div>
+                                <field name="running1" widget="radio" options="{'horizontal': true}" nolabel="1"/>
+                                <field name="running2" widget="radio" options="{'horizontal': true}" nolabel="1"/>
+                            </group>
+                            <group col="1">
+                                <div style="background-color: #dcdcdc; padding: 5px; border-radius: 3px;">
+                                    <text>検査方法</text>
+                                </div>
+                                <span class="custom-text">目視</span>
+                                <span class="custom-text">触診・レンチ等</span>
+                            </group>
+                        </group>
+
+                        <!-- 安全装置他 -->
+                        <group string="- 安全装置他 -" colspan="2" col="3">
+                            <group col="1">
+                                <div style="background-color: #dcdcdc; padding: 5px; border-radius: 3px;">
+                                    <text>検査項目</text>
+                                </div>
+                                <span class="custom-text">ヘッドガードの損傷</span>
+                                <span class="custom-text">バックレストの損傷</span>
+                                <span class="custom-text">灯火装置・方向指示器の作動</span>
+                                <span class="custom-text">警報器の作動</span>
+                                <span class="custom-text">バッテリの液量</span>
+                                <span class="custom-text">バッテリ端子の緩み</span>
+                            </group>
+                            <group col="1">
+                                <div style="background-color: #dcdcdc; padding: 5px; border-radius: 3px;">
+                                    <text>チェック</text>
+                                </div>
+                                <field name="safety1" widget="radio" options="{'horizontal': true}" nolabel="1"/>
+                                <field name="safety2" widget="radio" options="{'horizontal': true}" nolabel="1"/>
+                                <field name="safety3" widget="radio" options="{'horizontal': true}" nolabel="1"/>
+                                <field name="safety4" widget="radio" options="{'horizontal': true}" nolabel="1"/>
+                                <field name="safety5" widget="radio" options="{'horizontal': true}" nolabel="1"/>
+                                <field name="safety6" widget="radio" options="{'horizontal': true}" nolabel="1"/>
+                            </group>
+                            <group col="1">
+                                <div style="background-color: #dcdcdc; padding: 5px; border-radius: 3px;">
+                                    <text>検査方法</text>
+                                </div>
+                                <span class="custom-text">目視</span>
+                                <span class="custom-text">目視</span>
+                                <span class="custom-text">操作・目視</span>
+                                <span class="custom-text">聴診</span>
+                                <span class="custom-text">目視</span>
+                                <span class="custom-text">目視・触診</span>
+                            </group>
+                        </group>
+
+                        <!-- 制動装置 -->
+                        <group string="- 制動装置 -" colspan="2" col="3">
+                            <group col="1">
+                                <div style="background-color: #dcdcdc; padding: 5px; border-radius: 3px;">
+                                    <text>検査項目</text>
+                                </div>
+                                <span class="custom-text">ブレーキの効き</span>
+                            </group>
+                            <group col="1">
+                                <div style="background-color: #dcdcdc; padding: 5px; border-radius: 3px;">
+                                    <text>チェック</text>
+                                </div>
+                                <field name="brake1" widget="radio" options="{'horizontal': true}" nolabel="1"/>
+                            </group>
+                            <group col="1">
+                                <div style="background-color: #dcdcdc; padding: 5px; border-radius: 3px;">
+                                    <text>検査方法</text>
+                                </div>
+                                <span class="custom-text">走行・操作</span>
+                            </group>
+                        </group>
+
+                        <!-- 総合テスト -->
+                        <group string="- 総合テスト -" colspan="2" col="3">
+                            <group col="1">
+                                <div style="background-color: #dcdcdc; padding: 5px; border-radius: 3px;">
+                                    <text>検査項目</text>
+                                </div>
+                                <span class="custom-text">走行及び作業テストを行ない、各装置が正常に作動し、
+                                    異常振動、異音及び異常発熱がないことを確認
+                                </span>
+                            </group>
+                            <group col="1">
+                                <div style="background-color: #dcdcdc; padding: 5px; border-radius: 3px;">
+                                    <text>チェック</text>
+                                </div>
+                                <field name="comp1" widget="radio" options="{'horizontal': true}" nolabel="1"/>
+                            </group>
+                            <group col="1">
+                                <div style="background-color: #dcdcdc; padding: 5px; border-radius: 3px;">
+                                    <text>検査方法</text>
+                                </div>
+                            </group>
+                        </group>
+                                <field name="defective_parts_im" widget="image"/>
                         <footer>
-                            <button name="action_save_and_confirm_month" string="Save and Confirm" type="object" class="btn-primary"/>
+                            <button name="action_save_and_confirm_month" string="Save and Confirm" type="object"
+                                    class="btn-primary"/>
                         </footer>
                     </sheet>
                 </form>
@@ -115,6 +253,7 @@
             <field name="view_mode">tree,form</field>
         </record>
 
-        <menuitem name="check_monthly" id="kki_monthly_list" parent="kki_forklift_2022.lift" action="kki_forklift_monthly_window"/>
+        <menuitem name="check_monthly" id="kki_monthly_list" parent="kki_forklift_2022.lift"
+                  action="kki_forklift_monthly_window"/>
     </data>
 </odoo>
