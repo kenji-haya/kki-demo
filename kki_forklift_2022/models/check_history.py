@@ -7,7 +7,7 @@ from datetime import datetime,timedelta
 from odoo.exceptions import ValidationError
 import pytz
 
-from odoo.odoo.exceptions import UserError
+# from odoo.odoo.exceptions import UserError
 
 
 class kki_forklift_check_history(models.Model):
@@ -134,9 +134,9 @@ class kki_forklift_check_history(models.Model):
 
                 # ファイル名を設定
                 if record.name:
-                    file_name = f"{record.name.id}_{record.id}.png"
+                    file_name = f"/{record.name.id}_{record.id}.png"
                 else:
-                    file_name = f"{record.id}.png"
+                    file_name = f"/{record.id}.png"
 
                 file_path = os.path.join(save_dir, file_name)
 
