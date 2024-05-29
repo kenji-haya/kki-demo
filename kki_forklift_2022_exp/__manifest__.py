@@ -20,7 +20,7 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base','kki_forklift_20221'],
+    'depends': ['base','kki_forklift_2022'],
 
     # always loaded
     'data': [
