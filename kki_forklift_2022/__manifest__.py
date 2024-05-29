@@ -19,7 +19,7 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'mail','hr'],
+    'depends': ['base', 'mail', 'hr'],
 
     # always loaded
     'data': [
@@ -27,11 +27,17 @@
         'views/forklift.xml',
         'views/size.xml',
         'views/check_history.xml',
+        'views/check_monthly.xml',
         'views/place.xml',
         'views/templates.xml',
     ],
-    # only loaded in demonstration mode
-    'demo': [
-        'demo/demo.xml',
-    ],
+    'assets': {
+        'web.assets_backend': [
+            'kki_forklift_2022/static/src/css/custom_style.css',
+        ],
+        # デモモードでのみ読み込まれるデータ
+        'demo': [
+            'demo/demo.xml',
+        ],
+    },
 }
