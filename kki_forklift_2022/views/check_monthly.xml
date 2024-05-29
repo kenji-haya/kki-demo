@@ -86,7 +86,6 @@
                                 <div style="background-color: #dcdcdc; padding: 5px; border-radius: 3px;">
                                     <text>検査方法</text>
                                 </div>
-                                <span class="custom-text">操作・目視</span>
                                 <span class="custom-text">目視・触診</span>
                                 <span class="custom-text">目視・触診</span>
                                 <span class="custom-text">操作・触診</span>
@@ -237,7 +236,7 @@
                                 </div>
                             </group>
                         </group>
-                                <field name="defective_parts_im" widget="image"/>
+                        <field name="defective_parts_im" widget="image"/>
                         <footer>
                             <button name="action_save_and_confirm_month" string="Save and Confirm" type="object"
                                     class="btn-primary"/>

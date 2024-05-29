@@ -12,12 +12,14 @@ class kki_forklift_check_monthly(models.Model):
     check_date_month = fields.Date("check_date_month", required=True)
     lift_id = fields.Many2one("kki_forklift_2022.lift", "Forklift")
     defective_parts_im = fields.Binary("image")
+
     handle_check1 = fields.Selection(
         [('one', '未実施'), ('two', '点検済'), ('three', '不具合有')],
         default='one')
     handle_check2 = fields.Selection(
         [('one', '未実施'), ('two', '点検済'), ('three', '不具合有')],
         default='one')
+
     fork_check1= fields.Selection(
         [('one', '未実施'), ('two', '点検済'), ('three', '不具合有')],
         default='one')
@@ -30,6 +32,7 @@ class kki_forklift_check_monthly(models.Model):
     fork_check4= fields.Selection(
         [('one', '未実施'), ('two', '点検済'), ('three', '不具合有')],
         default='one')
+
     hydraulic1= fields.Selection(
         [('one', '未実施'), ('two', '点検済'), ('three', '不具合有')],
         default="one")
@@ -48,12 +51,14 @@ class kki_forklift_check_monthly(models.Model):
     hydraulic6 = fields.Selection(
         [('one', '未実施'), ('two', '点検済'), ('three', '不具合有')],
         default="one")
+
     running1 = fields.Selection(
         [('one', '未実施'), ('two', '点検済'), ('three', '不具合有')],
         default="one")
     running2 = fields.Selection(
         [('one', '未実施'), ('two', '点検済'), ('three', '不具合有')],
         default="one")
+
     safety1 = fields.Selection(
         [('one', '未実施'), ('two', '点検済'), ('three', '不具合有')],
         default="one")
@@ -72,14 +77,18 @@ class kki_forklift_check_monthly(models.Model):
     safety6 = fields.Selection(
         [('one', '未実施'), ('two', '点検済'), ('three', '不具合有')],
         default="one")
+
     brake1 = fields.Selection(
         [('one', '未実施'), ('two', '点検済'), ('three', '不具合有')],
         default="one")
+
     comp1 = fields.Selection(
         [('one', '未実施'), ('two', '点検済'), ('three', '不具合有')],
         default="one")
+
     remarks_2= fields.Char("remarks")
     alert_mes1 = fields.Boolean(string="Warning!!", store=True, tracking=True)
+
     @api.onchange("name_month")
     def _get_date(self):
         n_time = timedelta(hours=9)
