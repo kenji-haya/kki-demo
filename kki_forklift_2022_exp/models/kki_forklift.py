@@ -4,7 +4,7 @@ from odoo import models, fields, api
 
 
 class kki_forklift_2022_exp(models.Model):
-    _inherit = 'kki_forklift_2022.lift'
+    _inherit = 'kki_forklift_20221.lift'
 
     text = fields.Text("text")
 

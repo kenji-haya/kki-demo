@@ -1,17 +1,16 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "kki_forklift_2022_exp",
+    'name': "kki_forklift",
 
     'summary': """
-        Short (1 phrase/line) summary of the module's purpose, used as
-        subtitle on modules listing or apps.openerp.com""",
+        fork lift management""",
 
     'description': """
         Long description of module's purpose
     """,
 
-    'author': "My Company",
-    'website': "http://www.yourcompany.com",
+    'author': "Enzantrades Inc,(k_eguchi)",
+    'website': "http://www.enzantrades.co.jp",
 
     # Categories can be used to filter modules in modules listing
     # Check https://github.com/odoo/odoo/blob/14.0/odoo/addons/base/data/ir_module_category_data.xml
@@ -20,12 +19,15 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base','kki_forklift_20221'],
+    'depends': ['base', 'mail','hr'],
 
     # always loaded
     'data': [
-        # 'security/ir.model.access.csv',
-        'views/kki_forklift.xml',
+        'security/ir.model.access.csv',
+        'views/forklift.xml',
+        'views/size.xml',
+        'views/check_history.xml',
+        'views/place.xml',
         'views/templates.xml',
     ],
     # only loaded in demonstration mode
