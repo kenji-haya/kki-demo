@@ -1,0 +1,12 @@
+.vertical-line {
+    border-left: 1.5px solid #dcdcdc;
+    height: 60%;
+    position: absolute;
+    bottom: 50px
+
+}
+
+.custom-text {
+    font-size: 30px; /* ここで希望するフォントサイズを指定 */
+    color: #393939; /* 必要に応じて色も指定できます */
+}
