@@ -28,7 +28,6 @@
                             </div>
                         </div>
 
-                        <!-- 縦線を追加するためのdiv要素 -->
                         <group string="- 基本情報 -" colspan="2">
                             <field name="name_month"/>
                             <field name="check_date_month" readonly="0"/>

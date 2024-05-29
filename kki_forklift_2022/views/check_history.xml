@@ -59,8 +59,7 @@
                         <field name="image_url" invisible="1"/>
                         <img t-if="record.image_url" t-att-src="record.image_url" alt="Image"/>
                         <footer>
-                            <button name="action_save_and_confirm" string="Save and Confirm" type="object"
-                                    class="btn-primary"/>
+                            <button name="action_save" string="Save (Same Action)" type="button"/>
                         </footer>
                     </sheet>
                 </form>
