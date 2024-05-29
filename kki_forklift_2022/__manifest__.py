@@ -29,12 +29,11 @@
         'views/check_history.xml',
         'views/check_monthly.xml',
         'views/place.xml',
-        'views/check_monthly.xml',
         'views/templates.xml',
     ],
     'assets': {
         'web.assets_backend': [
-            'kki_forklift_2022/static/src/css/custom_styles.css',
+            'kki_forklift_2022/static/src/css/custom_style.css',
         ],
         # デモモードでのみ読み込まれるデータ
         'demo': [
