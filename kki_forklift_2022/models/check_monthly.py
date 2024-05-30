@@ -122,17 +122,27 @@ class kki_forklift_check_monthly(models.Model):
             'last_date_month': self.check_date_month,
             'last_name_month': self.name_month.name,
         })
-    @api.model
-    def _get_default_inspector(self):
-        # 最終点検日のレコード番号を取得
-        last_fork = self.env['kki_forklift.monthly'].search([], order='check_date_month desc', limit=1)
-        print(f'last_fork:{last_fork.name_month.name}')
-        print(f'last_fork:{last_fork.check_date_month}')
-        if last_fork.name_month:
-            print(f'last_fork.name:{last_fork.name_month}')
-            print(f'last_fork.nametype:{type(last_fork.id)}')
-            return last_fork.name_month
+
+    @api.onchange('lift_id')
+    def _onchange_lift_id(self):
+        if self.lift_id:
+            self.name_month = self._get_default_inspector(self.lift_id)
+        else:
+            self.name_month = False
+
+    def _get_default_inspector(self, lift_record=None):
+        # If lift_record is not provided, try to fetch the default one from the context or return False
+        if not lift_record:
+            lift_record = self.env.context.get('default_lift_id')
+            if lift_record:
+                lift_record = self.env['kki_forklift_2022.lift'].browse(lift_record)
+
+        if lift_record and lift_record.last_name_month:
+            # Search for the hr.employee with the matching name
+            employee = self.env['hr.employee'].search([('name', '=', lift_record.last_name_month)], limit=1)
+            return employee.id if employee else False
         return False
+
     # 未実施項目があればアラートを出す
     @api.constrains('alert_mes1')
     def constrains_no_check_warning(self):
