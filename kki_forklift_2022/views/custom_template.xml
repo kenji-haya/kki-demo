@@ -1,0 +1,29 @@
+<!-- custom_template.xml -->
+<odoo>
+    <template id="my_custom_template">
+        <t t-call="website.layout">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-md-6">Column 1</div>
+                    <div class="col-xs-12 col-md-6">Column 2</div>
+                </div>
+                <style>
+                    /* カスタムスタイル */
+                    .custom-element {
+                        display: flex;
+                        flex-direction: column;
+                    }
+                    @media (max-width: 720px) {
+                        .custom-element {
+                            flex-direction: row;
+                        }
+                    }
+                </style>
+                <div class="custom-element">
+                    <div>Element 1</div>
+                    <div>Element 2</div>
+                </div>
+            </div>
+        </t>
+    </template>
+</odoo>

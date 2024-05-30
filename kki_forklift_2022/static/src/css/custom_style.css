@@ -10,3 +10,32 @@
     font-size: 16px; /* ここで希望するフォントサイズを指定 */
     color: #393939; /* 必要に応じて色も指定できます */
 }
+
+/* スマホ用のスタイル */
+@media (max-width: 720px) {
+    .group-wrapper {
+        display: flex;
+        flex-direction: column;
+    }
+    .group-wrapper .o_group {
+        flex: 1;
+    }
+    .custom-text {
+        font-size: 12px; /* スマホ用のフォントサイズ */
+    }
+    .radio-label {
+        font-size: 1px; /* スマホ用のラジオボタンのフォントサイズ */
+    }
+}
+
+
+/* タブレット用のスタイル */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .group-wrapper {
+        display: flex;
+        flex-direction: row;
+    }
+    .group-wrapper .o_group {
+        flex: 1;
+    }
+}
