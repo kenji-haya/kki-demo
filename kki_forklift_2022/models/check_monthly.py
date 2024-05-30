@@ -58,6 +58,9 @@ class kki_forklift_check_monthly(models.Model):
     running2 = fields.Selection(
         [('one', '未実施'), ('two', '点検済'), ('three', '不具合有')],
         default="one")
+    running3 = fields.Selection(
+        [('one', '未実施'), ('two', '点検済'), ('three', '不具合有')],
+        default="one")
 
     safety1 = fields.Selection(
         [('one', '未実施'), ('two', '点検済'), ('three', '不具合有')],
@@ -86,8 +89,11 @@ class kki_forklift_check_monthly(models.Model):
         [('one', '未実施'), ('two', '点検済'), ('three', '不具合有')],
         default="one")
 
-    remarks_2= fields.Char("remarks")
+    remarks_2= fields.Char("remarks2")
     alert_mes1 = fields.Boolean(string="Warning!!", store=True, tracking=True)
+
+    # 稼働時間
+    operate_time = fields.Float(string="operatingHour")
 
     @api.onchange("name_month")
     def _get_date(self):
