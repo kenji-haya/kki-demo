@@ -7,11 +7,6 @@ from datetime import datetime,timedelta
 from odoo.exceptions import ValidationError
 import pytz
 
-from odoo.odoo.exceptions import UserError
-
-
-# from odoo.odoo.exceptions import UserError
-
 
 class kki_forklift_check_history(models.Model):
     _name = 'kki_forklift.history'
@@ -23,8 +18,6 @@ class kki_forklift_check_history(models.Model):
     check_date = fields.Date("check date", required=True)
     lift_id = fields.Many2one("kki_forklift_2022.lift", "Forklift")
     defective_history_im = fields.Binary("image")
-    defective_history_im_path = fields.Char("Image Path", readonly=True)  # 画像パスのフィールドを追加
-    image_url = fields.Char("Image URL", compute="_get_image_url")
 
     fork_1= fields.Selection(
         [('one', '未実施'), ('two', '点検済'), ('three', '不具合有')],
@@ -113,58 +106,6 @@ class kki_forklift_check_history(models.Model):
             print(f'last_fork.nametype:{type(last_fork.id)}')
             return last_fork.name
         return False
-
-    @api.model
-    def create(self, vals):
-        record = super(kki_forklift_check_history, self).create(vals)
-        if 'defective_history_im' in vals:
-            record._save_image_to_filesystem()
-        return record
-
-    def write(self, vals):
-        result = super(kki_forklift_check_history, self).write(vals)
-        if 'defective_history_im' in vals:
-            self._save_image_to_filesystem()
-        return result
-
-    def _save_image_to_filesystem(self):
-        for record in self:
-            if record.defective_history_im:
-                # 保存先のディレクトリを指定
-                save_dir = r'\Odoo_kki\addons\kki-demo\kki_forklift_2022\static\images'
-                if not os.path.exists(save_dir):
-                    os.makedirs(save_dir)
-
-                # ファイル名を設定
-                if record.name:
-                    file_name = f"/{record.name.id}_{record.id}.png"
-                else:
-                    file_name = f"/{record.id}.png"
-
-                file_path = os.path.join(save_dir, file_name)
-
-                try:
-                    # バイナリデータをデコードしてファイルに書き込み
-                    with open(file_path, 'wb') as file:
-                        file.write(base64.b64decode(record.defective_history_im))
-
-                    # 必要に応じて、データベース内のフィールドをクリアするなどの操作を行う
-                    record.defective_history_im = False
-                except Exception as e:
-                    raise UserError(f"Failed to save image: {e}")
-
-    @api.depends('defective_history_im_path')
-    def _get_image_url(self):
-        for record in self:
-            if record.defective_history_im_path:
-                # WindowsパスをWeb URLに変換
-                # パスのセパレータを適切に変換
-                image_path = record.defective_history_im_path.replace('\\', '/')
-                record.image_url = f'/kki_forklift/static/images/{image_path}'
-                print(record.image_url)
-            else:
-                record.image_url = False
-
 
     #　未実施項目があればアラートを出す
     @api.constrains('alert_mes')
