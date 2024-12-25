@@ -93,7 +93,7 @@ class kki_forklift_check_monthly(models.Model):
     alert_mes1 = fields.Boolean(string="Warning!!", store=True, tracking=True)
 
     # 稼働時間
-    operate_time = fields.Float(string="operatingHour")
+    operate_time = fields.Float(string="operatingHour", required=True, default="")
 
     @api.onchange("name_month")
     def _get_date(self):

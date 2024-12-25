@@ -159,6 +159,8 @@
                                            class="radio-label"/>
                                     <field name="running2" widget="radio" options="{'horizontal': true}" nolabel="1"
                                            class="radio-label"/>
+                                    <field name="running3" widget="radio" options="{'horizontal': true}" nolabel="1"
+                                           class="radio-label"/>
                                 </group>
                                 <group col="1">
                                     <div style="background-color: #dcdcdc; padding: 5px; border-radius: 3px;">
@@ -166,6 +168,7 @@
                                     </div>
                                     <span class="custom-text">目視</span>
                                     <span class="custom-text">触診・レンチ等</span>
+                                    <span class="custom-text">測定(ドライブ：30mm以上/その他：15mm以上)</span>
                                 </group>
                             </group>
                         </div>
