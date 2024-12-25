@@ -7,9 +7,6 @@ from datetime import datetime,timedelta
 from odoo.exceptions import ValidationError
 import pytz
 
-from odoo.odoo.exceptions import UserError
-
-
 # from odoo.odoo.exceptions import UserError
 
 
