@@ -236,7 +236,8 @@
                                 </div>
                             </group>
                         </group>
-                                <field name="defective_parts_im" widget="image"/>
+                        <field name="remarks_2"/>
+                        <field name="defective_parts_im" widget="image"/>
                         <footer>
                             <button name="action_save_and_confirm_month" string="Save and Confirm" type="object"
                                     class="btn-primary"/>
