@@ -66,41 +66,35 @@
                         </div>
 
                         <!-- 荷役装置 -->
-                        <div class="group-wrapper">
-                            <group string="- 荷役装置 -" colspan="2" col="3">
-                                <group col="1">
-                                    <div style="background-color: #dcdcdc; padding: 5px; border-radius: 3px;">
-                                        <text>検査項目</text>
-                                    </div>
-                                    <span class="custom-text">フォークの亀裂・摩耗</span>
-                                    <span class="custom-text">フォーク止めピン部の摩耗</span>
-                                    <span class="custom-text">マストの変形・亀裂・損傷</span>
-                                    <span class="custom-text">リフトチェーンの貼り具合</span>
-                                </group>
-                                <group col="1">
-                                    <div style="background-color: #dcdcdc; padding: 5px; border-radius: 3px;">
-                                        <text>チェック</text>
-                                    </div>
-                                    <field name="fork_check1" widget="radio" options="{'horizontal': true}"
-                                           nolabel="1" class="radio-label"/>
-                                    <field name="fork_check2" widget="radio" options="{'horizontal': true}"
-                                           nolabel="1" class="radio-label"/>
-                                    <field name="fork_check3" widget="radio" options="{'horizontal': true}"
-                                           nolabel="1" class="radio-label"/>
-                                    <field name="fork_check4" widget="radio" options="{'horizontal': true}"
-                                           nolabel="1" class="radio-label"/>
-                                </group>
-                                <group col="1">
-                                    <div style="background-color: #dcdcdc; padding: 5px; border-radius: 3px;">
-                                        <text>検査方法</text>
-                                    </div>
-                                    <span class="custom-text">目視・触診</span>
-                                    <span class="custom-text">目視・触診</span>
-                                    <span class="custom-text">操作・触診</span>
-                                    <span class="custom-text">目視・触診</span>
-                                </group>
+                        <group string="- 荷役装置 -" colspan="2" col="3">
+                            <group col="1">
+                                <div style="background-color: #dcdcdc; padding: 5px; border-radius: 3px;">
+                                    <text>検査項目</text>
+                                </div>
+                                <span class="custom-text">フォークの亀裂・摩耗</span>
+                                <span class="custom-text">フォーク止めピン部の摩耗</span>
+                                <span class="custom-text">マストの変形・亀裂・損傷</span>
+                                <span class="custom-text">リフトチェーンの貼り具合</span>
                             </group>
-                        </div>
+                            <group col="1">
+                                <div style="background-color: #dcdcdc; padding: 5px; border-radius: 3px;">
+                                    <text>チェック</text>
+                                </div>
+                                <field name="fork_check1" widget="radio" options="{'horizontal': true}" nolabel="1"/>
+                                <field name="fork_check2" widget="radio" options="{'horizontal': true}" nolabel="1"/>
+                                <field name="fork_check3" widget="radio" options="{'horizontal': true}" nolabel="1"/>
+                                <field name="fork_check4" widget="radio" options="{'horizontal': true}" nolabel="1"/>
+                            </group>
+                            <group col="1">
+                                <div style="background-color: #dcdcdc; padding: 5px; border-radius: 3px;">
+                                    <text>検査方法</text>
+                                </div>
+                                <span class="custom-text">目視・触診</span>
+                                <span class="custom-text">目視・触診</span>
+                                <span class="custom-text">操作・触診</span>
+                                <span class="custom-text">目視・触診</span>
+                            </group>
+                        </group>
 
                         <!-- 油圧装置 -->
                         <div class="group-wrapper">
